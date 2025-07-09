@@ -48,6 +48,7 @@ Diese Brand wäre nicht möglich gewesen ohne die kreative Arbeit unseres Design
 * **Design:** [Chris Lüders](https://www.chrislueders.de/)
 * **Sponsoren des A1 eSports Festival Stands:**
     * [Satoshi Engineering](https://satoshiengineering.com/en/) - Hauptorganisator
+    * [Feinstoffstruktur](https://feinstoffstruktur.com/)
     * [Coinfinity](https://coinfinity.co/)
     * [EINUNDZWANZIG](https://einundzwanzig.space/)
     * [21Bitcoin](https://21bitcoin.app/)
