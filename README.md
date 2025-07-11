@@ -30,7 +30,9 @@ Im Ordner [`/brand-assets/alternative-logos`](/brand-assets/alternative-logos) f
 
 Ein riesiges Dankeschön an den Designer und alle Sponsoren, die den ursprünglichen Stand möglich gemacht haben:
 
-* **Design:** \[Name des Designers/der Agentur\]  
+* **Design:**
+  * Chris Lüders | [Website](https://www.chrislueders.de/) | [X](https://x.com/chris_lueders_) | [Nostr](npub1u2jks7zqnvdtnu8vkehtfa3aemtaqp30s3az9qxcesa7whxlw8rsgs50au)
+
 * **Sponsoren:**  
   * [Satoshi Engineering](https://satoshiengineering.com/en/) \- Hauptorganisator
   * [Feinstoffstruktur](https://feinstoffstruktur.com/)  
