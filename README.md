@@ -11,6 +11,11 @@ Der Erfolg von Initiativen wie dem DACH-weiten "Bitcoin entdecken"-Tag hat den W
 ## **Nutzung**
 
 * **Brand Assets:** Logos, Farben und Schriftarten findest du im Ordner [`/brand-assets`](/brand-assets).  
+* **Font:** Poppins Black, Poppins Regular
+* **Color Codes:**
+  * Orange: #FF7700
+  * Dark Orange: #E35F00
+  * Very Dark Orange: #BF5000
 * **Vorlagen:** Nutzbare Vorlagen für Social Media, Präsentationen und Drucksorten liegen im Ordner [`/templates`](/templates).
 
 Wir ermutigen dich ausdrücklich, diese Ressourcen für deine eigenen "Bitcoin entdecken"-Events zu verwenden\!
@@ -19,7 +24,7 @@ Wir ermutigen dich ausdrücklich, diese Ressourcen für deine eigenen "Bitcoin e
 
 Dieses Projekt lebt von der Community. Wir freuen uns über Pull Requests mit neuen Vorlagen, Verbesserungen oder Beispielen von deinen Events.
 
-* **Wie du beitragen kannst:** Details findest du in der [`CONTRIBUTING.md`](CONTRIBUTING.md).  
+* **Wie du beitragen kannst:** Details findest du in der [`CONTRIBUTING.md`](CONTRIBUTING.md).
 * **Erfahrungen teilen:** Teile deine Learnings und Tipps von vergangenen Events im Ordner [`/historical-events`](/historical-events).
 
 ## **Alternative Konzepte**
