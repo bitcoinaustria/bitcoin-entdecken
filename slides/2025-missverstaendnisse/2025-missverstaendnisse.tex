@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,t]{beamer}
+\documentclass[aspectratio=169,t,9pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -26,6 +26,9 @@
 \setbeamercolor{title}{bg=bitcoindark,fg=white}
 \setbeamercolor{block title}{bg=bitcoinorange,fg=white}
 \setbeamercolor{block body}{bg=bitcoinorange!10}
+
+% Adjust fonts
+\setbeamerfont{footnote}{size=\tiny}
 
 % Title information
 \title[Bitcoin Missverständnisse]{Bitcoin: Häufige Missverständnisse und was wirklich dahinter steckt}
@@ -68,7 +71,7 @@
         \begin{column}[T]{0.48\textwidth}
             \begin{block}{Das Missverständnis}
                 \vspace{0.5em}
-                \textit{#1}
+                \textit{``#1''}
                 \vspace{0.5em}
             \end{block}
         \end{column}
@@ -114,14 +117,15 @@
 \begin{frame}{Warum entstehen Bitcoin-Missverständnisse?}
     \begin{itemize}
         \item \textbf{Komplexe Technologie} - Schwer verständlich für Laien
+	\item \textbf{Falscher Fokus} - Die eigentlichen Fragen werden nicht gestellt
         \item \textbf{Medienverzerrung} - Sensationelle Berichterstattung
-        \item \textbf{Schnelle Entwicklung} - Veraltete Informationen kursieren
+        \item \textbf{Schnelle Entwicklung} - Veraltete Informationen halten sich hartnäckig
         \item \textbf{Emotionale Diskussionen} - Fakten vs. Meinungen
         \item \textbf{Interessenskonflikte} - Verschiedene Akteure mit eigenen Agenden
     \end{itemize}
-    \vspace{1em}
+    \vspace{2em}
     \begin{alertblock}{Ziel dieser Präsentation}
-        Fakten statt Mythen - Was sagt die aktuelle Forschung?
+        Fakten statt Mythen - Was steht hinter den Argumenten?
     \end{alertblock}
 \end{frame}
 
@@ -129,19 +133,32 @@
 
 \subsection{1. Umweltauswirkungen}
 
-\begin{frame}<1-2>{Missverständnis 1: Umweltzerstörung}
-    \misconceptionslide{"Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt"}{%
-        \item Nur 0,54\% des globalen Stromverbrauchs
-        \item 87\% der Mining-Hardware wird recycelt
-        \item Zunehmend erneuerbare Energiequellen
+\begin{frame}<1-2>{M1: Verbraucht zu viel Energie}
+    \misconceptionslide{Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt}{%
+        \item Nur 0,54\% des globalen Stromverbrauchs\footnote{Cambridge Centre for Alternative Finance}
+	\item Energieverbrauch \textit{essentiell}, nicht ``sinnlos''.
+	\item Über 50\% erneuerbare Energiequellen\footnote{Cambridge Digital Mining Industry Report 2025}
+	\item Überschussenergie aus alternativen Quellen, macht diese lukrativ
         \item Weniger umweltschädlich als Goldbergbau
+	\item 87\% der Mining-Hardware wird recycelt\footnote{z.B. 21 Energy}
     }{Mining-Effizienz steigt kontinuierlich, Umweltimpact nimmt ab.}
+\end{frame}
+
+\subsection{2. Kein intrinsischer Wert}
+
+\begin{frame}<1-2>{M2: Kein intrinsischer Wert}
+    \misconceptionslide{Bitcoin hat keinen intrinsischen Wert, daher ist es wertlos}{%
+        \item Bitcoin hat keinen laufenden Erträge, daher nicht vergleichbar
+        \item Nutzen 1: technisch limitiert auf 21 Mio
+        \item Nutzen 2: Zensurresistenz
+        \item Nutzen 3: Globales Zahlungsnetzwerk
+	}{Es gibt keinen intrinsischen Wert, sondern der Wert entsteht durch gesellschaftliche Zuschreibung und kollektive Akzeptanz\footnote{Emily Stanhope und der Ökonom Charles Brandt, in ``Review of Economic Philosophy''}}
 \end{frame}
 
 \subsection{2. Volatilität}
 
-\begin{frame}<1-2>{Missverständnis 2: Zu volatil für praktische Nutzung}
-    \misconceptionslide{"Bitcoin ist zu volatil, um als Währung oder Wertaufbewahrung zu funktionieren"}{%
+\begin{frame}<1-2>{M2: Zu volatil für praktische Nutzung}
+    \misconceptionslide{Bitcoin ist zu volatil, um als Währung oder Wertaufbewahrung zu funktionieren}{%
         \item Volatilität nimmt langfristig ab
         \item Weniger volatil als 33 S\&P 500 Aktien
         \item Typisch für neue Asset-Klassen
@@ -151,8 +168,8 @@
 
 \subsection{3. Regulierung}
 
-\begin{frame}<1-2>{Missverständnis 3: Regulatorische Unsicherheit}
-    \misconceptionslide{"Bitcoin hat keine rechtliche Grundlage und wird verboten werden"}{%
+\begin{frame}<1-2>{M3: Regulatorische Unsicherheit}
+    \misconceptionslide{Bitcoin hat keine rechtliche Grundlage und wird verboten werden}{%
         \item Regulierungsrahmen entwickeln sich schnell
         \item USA und EU schaffen klare Gesetze
         \item Institutionelle Compliance wächst
@@ -162,8 +179,8 @@
 
 \subsection{4. Skalierbarkeit}
 
-\begin{frame}<1-2>{Missverständnis 4: Technische Limitierungen}
-    \misconceptionslide{"Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten"}{%
+\begin{frame}<1-2>{M4: Technische Limitierungen}
+    \misconceptionslide{Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten}{%
         \item Lightning Network: Millionen TPS möglich
         \item Bitcoin = Basis-Settlement-Layer
         \item Layer-2-Lösungen entwickeln sich
@@ -173,8 +190,8 @@
 
 \subsection{5. Kriminalität}
 
-\begin{frame}<1-2>{Missverständnis 5: Kriminalitäts-Tool}
-    \misconceptionslide{"Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet"}{%
+\begin{frame}<1-2>{M5: Kriminalitäts-Tool}
+    \misconceptionslide{Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet}{%
         \item Weniger als 1\% aller Transaktionen sind illegal (2024)
         \item Traditionelle Systeme haben mehr Kriminalität
         \item Blockchain ist transparent und nachverfolgbar
@@ -184,8 +201,8 @@
 
 \subsection{6. Spekulationsblase}
 
-\begin{frame}<1-2>{Missverständnis 6: Reine Spekulation ohne Wert}
-    \misconceptionslide{"Bitcoin ist eine Spekulationsblase ohne fundamentalen Wert"}{%
+\begin{frame}<1-2>{M6: Reine Spekulation ohne Wert}
+    \misconceptionslide{Bitcoin ist eine Spekulationsblase ohne fundamentalen Wert}{%
         \item Wertspeicher für langfristiges Sparen
         \item Netzwerkeffekte schaffen Mehrwert
         \item Institutionelle Adoption validiert Use-Case
@@ -195,8 +212,8 @@
 
 \subsection{7. Praktische Adoption}
 
-\begin{frame}<1-2>{Missverständnis 7: Keine praktische Nutzung}
-    \misconceptionslide{"Bitcoin hat keine praktische Anwendung im Alltag"}{%
+\begin{frame}<1-2>{M7: Keine praktische Nutzung}
+    \misconceptionslide{Bitcoin hat keine praktische Anwendung im Alltag}{%
         \item Wachsende Händler-Akzeptanz
         \item Legales Zahlungsmittel (El Salvador, CAR)
         \item Corporate Treasury Asset
@@ -206,8 +223,8 @@
 
 \subsection{8. Zentralbank-Bedenken}
 
-\begin{frame}<1-2>{Missverständnis 8: Bedrohung für Geldpolitik}
-    \misconceptionslide{"Bitcoin bedroht die Geldpolitik und wird von Regierungen verboten"}{%
+\begin{frame}<1-2>{M8: Bedrohung für Geldpolitik}
+    \misconceptionslide{Bitcoin bedroht die Geldpolitik und wird von Regierungen verboten}{%
         \item Ergänzt traditionelle Finanzsysteme
         \item Regierungen entwickeln crypto-freundliche Gesetze
         \item Zentralbanken erforschen digitale Währungen
@@ -217,8 +234,8 @@
 
 \subsection{9. Weitere Mythen}
 
-\begin{frame}<1-2>{Missverständnis 9: Technische Sicherheit}
-    \misconceptionslide{"Bitcoin kann gehackt werden, hat keine Deckung und Mining ist sinnlose Verschwendung"}{%
+\begin{frame}<1-2>{M9: Technische Sicherheit}
+    \misconceptionslide{Bitcoin kann gehackt werden, hat keine Deckung und Mining ist sinnlose Verschwendung}{%
         \item 99,98\% Uptime seit 2009
         \item Dezentralisierung = Unhackbarkeit
         \item Deckung durch Rechenarbeit \& Adoption

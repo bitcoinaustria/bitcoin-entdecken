@@ -20,7 +20,7 @@ logo-bitcoin-entdecken.pdf: logo-bitcoin-entdecken.svg
 # Build the presentation PDF
 build: logo-bitcoin-entdecken.pdf
 	@echo "Building presentation..."
-	latexmk -pdf 2025-missverstaendnisse.tex
+	latexmk -f -interaction=nonstopmode -pdf 2025-missverstaendnisse.tex
 	@echo "Build complete: 2025-missverstaendnisse.pdf"
 
 # Clean auxiliary files but keep the PDF
