@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "WebFetch(domain:www.wiwo.de)",
+      "Bash(git mv:*)",
+      "Bash(latexmk:*)",
+      "Bash(apt list:*)",
+      "Bash(make:*)",
+      "Bash(inkscape:*)",
+      "Bash(chmod:*)",
+      "Bash(./screenshot-page.sh:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  }
+}

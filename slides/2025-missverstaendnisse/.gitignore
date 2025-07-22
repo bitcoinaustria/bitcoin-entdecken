@@ -1,0 +1,48 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.nav
+*.snm
+*.vrb
+
+# Generated PDF files (keep only source files in repo)
+# We keep the generated PDF in Git, for easy public access
+#2025-missverstaendnisse.pdf
+
+# Converted logo (generated from SVG)
+logo-bitcoin-entdecken.pdf
+
+# Screenshots directory (debugging artifacts)
+screenshots/
+
+# Backup files
+*~
+*.bak
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+.#*
+\#*#
+
+# Claude Code
+.claude/settings.local.json

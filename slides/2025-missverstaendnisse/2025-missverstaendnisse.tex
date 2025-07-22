@@ -1,0 +1,267 @@
+\documentclass[aspectratio=169,t]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+
+% Bitcoin orange color theme
+\definecolor{bitcoinorange}{RGB}{247,147,26}
+\definecolor{bitcoindark}{RGB}{33,33,33}
+\definecolor{bitcoinlight}{RGB}{255,255,255}
+
+% Custom theme
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+
+% Customize colors
+\setbeamercolor{palette primary}{bg=bitcoinorange,fg=white}
+\setbeamercolor{palette secondary}{bg=bitcoindark,fg=white}
+\setbeamercolor{palette tertiary}{bg=bitcoinorange!70,fg=white}
+\setbeamercolor{palette quaternary}{bg=bitcoinorange!50,fg=white}
+\setbeamercolor{structure}{fg=bitcoinorange}
+\setbeamercolor{frametitle}{bg=bitcoinorange,fg=white}
+\setbeamercolor{title}{bg=bitcoindark,fg=white}
+\setbeamercolor{block title}{bg=bitcoinorange,fg=white}
+\setbeamercolor{block body}{bg=bitcoinorange!10}
+
+% Title information
+\title[Bitcoin Missverständnisse]{Bitcoin: Häufige Missverständnisse und was wirklich dahinter steckt}
+\subtitle{Ein faktenbasierter Impulsvortrag}
+\author{Präsentation}
+\date{\today}
+\institute{Bitcoin Entdecken / Bitcoin Austria}
+
+% Custom footer with frame numbers only
+\setbeamertemplate{footline}{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+        \end{beamercolorbox}%
+    }
+    \vskip0pt%
+}
+
+% Custom frametitle with logo on the right
+\setbeamertemplate{frametitle}{
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex]{frametitle}
+        \hbox to \paperwidth{%
+            \begin{beamercolorbox}[wd=0.75\paperwidth,left]{frametitle}%
+                \hspace*{1ex}\usebeamerfont{frametitle}\insertframetitle%
+            \end{beamercolorbox}%
+            \begin{beamercolorbox}[wd=0.25\paperwidth,right]{frametitle}%
+                \hfill\raisebox{-0.5ex}{\includegraphics[height=3ex,keepaspectratio]{logo-bitcoin-entdecken.pdf}}\hspace*{1ex}%
+            \end{beamercolorbox}%
+        }
+    \end{beamercolorbox}
+}
+
+% Macro for misconception slides with consistent layout
+\newcommand{\misconceptionslide}[3]{%
+    % #1: Misconception text (in quotes)
+    % #2: Facts list items
+    % #3: Fazit text
+    \begin{columns}[T]
+        \begin{column}[T]{0.48\textwidth}
+            \begin{block}{Das Missverständnis}
+                \vspace{0.5em}
+                \textit{#1}
+                \vspace{0.5em}
+            \end{block}
+        \end{column}
+        \hspace{0.02\textwidth}
+        \begin{column}[T]{0.48\textwidth}
+            \onslide<2->{
+                \begin{block}{Die Fakten}
+                    \vspace{0.3em}
+                    \begin{itemize}
+                        \setlength{\itemsep}{0.3em}
+                        #2
+                    \end{itemize}
+                    \vspace{0.3em}
+                \end{block}
+            }
+        \end{column}
+    \end{columns}
+    
+    \vfill
+    
+    \onslide<2->{
+        \textcolor{bitcoinorange}{\textbf{Fazit:}} #3
+    }
+}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+    \titlepage
+    \begin{center}
+        \textcolor{bitcoinorange}{\rule{0.8\textwidth}{2pt}}
+    \end{center}
+\end{frame}
+
+% Table of contents
+\begin{frame}{Überblick}
+    \tableofcontents
+\end{frame}
+
+\section{Einleitung}
+
+\begin{frame}{Warum entstehen Bitcoin-Missverständnisse?}
+    \begin{itemize}
+        \item \textbf{Komplexe Technologie} - Schwer verständlich für Laien
+        \item \textbf{Medienverzerrung} - Sensationelle Berichterstattung
+        \item \textbf{Schnelle Entwicklung} - Veraltete Informationen kursieren
+        \item \textbf{Emotionale Diskussionen} - Fakten vs. Meinungen
+        \item \textbf{Interessenskonflikte} - Verschiedene Akteure mit eigenen Agenden
+    \end{itemize}
+    \vspace{1em}
+    \begin{alertblock}{Ziel dieser Präsentation}
+        Fakten statt Mythen - Was sagt die aktuelle Forschung?
+    \end{alertblock}
+\end{frame}
+
+\section{Die 9 häufigsten Missverständnisse}
+
+\subsection{1. Umweltauswirkungen}
+
+\begin{frame}<1-2>{Missverständnis 1: Umweltzerstörung}
+    \misconceptionslide{"Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt"}{%
+        \item Nur 0,54\% des globalen Stromverbrauchs
+        \item 87\% der Mining-Hardware wird recycelt
+        \item Zunehmend erneuerbare Energiequellen
+        \item Weniger umweltschädlich als Goldbergbau
+    }{Mining-Effizienz steigt kontinuierlich, Umweltimpact nimmt ab.}
+\end{frame}
+
+\subsection{2. Volatilität}
+
+\begin{frame}<1-2>{Missverständnis 2: Zu volatil für praktische Nutzung}
+    \misconceptionslide{"Bitcoin ist zu volatil, um als Währung oder Wertaufbewahrung zu funktionieren"}{%
+        \item Volatilität nimmt langfristig ab
+        \item Weniger volatil als 33 S\&P 500 Aktien
+        \item Typisch für neue Asset-Klassen
+        \item Institutionelle Adoption stabilisiert
+    }{Reifung des Marktes führt zu weniger Volatilität.}
+\end{frame}
+
+\subsection{3. Regulierung}
+
+\begin{frame}<1-2>{Missverständnis 3: Regulatorische Unsicherheit}
+    \misconceptionslide{"Bitcoin hat keine rechtliche Grundlage und wird verboten werden"}{%
+        \item Regulierungsrahmen entwickeln sich schnell
+        \item USA und EU schaffen klare Gesetze
+        \item Institutionelle Compliance wächst
+        \item Verbote schwer durchsetzbar
+    }{Rechtliche Klarheit nimmt weltweit zu.}
+\end{frame}
+
+\subsection{4. Skalierbarkeit}
+
+\begin{frame}<1-2>{Missverständnis 4: Technische Limitierungen}
+    \misconceptionslide{"Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten"}{%
+        \item Lightning Network: Millionen TPS möglich
+        \item Bitcoin = Basis-Settlement-Layer
+        \item Layer-2-Lösungen entwickeln sich
+        \item Sicherheit wichtiger als reine Geschwindigkeit
+    }{Skalierung durch Layer-2-Architektur gelöst.}
+\end{frame}
+
+\subsection{5. Kriminalität}
+
+\begin{frame}<1-2>{Missverständnis 5: Kriminalitäts-Tool}
+    \misconceptionslide{"Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet"}{%
+        \item Weniger als 1\% aller Transaktionen sind illegal (2024)
+        \item Traditionelle Systeme haben mehr Kriminalität
+        \item Blockchain ist transparent und nachverfolgbar
+        \item Bargeld weiterhin bevorzugt für Illegales
+    }{Bitcoin ist schlechter für Kriminalität als traditionelle Methoden.}
+\end{frame}
+
+\subsection{6. Spekulationsblase}
+
+\begin{frame}<1-2>{Missverständnis 6: Reine Spekulation ohne Wert}
+    \misconceptionslide{"Bitcoin ist eine Spekulationsblase ohne fundamentalen Wert"}{%
+        \item Wertspeicher für langfristiges Sparen
+        \item Netzwerkeffekte schaffen Mehrwert
+        \item Institutionelle Adoption validiert Use-Case
+        \item Knappheit (21 Mio. Limit) ähnlich wie Gold
+    }{Fundamentaler Nutzen wächst über reine Spekulation hinaus.}
+\end{frame}
+
+\subsection{7. Praktische Adoption}
+
+\begin{frame}<1-2>{Missverständnis 7: Keine praktische Nutzung}
+    \misconceptionslide{"Bitcoin hat keine praktische Anwendung im Alltag"}{%
+        \item Wachsende Händler-Akzeptanz
+        \item Legales Zahlungsmittel (El Salvador, CAR)
+        \item Corporate Treasury Asset
+        \item Grenzüberschreitende Zahlungen
+    }{Praktische Anwendungen wachsen kontinuierlich.}
+\end{frame}
+
+\subsection{8. Zentralbank-Bedenken}
+
+\begin{frame}<1-2>{Missverständnis 8: Bedrohung für Geldpolitik}
+    \misconceptionslide{"Bitcoin bedroht die Geldpolitik und wird von Regierungen verboten"}{%
+        \item Ergänzt traditionelle Finanzsysteme
+        \item Regierungen entwickeln crypto-freundliche Gesetze
+        \item Zentralbanken erforschen digitale Währungen
+        \item Hedge gegen Geldpolitik-Versagen
+    }{Koexistenz statt Konkurrenzkampf mit traditioneller Finanzwelt.}
+\end{frame}
+
+\subsection{9. Weitere Mythen}
+
+\begin{frame}<1-2>{Missverständnis 9: Technische Sicherheit}
+    \misconceptionslide{"Bitcoin kann gehackt werden, hat keine Deckung und Mining ist sinnlose Verschwendung"}{%
+        \item 99,98\% Uptime seit 2009
+        \item Dezentralisierung = Unhackbarkeit
+        \item Deckung durch Rechenarbeit \& Adoption
+        \item Mining sichert das Netzwerk
+    }{Technische Robustheit seit über 15 Jahren bewiesen.}
+\end{frame}
+
+\section{Zusammenfassung}
+
+\begin{frame}{Was lernen wir daraus?}
+    \begin{alertblock}{Schlüsselerkenntnisse}
+        \begin{enumerate}
+            \item Viele Kritikpunkte basieren auf \textbf{veralteten Informationen}
+            \item Die Bitcoin-Technologie entwickelt sich \textbf{schnell weiter}
+            \item \textbf{Faktendaten} widersprechen oft den Mediennarrativen
+            \item \textbf{Institutionelle Adoption} validiert Bitcoins Legitimität
+            \item \textbf{Umweltauswirkungen} nehmen ab, während Nutzen steigt
+        \end{enumerate}
+    \end{alertblock}
+    
+    \vspace{1em}
+    \begin{block}{Empfehlung}
+        \textcolor{bitcoinorange}{\textbf{Informieren Sie sich aus aktuellen, wissenschaftlichen Quellen!}}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Quellen und weitere Informationen}
+    \footnotesize
+    \begin{itemize}
+        \item Cambridge Centre for Alternative Finance
+        \item Chainalysis Crime Reports 2024
+        \item Nature Scientific Reports
+        \item Zentralbank-Publikationen (EZB, Fed, Bundesbank)
+        \item Industrie-Reports großer Institutionen
+        \item Peer-reviewed akademische Studien
+    \end{itemize}
+    
+    \vspace{1em}
+    \begin{center}
+        \textcolor{bitcoinorange}{\Large Fragen und Diskussion?}
+        \\[1em]
+        \textcolor{bitcoinorange}{\rule{0.5\textwidth}{2pt}}
+    \end{center}
+\end{frame}
+
+\end{document}
