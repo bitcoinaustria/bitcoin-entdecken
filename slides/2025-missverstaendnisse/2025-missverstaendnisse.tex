@@ -48,9 +48,19 @@
     \vskip0pt%
 }
 
-% Custom frametitle with logo on the right
+% Counter for misconceptions
+\newcounter{mvnum}
+\setcounter{mvnum}{0}
+% Include auto-generated count of misconceptions
+\input{misconception-count.tex}
+
+% Remove top margin from beamer frames
+\setbeamersize{text margin left=10pt,text margin right=10pt}
+
+% Custom frametitle with logo on the right - no top margin
 \setbeamertemplate{frametitle}{
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex]{frametitle}
+    \nointerlineskip%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex,leftskip=0pt,rightskip=0pt]{frametitle}
         \hbox to \paperwidth{%
             \begin{beamercolorbox}[wd=0.75\paperwidth,left]{frametitle}%
                 \hspace*{1ex}\usebeamerfont{frametitle}\insertframetitle%
@@ -89,9 +99,9 @@
             }
         \end{column}
     \end{columns}
-    
+
     \vfill
-    
+
     \onslide<2->{
         \textcolor{bitcoinorange}{\textbf{Fazit:}} #3
     }
@@ -129,11 +139,12 @@
     \end{alertblock}
 \end{frame}
 
-\section{Die 9 häufigsten Missverständnisse}
+\section{Die \totalmisconceptions\ häufigsten Missverständnisse}
 
-\subsection{1. Umweltauswirkungen}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Umweltauswirkungen}
 
-\begin{frame}<1-2>{M1: Verbraucht zu viel Energie}
+\begin{frame}<1-2>{M\arabic{mvnum}: Verbraucht zu viel Energie}
     \misconceptionslide{Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt}{%
         \item Nur 0,54\% des globalen Stromverbrauchs\footnote{Cambridge Centre for Alternative Finance}
 	\item Energieverbrauch \textit{essentiell}, nicht ``sinnlos''.
@@ -144,9 +155,10 @@
     }{Mining-Effizienz steigt kontinuierlich, Umweltimpact nimmt ab.}
 \end{frame}
 
-\subsection{2. Kein intrinsischer Wert}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Kein intrinsischer Wert}
 
-\begin{frame}<1-2>{M2: Kein intrinsischer Wert}
+\begin{frame}<1-2>{M\arabic{mvnum}: Kein intrinsischer Wert}
     \misconceptionslide{Bitcoin hat keinen intrinsischen Wert, daher ist es wertlos}{%
         \item Bitcoin hat keinen laufenden Erträge, daher nicht vergleichbar
         \item Nutzen 1: technisch limitiert auf 21 Mio
@@ -155,9 +167,10 @@
 	}{Es gibt keinen intrinsischen Wert, sondern der Wert entsteht durch gesellschaftliche Zuschreibung und kollektive Akzeptanz\footnote{Emily Stanhope und der Ökonom Charles Brandt, in ``Review of Economic Philosophy''}}
 \end{frame}
 
-\subsection{2. Volatilität}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Volatilität}
 
-\begin{frame}<1-2>{M2: Zu volatil für praktische Nutzung}
+\begin{frame}<1-2>{M\arabic{mvnum}: Zu volatil für praktische Nutzung}
     \misconceptionslide{Bitcoin ist zu volatil, um als Währung oder Wertaufbewahrung zu funktionieren}{%
         \item Volatilität nimmt langfristig ab
         \item Weniger volatil als 33 S\&P 500 Aktien
@@ -166,42 +179,62 @@
     }{Reifung des Marktes führt zu weniger Volatilität.}
 \end{frame}
 
-\subsection{3. Regulierung}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Regulierung}
 
-\begin{frame}<1-2>{M3: Regulatorische Unsicherheit}
+\begin{frame}<1-2>{M\arabic{mvnum}: Regulatorische Unsicherheit}
     \misconceptionslide{Bitcoin hat keine rechtliche Grundlage und wird verboten werden}{%
         \item Regulierungsrahmen entwickeln sich schnell
         \item USA und EU schaffen klare Gesetze
+        \item EU: MiCA-Verordnung erlaubt Bitcoin \& Co.
         \item Institutionelle Compliance wächst
         \item Verbote schwer durchsetzbar
     }{Rechtliche Klarheit nimmt weltweit zu.}
 \end{frame}
 
-\subsection{4. Skalierbarkeit}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Skalierbarkeit}
 
-\begin{frame}<1-2>{M4: Technische Limitierungen}
+\begin{frame}<1-2>{M\arabic{mvnum}: Technische Limitierungen}
     \misconceptionslide{Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten}{%
-        \item Lightning Network: Millionen TPS möglich
-        \item Bitcoin = Basis-Settlement-Layer
-        \item Layer-2-Lösungen entwickeln sich
-        \item Sicherheit wichtiger als reine Geschwindigkeit
-    }{Skalierung durch Layer-2-Architektur gelöst.}
+        \item Blockchain-Trilemma: Skalierbarkeit vs. Sicherheit vs. Dezentralisierung
+        \item Lightning Network: bis zu 1 Million TPS möglich
+        \item Visa: 65.000 TPS, 150 Mio. Transaktionen/Tag\footnote{Visa Inc. Annual Report 2023}
+        \item Bitcoin Transaktionsvolumen: 20 Bio. \$ vs. Visa 13 Bio. \$\footnote{Sygnum Bank Report, 2024}
+        \item Lightning theoretisch 15x schneller als Visa - global, ohne Intermediäre
+    }{Bitcoin übertrifft Visa bereits im Transaktionsvolumen und bei Second-Layer-Geschwindigkeit.}
 \end{frame}
 
-\subsection{5. Kriminalität}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Schneeballsystem}
 
-\begin{frame}<1-2>{M5: Kriminalitäts-Tool}
+\begin{frame}<1-2>{M\arabic{mvnum}: Schneeballsystem}
+    \misconceptionslide{Bitcoin ist ein Schneeballsystem}{%
+        \item Schneeballsysteme versprechen fixe Auszahlungen durch neue Teilnehmer
+        \item Bitcoin gibt keine Renditegarantien
+        \item Keine zentrale Organisation oder strukturierte Vertriebsarchitektur
+        \item Weltbank 2022: Bitcoin-Protokoll offen zugänglich und nicht verpflichtend\footnote{World Bank Group, Distributed Ledger Technology and Digital Assets, 2022}
+        \item Schweizer Finma stuft Bitcoin nicht als Schneeballsystem ein\footnote{FINMA Guidance 02/2018: Payments on the blockchain}
+    }{Bitcoin erfüllt keines der zentralen Merkmale eines Schneeballsystems.}
+\end{frame}
+
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Kriminalität}
+
+\begin{frame}<1-2>{M\arabic{mvnum}: Kriminalitäts-Tool}
     \misconceptionslide{Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet}{%
         \item Weniger als 1\% aller Transaktionen sind illegal (2024)
-        \item Traditionelle Systeme haben mehr Kriminalität
+        \item Anteil illegaler Bitcoin-Transaktionen nur noch 0.24\%\footnote{Chainalysis 2024}
+        \item Traditionell: 2\% - 5\% des globalen BIP fließen durch illegale Kanäle\footnote{United Nations Schätzung}
         \item Blockchain ist transparent und nachverfolgbar
-        \item Bargeld weiterhin bevorzugt für Illegales
+        \item Europol betrachtet vor allem Bargeld und das traditionelle Bankensystem als relevant für Geldwäsche
     }{Bitcoin ist schlechter für Kriminalität als traditionelle Methoden.}
 \end{frame}
 
-\subsection{6. Spekulationsblase}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Spekulationsblase}
 
-\begin{frame}<1-2>{M6: Reine Spekulation ohne Wert}
+\begin{frame}<1-2>{M\arabic{mvnum}: Reine Spekulation ohne Wert}
     \misconceptionslide{Bitcoin ist eine Spekulationsblase ohne fundamentalen Wert}{%
         \item Wertspeicher für langfristiges Sparen
         \item Netzwerkeffekte schaffen Mehrwert
@@ -210,9 +243,10 @@
     }{Fundamentaler Nutzen wächst über reine Spekulation hinaus.}
 \end{frame}
 
-\subsection{7. Praktische Adoption}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Praktische Adoption}
 
-\begin{frame}<1-2>{M7: Keine praktische Nutzung}
+\begin{frame}<1-2>{M\arabic{mvnum}: Keine praktische Nutzung}
     \misconceptionslide{Bitcoin hat keine praktische Anwendung im Alltag}{%
         \item Wachsende Händler-Akzeptanz
         \item Legales Zahlungsmittel (El Salvador, CAR)
@@ -221,9 +255,10 @@
     }{Praktische Anwendungen wachsen kontinuierlich.}
 \end{frame}
 
-\subsection{8. Zentralbank-Bedenken}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Zentralbank-Bedenken}
 
-\begin{frame}<1-2>{M8: Bedrohung für Geldpolitik}
+\begin{frame}<1-2>{M\arabic{mvnum}: Bedrohung für Geldpolitik}
     \misconceptionslide{Bitcoin bedroht die Geldpolitik und wird von Regierungen verboten}{%
         \item Ergänzt traditionelle Finanzsysteme
         \item Regierungen entwickeln crypto-freundliche Gesetze
@@ -232,9 +267,10 @@
     }{Koexistenz statt Konkurrenzkampf mit traditioneller Finanzwelt.}
 \end{frame}
 
-\subsection{9. Weitere Mythen}
+\stepcounter{mvnum}
+\subsection{\arabic{mvnum}. Weitere Mythen}
 
-\begin{frame}<1-2>{M9: Technische Sicherheit}
+\begin{frame}<1-2>{M\arabic{mvnum}: Technische Sicherheit}
     \misconceptionslide{Bitcoin kann gehackt werden, hat keine Deckung und Mining ist sinnlose Verschwendung}{%
         \item 99,98\% Uptime seit 2009
         \item Dezentralisierung = Unhackbarkeit
@@ -255,7 +291,7 @@
             \item \textbf{Umweltauswirkungen} nehmen ab, während Nutzen steigt
         \end{enumerate}
     \end{alertblock}
-    
+
     \vspace{1em}
     \begin{block}{Empfehlung}
         \textcolor{bitcoinorange}{\textbf{Informieren Sie sich aus aktuellen, wissenschaftlichen Quellen!}}
@@ -272,7 +308,7 @@
         \item Industrie-Reports großer Institutionen
         \item Peer-reviewed akademische Studien
     \end{itemize}
-    
+
     \vspace{1em}
     \begin{center}
         \textcolor{bitcoinorange}{\Large Fragen und Diskussion?}

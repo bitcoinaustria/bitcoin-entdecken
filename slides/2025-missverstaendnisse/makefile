@@ -17,8 +17,13 @@ logo-bitcoin-entdecken.pdf: logo-bitcoin-entdecken.svg
 	@rm -f logo-bitcoin-entdecken-temp.pdf
 	@echo "Logo processed: cropped and ready for use"
 
+# Count misconceptions and generate macro file
+misconception-count.tex: 2025-missverstaendnisse.tex count-misconceptions.sh
+	@echo "Counting misconceptions..."
+	./count-misconceptions.sh
+
 # Build the presentation PDF
-build: logo-bitcoin-entdecken.pdf
+build: logo-bitcoin-entdecken.pdf misconception-count.tex
 	@echo "Building presentation..."
 	latexmk -f -interaction=nonstopmode -pdf 2025-missverstaendnisse.tex
 	@echo "Build complete: 2025-missverstaendnisse.pdf"
@@ -29,6 +34,8 @@ clean:
 	latexmk -c 2025-missverstaendnisse.tex
 	@echo "Removing additional LaTeX files..."
 	@rm -f 2025-missverstaendnisse.nav 2025-missverstaendnisse.snm 2025-missverstaendnisse.vrb
+	@echo "Removing generated count file..."
+	@rm -f misconception-count.tex
 	@echo "Removing screenshots..."
 	@rm -rf screenshots/
 	@echo "Clean complete"

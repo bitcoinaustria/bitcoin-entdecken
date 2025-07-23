@@ -49,13 +49,32 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 - use the `\misconceptionslide` macro for the content slides, for consistency!
 
 ### Generated Files
-- `2025-missverstaendnisse.pdf` - Final presentation (23 pages)
+- `2025-missverstaendnisse.pdf` - Final presentation (27 pages)
 - `2025-missverstaendnisse.aux/nav/out/toc` - LaTeX auxiliary files (auto-ignored)
+- `misconception-count.tex` - Auto-generated counter file for dynamic numbering
 - `screenshots/` - Directory containing page screenshots for debugging
 
 ## Recent Updates & Development History
 
-### File Renaming (Latest)
+### Dynamic Counter System (Latest)
+- **Automatic misconception counting**: Bash script `count-misconceptions.sh` counts `\stepcounter{mvnum}` occurrences
+- **Build integration**: Makefile runs counter script before LaTeX compilation
+- **Dynamic title updates**: Section title automatically shows correct number (e.g., "Die 11 häufigsten Missverständnisse")
+- **Generated file**: `misconception-count.tex` contains `\totalmisconceptions` macro
+- **Maintenance-free**: Adding/removing misconceptions automatically updates all references
+
+### Layout Improvements (Recent)
+- **Header fix**: Removed white border above orange header using `\nointerlineskip` and proper beamer sizing
+- **Professional appearance**: Clean edge-to-edge orange header without visual gaps
+- **Beamer optimization**: Custom frametitle template with proper margin control
+
+### Content Expansion (Recent)  
+- **New misconception**: Added M6 "Schneeballsystem" slide with Weltbank and Finma references
+- **Enhanced Skalierbarkeit**: Updated with blockchain trilemma, precise TPS numbers, and Sygnum volume data
+- **Current statistics**: Bitcoin 20 trillion $ vs Visa 13 trillion $ transaction volume
+- **Academic sources**: Added footnotes to Visa Annual Report 2023 and Sygnum Bank Report 2024
+
+### File Renaming (Previous)
 - **All files** renamed from `presentation.*` to `2025-missverstaendnisse.*`
 - **Makefile updated** to use new filename throughout
 - **Screenshot script updated** with new PDF filename
@@ -82,10 +101,11 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 - Step-by-step slide reveals using overlays
 
 ### Content Structure
-- Cover 9 main Bitcoin misconceptions
+- Cover 11 main Bitcoin misconceptions (automatically counted)
 - Each misconception uses 2-step reveal: Misconception → Facts
 - German language content throughout
 - Factual responses based on current research
+- Dynamic numbering system with automatic counter updates
 
 ### Box Styling
 - Improved margins and spacing around content blocks
@@ -110,10 +130,18 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 
 ### Build Process
 - **Automated workflow**: Logo converts from SVG → PDF → cropped PDF when SVG changes
+- **Dynamic counting**: `count-misconceptions.sh` automatically updates misconception count before build
 - **LaTeX compilation**: Handles all dependencies with latexmk for robust builds
 - **Screenshot generation**: 150 DPI PNG files for quality review and debugging
 - **Git integration**: repository with proper LaTeX .gitignore patterns
 - **File naming**: Consistent `2025-missverstaendnisse.*` naming throughout project
+
+### LaTeX Counter System
+- **Counter name**: `mvnum` (short for misconception counter)
+- **Usage pattern**: `\stepcounter{mvnum}` before each misconception subsection
+- **Reference**: Use `\arabic{mvnum}` in subsection titles and frame titles
+- **Automatic title**: Section title uses `\totalmisconceptions` from generated file
+- **Build dependency**: `misconception-count.tex` automatically regenerated when source changes
 
 ## Key Page Numbers for Screenshots
 - Page 1: Title slide
