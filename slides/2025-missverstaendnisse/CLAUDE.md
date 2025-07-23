@@ -18,6 +18,7 @@ The repository is newly initialized with only Claude Code configuration present:
 - **Clean build files**: `make clean`
 - **Full clean**: `make clean-all`
 - **View presentation**: `make view`
+- **After editing tex source files, always run the make compilation** to ensure it still compiles and that a maybe opened pdf viewer updates with the newest pdf
 
 ### Logo Management
 - **Auto-processing**: SVG logo automatically converted to PDF with cropping when needed
@@ -148,4 +149,3 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 - Page 4-5: Layout of Content on Slides
 - 2nd Last Page: Key Learnings Slide
 - Last Page: Sources and discussion
-
