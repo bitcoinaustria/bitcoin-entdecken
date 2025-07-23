@@ -21,6 +21,9 @@
 # Converted logo (generated from SVG)
 logo-bitcoin-entdecken.pdf
 
+# Generated misconception count file
+misconception-count.tex
+
 # Screenshots directory (debugging artifacts)
 screenshots/
 

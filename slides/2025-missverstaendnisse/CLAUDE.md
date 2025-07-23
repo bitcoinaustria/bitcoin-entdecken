@@ -41,7 +41,7 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 - `2025-missverstaendnisse.tex` - Main LaTeX Beamer presentation (renamed from presentation.tex)
 - `logo-bitcoin-entdecken.svg` - Bitcoin Entdecken logo (original, white with transparency)
 - `logo-bitcoin-entdecken.pdf` - Auto-cropped and converted logo for LaTeX
-- `Makefile` - Build automation with logo processing and screenshot tools
+- `makefile` - Build automation with logo processing and screenshot tools
 - `screenshot-page.sh` - Script for taking PDF page screenshots (updated for new filename)
 - `.gitignore` - Git ignore file excluding auxiliary files and generated PDFs
 
@@ -148,5 +148,4 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 - Page 4-5: Layout of Content on Slides
 - 2nd Last Page: Key Learnings Slide
 - Last Page: Sources and discussion
-
 
