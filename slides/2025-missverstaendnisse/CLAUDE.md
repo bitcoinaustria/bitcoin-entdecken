@@ -18,6 +18,7 @@ The repository is newly initialized with only Claude Code configuration present:
 - **Clean build files**: `make clean`
 - **Full clean**: `make clean-all`
 - **View presentation**: `make view`
+- **IMPORTANT**: Always commit the generated PDF file (`2025-missverstaendnisse.pdf`) along with source changes
 - **After editing tex source files, always run the make compilation** to ensure it still compiles and that a maybe opened pdf viewer updates with the newest pdf
 
 ### Logo Management
