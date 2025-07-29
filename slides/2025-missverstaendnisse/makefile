@@ -25,7 +25,7 @@ misconception-count.tex: 2025-missverstaendnisse.tex count-misconceptions.sh
 # Build the presentation PDF
 build: logo-bitcoin-entdecken.pdf misconception-count.tex
 	@echo "Building presentation..."
-	latexmk -f -interaction=nonstopmode -pdf 2025-missverstaendnisse.tex
+	latexmk -xelatex -f -interaction=nonstopmode -pdf 2025-missverstaendnisse.tex
 	@echo "Build complete: 2025-missverstaendnisse.pdf"
 
 # Clean auxiliary files but keep the PDF

@@ -16,18 +16,19 @@
 % Source: https://github.com/matze/mtheme
 % License: Creative Commons Attribution-ShareAlike 4.0 International
 % Features: Clean design, optional progress bar, maximizes content space
-\usetheme{metropolis}
+\usetheme[progressbar=foot]{metropolis}  % Enable progress bar in footer
 
 % Customize colors for Bitcoin orange theme
-\setbeamercolor{progress bar}{fg=bitcoinorange}
-\setbeamercolor{frametitle}{bg=bitcoinorange,fg=white}
+\setbeamercolor{progress bar}{fg=bitcoinorange, bg=bitcoindark!50}  % Orange fill, subtle dark background for unfilled part
 \setbeamercolor{palette primary}{bg=bitcoinorange,fg=white}
 \setbeamercolor{palette secondary}{bg=bitcoindark,fg=white}
 \setbeamercolor{structure}{fg=bitcoinorange}
 \setbeamercolor{frametitle}{bg=bitcoinorange,fg=white}
-\setbeamercolor{title}{bg=bitcoindark,fg=white}
+\setbeamercolor{title}{bg=bitcoindark,fg=bitcoinlight}  % Adjusted fg to light for better contrast
 \setbeamercolor{block title}{bg=bitcoinorange,fg=white}
 \setbeamercolor{block body}{bg=bitcoinorange!10}
+\setbeamercolor{frame footer}{bg=bitcoinorange!10}
+\setbeamercolor{date in head/foot}{bg=bitcoinorange, fg=bitcoinlight}
 
 % Adjust fonts
 \setbeamerfont{footnote}{size=\tiny}
@@ -124,12 +125,10 @@
     \tableofcontents
 \end{frame}
 
-\section{Einleitung}
-
 \begin{frame}{Warum entstehen Bitcoin-Missverständnisse?}
     \begin{itemize}
         \item \textbf{Komplexe Technologie} - Schwer verständlich für Laien
-	\item \textbf{Falscher Fokus} - Die eigentlichen Fragen werden nicht gestellt
+       \item \textbf{Falscher Fokus} - Die eigentlichen Fragen werden nicht gestellt
         \item \textbf{Medienverzerrung} - Sensationelle Berichterstattung
         \item \textbf{Schnelle Entwicklung} - Veraltete Informationen halten sich hartnäckig
         \item \textbf{Emotionale Diskussionen} - Fakten vs. Meinungen
@@ -149,11 +148,11 @@
 \begin{frame}<1-2>{M\arabic{mvnum}: Verbraucht zu viel Energie}
     \misconceptionslide{Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt}{%
         \item Nur 0,54\% des globalen Stromverbrauchs\footnotemark
-	\item Energieverbrauch \textit{essentiell}, nicht ``sinnlos''.
-	\item Über 50\% erneuerbare Energiequellen\footnotemark
-	\item Überschussenergie aus alternativen Quellen, macht diese lukrativ
+        \item Energieverbrauch \textit{essentiell}, nicht ``sinnlos''.
+        \item Über 50\% erneuerbare Energiequellen\footnotemark
+        \item Überschussenergie aus alternativen Quellen, macht diese lukrativ
         \item Weniger umweltschädlich als Goldbergbau
-	\item 87\% der Mining-Hardware wird recycelt\footnotemark
+        \item 87\% der Mining-Hardware wird recycelt\footnotemark
         \only<2->{\footnotetext[1]{Cambridge Centre for Alternative Finance}}
         \only<2->{\footnotetext[2]{Cambridge Digital Mining Industry Report 2025}}
         \only<2->{\footnotetext[3]{z.B. 21 Energy}}
@@ -207,8 +206,8 @@
         \item Lightning Network: bis zu 1 Million TPS möglich
         \item Visa: 65.000 TPS, 150 Mio. Transaktionen/Tag\footnotemark
         \item Bitcoin Transaktionsvolumen: 20 Bio. \$ vs. Visa 13 Bio. \$\footnotemark
-\only<2->{\footnotetext[1]{Visa Inc. Annual Report 2023}}
-\only<2->{\footnotetext[2]{Sygnum Bank Report, 2024}}
+	\only<2->{\footnotetext[1]{Visa Inc. Annual Report 2023}}
+	\only<2->{\footnotetext[2]{Sygnum Bank Report, 2024}}
         \item Lightning theoretisch 15x schneller als Visa - global, ohne Intermediäre
     }{Bitcoin übertrifft Visa bereits im Transaktionsvolumen und bei Second-Layer-Geschwindigkeit.}
 \end{frame}
@@ -291,13 +290,11 @@
         \item Protokoll wird durch zehntausende Nodes robust abgesichert
         \item Kritische Netzwerk-Updates erfordern breiten Konsens\footnotemark
 \only<2->{\footnotetext[1]{The Blocksize War: The battle over who controls Bitcoin's protocol rules, Jonathan Bier}}
-    }{Technische Robustheit seit über 15 Jahren bewiesen.}
+    }{Bitcoin ist seit über 15 Jahren ohne erfolgreichen Hack im Betrieb.}
 \end{frame}
 
-\section{Zusammenfassung}
-
 \begin{frame}{Was lernen wir daraus?}
-    \begin{alertblock}{Schlüsselerkenntnisse}
+    \begin{alertblock}{\textcolor{white}{Schlüsselerkenntnisse}}
         \begin{enumerate}
             \item Viele Kritikpunkte basieren auf \textbf{veralteten Informationen}
             \item Das technische Ökosystem hinter Bitcoin wächst \textbf{rasant}
