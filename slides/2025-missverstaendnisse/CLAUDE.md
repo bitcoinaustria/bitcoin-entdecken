@@ -150,3 +150,46 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 - Page 4-5: Layout of Content on Slides
 - 2nd Last Page: Key Learnings Slide
 - Last Page: Sources and discussion
+
+## Citation Research & Hyperlinks
+
+### Successfully Found URLs (9/11 sources):
+- **Cambridge Centre for Alternative Finance**: https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/
+- **Cambridge Digital Mining Industry Report 2025**: https://www.jbs.cam.ac.uk/wp-content/uploads/2025/04/2025-04-cambridge-digital-mining-industry-report.pdf
+  - Official PDF report by CCAF at Cambridge Judge Business School (April 2025)
+  - Authors: Alexander Neumueller, Gina C. Pieters, Kamiar Mohaddes, Valentin Rousseau, Bryan Zheng Zhang
+  - Contains comprehensive Bitcoin mining data (49 firms, 48% of network hashrate)
+- **21 Energy**: https://21energy.com/
+  - Note: Austrian startup specializing in Bitcoin heaters (not hardware recycling as originally thought)
+  - Products: Wall-mounted heaters that mine Bitcoin while providing home heating
+- **Visa Inc. Annual Report 2023**: https://s29.q4cdn.com/385744025/files/doc_downloads/2023/Visa-Inc-Fiscal-2023-Annual-Report.pdf
+  - Official PDF from Visa's CDN (s29.q4cdn.com)
+  - Source for TPS data and transaction volume comparisons
+- **Sygnum Bank Future Finance Report 2024**: https://www.sygnum.com/wp-content/uploads/2024/11/Sygnum-Future-Finance-Report-2024-institutional-crypto-market_download.pdf
+  - Swiss digital asset bank report containing Bitcoin $20T vs Visa $13T transaction volume data
+  - Based on Q3 2024 survey of institutional crypto market trends
+- **FINMA Guidance 02/2019**: https://www.finma.ch/~/media/finma/dokumente/dokumentencenter/myfinma/4dokumentation/finma-aufsichtsmitteilungen/20190826-finma-aufsichtsmitteilung-02-2019.pdf?sc_lang=en
+  - Note: Corrected from 2018 to 2019 (actual publication date: August 26, 2019)
+  - Swiss Financial Market Supervisory Authority guidance on blockchain payments
+- **Chainalysis 2024 Crypto Crime Report**: https://go.chainalysis.com/crypto-crime-2024.html
+  - Note: Corrected illegal transaction percentage from 0.24% to 0.34% (actual 2023 data)
+  - Shows illicit activity decreased from 0.42% (2022) to 0.34% (2023)
+- **UN Office on Drugs and Crime**: https://www.unodc.org/documents/data-and-analysis/Studies/Illicit_financial_flows_2011_web.pdf
+  - "Estimating illicit financial flows resulting from drug trafficking and other transnational organized crimes" (October 2011)
+  - Source for 2-5% of global GDP flowing through illegal channels estimate
+  - Key finding: $1.6 trillion (2.7% of GDP) laundered in 2009
+
+### Sources Not Found Online (3/11):
+- **Emily Stanhope and Charles Brandt in "Review of Economic Philosophy"**: Academic citation not publicly available
+  - Journal exists (ISSN: 1376-0971, published by Vrin via Cairn.info)
+  - Authors not found in digital indexes - may be citation error or limited availability
+- **World Bank Group "Distributed Ledger Technology and Digital Assets" (2022)**: Specific document not found
+  - Multiple related World Bank DLT publications exist from other years
+  - May be internal document or different title/date
+- **Sopra Banking Software 2024**: Specific German quote not found online
+  - Related English content exists about crypto-backed lending
+  - Quote may be from internal presentation or restricted publication
+
+### Data Corrections Made:
+1. **Chainalysis percentage**: 0.24% → 0.34% (verified from official 2024 report)
+2. **FINMA guidance year**: 2018 → 2019 (verified publication date: August 26, 2019)
