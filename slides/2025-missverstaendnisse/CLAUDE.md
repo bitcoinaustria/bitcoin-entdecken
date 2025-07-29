@@ -114,6 +114,14 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 - Equal height columns with proper alignment
 - Visual separation between misconception and facts
 
+### Footnote Management in Beamer
+- **Problem**: Standard `\footnote{}` commands appear immediately, even before their referenced content is revealed in overlay-based slides
+- **Solution**: Use `\footnotemark` and `\only<2->{\footnotetext[n]{...}}` pattern
+  - `\footnotemark` places the footnote marker in the text (appears with the text)
+  - `\only<2->{\footnotetext[n]{...}}` controls when footnote text appears at bottom
+  - Ensures professional presentation flow where footnotes only appear when facts are revealed
+- **Implementation**: Applied to all misconception slides to prevent premature footnote visibility
+
 ## Development Guidelines
 
 ### Content

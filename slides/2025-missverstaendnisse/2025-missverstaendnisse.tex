@@ -12,15 +12,17 @@
 \definecolor{bitcoindark}{RGB}{33,33,33}
 \definecolor{bitcoinlight}{RGB}{255,255,255}
 
-% Custom theme
-\usetheme{Madrid}
-\usecolortheme{seahorse}
+% Metropolis theme - Modern, minimalist Beamer theme
+% Source: https://github.com/matze/mtheme
+% License: Creative Commons Attribution-ShareAlike 4.0 International
+% Features: Clean design, optional progress bar, maximizes content space
+\usetheme{metropolis}
 
-% Customize colors
+% Customize colors for Bitcoin orange theme
+\setbeamercolor{progress bar}{fg=bitcoinorange}
+\setbeamercolor{frametitle}{bg=bitcoinorange,fg=white}
 \setbeamercolor{palette primary}{bg=bitcoinorange,fg=white}
 \setbeamercolor{palette secondary}{bg=bitcoindark,fg=white}
-\setbeamercolor{palette tertiary}{bg=bitcoinorange!70,fg=white}
-\setbeamercolor{palette quaternary}{bg=bitcoinorange!50,fg=white}
 \setbeamercolor{structure}{fg=bitcoinorange}
 \setbeamercolor{frametitle}{bg=bitcoinorange,fg=white}
 \setbeamercolor{title}{bg=bitcoindark,fg=white}
@@ -146,12 +148,15 @@
 
 \begin{frame}<1-2>{M\arabic{mvnum}: Verbraucht zu viel Energie}
     \misconceptionslide{Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt}{%
-        \item Nur 0,54\% des globalen Stromverbrauchs\footnote{Cambridge Centre for Alternative Finance}
+        \item Nur 0,54\% des globalen Stromverbrauchs\footnotemark
 	\item Energieverbrauch \textit{essentiell}, nicht ``sinnlos''.
-	\item Über 50\% erneuerbare Energiequellen\footnote{Cambridge Digital Mining Industry Report 2025}
+	\item Über 50\% erneuerbare Energiequellen\footnotemark
 	\item Überschussenergie aus alternativen Quellen, macht diese lukrativ
         \item Weniger umweltschädlich als Goldbergbau
-	\item 87\% der Mining-Hardware wird recycelt\footnote{z.B. 21 Energy}
+	\item 87\% der Mining-Hardware wird recycelt\footnotemark
+        \only<2->{\footnotetext[1]{Cambridge Centre for Alternative Finance}}
+        \only<2->{\footnotetext[2]{Cambridge Digital Mining Industry Report 2025}}
+        \only<2->{\footnotetext[3]{z.B. 21 Energy}}
     }{Mining-Effizienz steigt kontinuierlich, Umweltimpact nimmt ab.}
 \end{frame}
 
@@ -164,7 +169,8 @@
         \item Nutzen 1: technisch limitiert auf 21 Mio
         \item Nutzen 2: Zensurresistenz
         \item Nutzen 3: Globales Zahlungsnetzwerk
-	}{Es gibt keinen intrinsischen Wert, sondern der Wert entsteht durch gesellschaftliche Zuschreibung und kollektive Akzeptanz\footnote{Emily Stanhope und der Ökonom Charles Brandt, in ``Review of Economic Philosophy''}}
+	}{Es gibt keinen intrinsischen Wert, sondern der Wert entsteht durch gesellschaftliche Zuschreibung und kollektive Akzeptanz\footnotemark}
+\only<2->{\footnotetext[1]{Emily Stanhope und der Ökonom Charles Brandt, in ``Review of Economic Philosophy''}}
 \end{frame}
 
 \stepcounter{mvnum}
@@ -199,8 +205,10 @@
     \misconceptionslide{Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten}{%
         \item Blockchain-Trilemma: Skalierbarkeit vs. Sicherheit vs. Dezentralisierung
         \item Lightning Network: bis zu 1 Million TPS möglich
-        \item Visa: 65.000 TPS, 150 Mio. Transaktionen/Tag\footnote{Visa Inc. Annual Report 2023}
-        \item Bitcoin Transaktionsvolumen: 20 Bio. \$ vs. Visa 13 Bio. \$\footnote{Sygnum Bank Report, 2024}
+        \item Visa: 65.000 TPS, 150 Mio. Transaktionen/Tag\footnotemark
+        \item Bitcoin Transaktionsvolumen: 20 Bio. \$ vs. Visa 13 Bio. \$\footnotemark
+\only<2->{\footnotetext[1]{Visa Inc. Annual Report 2023}}
+\only<2->{\footnotetext[2]{Sygnum Bank Report, 2024}}
         \item Lightning theoretisch 15x schneller als Visa - global, ohne Intermediäre
     }{Bitcoin übertrifft Visa bereits im Transaktionsvolumen und bei Second-Layer-Geschwindigkeit.}
 \end{frame}
@@ -213,8 +221,10 @@
         \item Schneeballsysteme versprechen fixe Auszahlungen durch neue Teilnehmer
         \item Bitcoin gibt keine Renditegarantien
         \item Keine zentrale Organisation oder strukturierte Vertriebsarchitektur
-        \item Weltbank 2022: Bitcoin-Protokoll offen zugänglich und nicht verpflichtend\footnote{World Bank Group, Distributed Ledger Technology and Digital Assets, 2022}
-        \item Schweizer Finma stuft Bitcoin nicht als Schneeballsystem ein\footnote{FINMA Guidance 02/2019: Payments on the blockchain}
+        \item Weltbank 2022: Bitcoin-Protokoll offen zugänglich und nicht verpflichtend\footnotemark
+        \item Schweizer Finma stuft Bitcoin nicht als Schneeballsystem ein\footnotemark
+\only<2->{\footnotetext[1]{World Bank Group, Distributed Ledger Technology and Digital Assets, 2022}}
+\only<2->{\footnotetext[2]{FINMA Guidance 02/2019: Payments on the blockchain}}
     }{Bitcoin erfüllt keines der zentralen Merkmale eines Schneeballsystems.}
 \end{frame}
 
@@ -224,8 +234,10 @@
 \begin{frame}<1-2>{M\arabic{mvnum}: Kriminalitäts-Tool}
     \misconceptionslide{Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet}{%
         \item Weniger als 1\% aller Transaktionen sind illegal (2024)
-        \item Anteil illegaler Bitcoin-Transaktionen nur noch 0,34\%\footnote{Chainalysis 2024}
-        \item Traditionell: 2\% - 5\% des globalen BIP fließen durch illegale Kanäle\footnote{United Nations Schätzung}
+        \item Anteil illegaler Bitcoin-Transaktionen nur noch 0,34\%\footnotemark
+        \item Traditionell: 2\% - 5\% des globalen BIP fließen durch illegale Kanäle\footnotemark
+\only<2->{\footnotetext[1]{Chainalysis 2024}}
+\only<2->{\footnotetext[2]{United Nations Schätzung}}
         \item Blockchain ist transparent und nachverfolgbar
         \item Europol betrachtet vor allem Bargeld und das traditionelle Bankensystem als relevant für Geldwäsche
     }{Bitcoin ist schlechter für Kriminalität als traditionelle Methoden.}
@@ -263,7 +275,8 @@
         \item Ergänzt traditionelle Finanzsysteme
         \item Regierungen entwickeln crypto-freundliche Gesetze
         \item Zentralbanken erforschen digitale Währungen
-        \item Banken vergeben Bitcoin-backed Loans: ``Bitcoin-Kreditvergabe ist eine logische Erweiterung des Krypto-Dienstleistungsportfolios der Banken''\footnote{Sopra Banking Software, 2024}
+        \item Banken vergeben Bitcoin-backed Loans: ``Bitcoin-Kreditvergabe ist eine logische Erweiterung des Krypto-Dienstleistungsportfolios der Banken''\footnotemark
+\only<2->{\footnotetext[1]{Sopra Banking Software, 2024}}
         \item Hedge gegen Geldpolitik-Versagen
     }{Koexistenz statt Konkurrenzkampf mit traditioneller Finanzwelt.}
 \end{frame}
@@ -272,11 +285,12 @@
 \subsection{\arabic{mvnum}. Weitere Mythen}
 
 \begin{frame}<1-2>{M\arabic{mvnum}: Technische Sicherheit}
-    \misconceptionslide{Bitcoin kann gehackt werden, hat keine Deckung und Mining ist sinnlose Verschwendung}{%
+    \misconceptionslide{Bitcoin kann gehackt werden}{%
         \item 99,98\% Uptime seit 2009
-        \item Dezentralisierung = Unhackbarkeit
-        \item Deckung durch Rechenarbeit \& Adoption
-        \item Mining sichert das Netzwerk
+        \item Dezentralisierung verhindert Single Point of Failure
+        \item Protokoll wird durch zehntausende Nodes robust abgesichert
+        \item Kritische Netzwerk-Updates erfordern breiten Konsens\footnotemark
+\only<2->{\footnotetext[1]{The Blocksize War: The battle over who controls Bitcoin's protocol rules, Jonathan Bier}}
     }{Technische Robustheit seit über 15 Jahren bewiesen.}
 \end{frame}
 
@@ -320,6 +334,7 @@
         \item \href{https://go.chainalysis.com/crypto-crime-2024.html}{Chainalysis 2024 Crypto Crime Report}
         \item \href{https://www.unodc.org/documents/data-and-analysis/Studies/Illicit_financial_flows_2011_web.pdf}{United Nations Office on Drugs and Crime: Illicit Financial Flows Study}
         \item Sopra Banking Software, 2024 (Specific publication not found online)
+        \item \href{https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM}{The Blocksize War: The battle over who controls Bitcoins protocol rules} - Jonathan Bier
     \end{itemize}
 
     \vspace{1em}
