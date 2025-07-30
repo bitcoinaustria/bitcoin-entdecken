@@ -24,7 +24,7 @@
 \setbeamercolor{palette secondary}{bg=bitcoindark,fg=white}
 \setbeamercolor{structure}{fg=bitcoinorange}
 \setbeamercolor{frametitle}{bg=bitcoinorange,fg=white}
-\setbeamercolor{title}{bg=bitcoindark,fg=bitcoinlight}  % Adjusted fg to light for better contrast
+\setbeamercolor{title}{bg=bitcoindark,fg=bitcoindark}  % Dark text for visibility on light background
 \setbeamercolor{block title}{bg=bitcoinorange,fg=white}
 \setbeamercolor{block body}{bg=bitcoinorange!10}
 \setbeamercolor{frame footer}{bg=bitcoinorange!10}
@@ -34,11 +34,12 @@
 \setbeamerfont{footnote}{size=\tiny}
 
 % Title information
-\title[Bitcoin Missverständnisse]{Bitcoin: Häufige Missverständnisse und was wirklich dahinter steckt}
+\title[Bitcoin Missverständnisse]{\vspace{1.5in}Bitcoin: Häufige Missverständnisse und was wirklich dahinter steckt}
 \subtitle{Ein faktenbasierter Impulsvortrag}
-\author{Präsentation}
+\author{Bitcoin Entdecken / Bitcoin Austria}
 \date{\today}
-\institute{Bitcoin Entdecken / Bitcoin Austria}
+\institute{}
+\titlegraphic{\center\includegraphics[width=0.4\textwidth,keepaspectratio]{title-grafik.jpg}}
 
 % Custom footer with frame numbers only
 \setbeamertemplate{footline}{
@@ -75,39 +76,45 @@
     \end{beamercolorbox}
 }
 
+
 % Macro for misconception slides with consistent layout
-\newcommand{\misconceptionslide}[3]{%
-    % #1: Misconception text (in quotes)
-    % #2: Facts list items
-    % #3: Fazit text
-    \begin{columns}[T]
-        \begin{column}[T]{0.48\textwidth}
-            \begin{block}{Das Missverständnis}
-                \vspace{0.5em}
-                \textit{``#1''}
-                \vspace{0.5em}
-            \end{block}
-        \end{column}
-        \hspace{0.02\textwidth}
-        \begin{column}[T]{0.48\textwidth}
-            \onslide<2->{
-                \begin{block}{Die Fakten}
-                    \vspace{0.3em}
-                    \begin{itemize}
-                        \setlength{\itemsep}{0.3em}
-                        #2
-                    \end{itemize}
-                    \vspace{0.3em}
+\newcommand{\misconceptionslide}[4]{%
+    % #1: Frame title (e.g., "Umweltauswirkungen")
+    % #2: Misconception text (in quotes)
+    % #3: Facts list items
+    % #4: Fazit text
+    \stepcounter{mvnum}
+    \subsection{\arabic{mvnum}. #1}
+    \begin{frame}<1-2>{M\arabic{mvnum}: #1}
+        \begin{columns}[T]
+            \begin{column}[T]{0.48\textwidth}
+                \begin{block}{Das Missverständnis}
+                    \vspace{0.5em}
+                    \textit{``#2''}
+                    \vspace{0.5em}
                 \end{block}
-            }
-        \end{column}
-    \end{columns}
-
-    \vfill
-
-    \onslide<2->{
-        \textcolor{bitcoinorange}{\textbf{Fazit:}} #3
-    }
+            \end{column}
+            \hspace{0.02\textwidth}
+            \begin{column}[T]{0.48\textwidth}
+                \onslide<2->{
+                    \begin{block}{Die Fakten}
+                        \vspace{0.3em}
+                        \begin{itemize}
+                            \setlength{\itemsep}{0.3em}
+                            #3
+                        \end{itemize}
+                        \vspace{0.3em}
+                    \end{block}
+                }
+            \end{column}
+        \end{columns}
+        
+        \vfill
+        
+        \onslide<2->{
+            \textcolor{bitcoinorange}{\textbf{Fazit:}} #4
+        }
+    \end{frame}
 }
 
 \begin{document}
@@ -115,9 +122,6 @@
 % Title slide
 \begin{frame}
     \titlepage
-    \begin{center}
-        \textcolor{bitcoinorange}{\rule{0.8\textwidth}{2pt}}
-    \end{center}
 \end{frame}
 
 % Table of contents
@@ -135,18 +139,14 @@
         \item \textbf{Interessenskonflikte} - Verschiedene Akteure mit eigenen Agenden
     \end{itemize}
     \vspace{2em}
-    \begin{alertblock}{Ziel dieser Präsentation}
+    \begin{alertblock}{\textcolor{white}{Ziel dieser Präsentation}}
         Fakten statt Mythen - Was steht hinter den Argumenten?
     \end{alertblock}
 \end{frame}
 
 \section{Die \totalmisconceptions\ häufigsten Missverständnisse}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Umweltauswirkungen}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Verbraucht zu viel Energie}
-    \misconceptionslide{Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt}{%
+\misconceptionslide{Umweltauswirkungen}{Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt}{%
         \item Nur 0,54\% des globalen Stromverbrauchs\footnotemark
         \item Energieverbrauch \textit{essentiell}, nicht ``sinnlos''.
         \item Über 50\% erneuerbare Energiequellen\footnotemark
@@ -157,51 +157,31 @@
         \only<2->{\footnotetext[2]{Cambridge Digital Mining Industry Report 2025}}
         \only<2->{\footnotetext[3]{z.B. 21 Energy}}
     }{Mining-Effizienz steigt kontinuierlich, Umweltimpact nimmt ab.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Kein intrinsischer Wert}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Kein intrinsischer Wert}
-    \misconceptionslide{Bitcoin hat keinen intrinsischen Wert, daher ist es wertlos}{%
+\misconceptionslide{Kein intrinsischer Wert}{Bitcoin hat keinen intrinsischen Wert, daher ist es wertlos}{%
         \item Bitcoin hat keinen laufenden Erträge, daher nicht vergleichbar
         \item Nutzen 1: technisch limitiert auf 21 Mio
         \item Nutzen 2: Zensurresistenz
         \item Nutzen 3: Globales Zahlungsnetzwerk
+        \only<2->{\footnotetext[1]{Emily Stanhope und der Ökonom Charles Brandt, in ``Review of Economic Philosophy''}}
 	}{Es gibt keinen intrinsischen Wert, sondern der Wert entsteht durch gesellschaftliche Zuschreibung und kollektive Akzeptanz\footnotemark}
-\only<2->{\footnotetext[1]{Emily Stanhope und der Ökonom Charles Brandt, in ``Review of Economic Philosophy''}}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Volatilität}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Zu volatil für praktische Nutzung}
-    \misconceptionslide{Bitcoin ist zu volatil, um als Währung oder Wertaufbewahrung zu funktionieren}{%
+\misconceptionslide{Volatilität}{Bitcoin ist zu volatil, um als Währung oder Wertaufbewahrung zu funktionieren}{%
         \item Volatilität nimmt langfristig ab
         \item Weniger volatil als 33 S\&P 500 Aktien
         \item Typisch für neue Asset-Klassen
         \item Institutionelle Adoption stabilisiert
     }{Reifung des Marktes führt zu weniger Volatilität.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Regulierung}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Regulatorische Unsicherheit}
-    \misconceptionslide{Bitcoin hat keine rechtliche Grundlage und wird verboten werden}{%
+\misconceptionslide{Regulierung}{Bitcoin hat keine rechtliche Grundlage und wird verboten werden}{%
         \item Regulierungsrahmen entwickeln sich schnell
         \item USA und EU schaffen klare Gesetze
         \item EU: MiCA-Verordnung erlaubt Bitcoin \& Co.
         \item Institutionelle Compliance wächst
         \item Verbote schwer durchsetzbar
     }{Rechtliche Klarheit nimmt weltweit zu.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Skalierbarkeit}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Technische Limitierungen}
-    \misconceptionslide{Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten}{%
+\misconceptionslide{Skalierbarkeit}{Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten}{%
         \item Blockchain-Trilemma: Skalierbarkeit vs. Sicherheit vs. Dezentralisierung
         \item Lightning Network: bis zu 1 Million TPS möglich
         \item Visa: 65.000 TPS, 150 Mio. Transaktionen/Tag\footnotemark
@@ -210,13 +190,8 @@
 	\only<2->{\footnotetext[2]{Sygnum Bank Report, 2024}}
         \item Lightning theoretisch 15x schneller als Visa - global, ohne Intermediäre
     }{Bitcoin übertrifft Visa bereits im Transaktionsvolumen und bei Second-Layer-Geschwindigkeit.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Schneeballsystem}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Schneeballsystem}
-    \misconceptionslide{Bitcoin ist ein Schneeballsystem}{%
+\misconceptionslide{Schneeballsystem}{Bitcoin ist ein Schneeballsystem}{%
         \item Schneeballsysteme versprechen fixe Auszahlungen durch neue Teilnehmer
         \item Bitcoin gibt keine Renditegarantien
         \item Keine zentrale Organisation oder strukturierte Vertriebsarchitektur
@@ -225,13 +200,8 @@
 \only<2->{\footnotetext[1]{World Bank Group, Distributed Ledger Technology and Digital Assets, 2022}}
 \only<2->{\footnotetext[2]{FINMA Guidance 02/2019: Payments on the blockchain}}
     }{Bitcoin erfüllt keines der zentralen Merkmale eines Schneeballsystems.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Kriminalität}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Kriminalitäts-Tool}
-    \misconceptionslide{Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet}{%
+\misconceptionslide{Kriminalität}{Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet}{%
         \item Weniger als 1\% aller Transaktionen sind illegal (2024)
         \item Anteil illegaler Bitcoin-Transaktionen nur noch 0,34\%\footnotemark
         \item Traditionell: 2\% - 5\% des globalen BIP fließen durch illegale Kanäle\footnotemark
@@ -240,37 +210,22 @@
         \item Blockchain ist transparent und nachverfolgbar
         \item Europol betrachtet vor allem Bargeld und das traditionelle Bankensystem als relevant für Geldwäsche
     }{Bitcoin ist schlechter für Kriminalität als traditionelle Methoden.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Spekulationsblase}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Reine Spekulation ohne Wert}
-    \misconceptionslide{Bitcoin ist eine Spekulationsblase ohne fundamentalen Wert}{%
+\misconceptionslide{Spekulationsblase}{Bitcoin ist eine Spekulationsblase ohne fundamentalen Wert}{%
         \item Wertspeicher für langfristiges Sparen
         \item Netzwerkeffekte schaffen Mehrwert
         \item Institutionelle Adoption validiert Use-Case
         \item Knappheit (21 Mio. Limit) ähnlich wie Gold
     }{Fundamentaler Nutzen wächst über reine Spekulation hinaus.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Praktische Adoption}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Keine praktische Nutzung}
-    \misconceptionslide{Bitcoin hat keine praktische Anwendung im Alltag}{%
+\misconceptionslide{Praktische Adoption}{Bitcoin hat keine praktische Anwendung im Alltag}{%
         \item Wachsende Händler-Akzeptanz
         \item Legales Zahlungsmittel (El Salvador, CAR)
         \item Corporate Treasury Asset
         \item Grenzüberschreitende Zahlungen
     }{Praktische Anwendungen wachsen kontinuierlich.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Zentralbank-Bedenken}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Bedrohung für Geldpolitik}
-    \misconceptionslide{Bitcoin bedroht die Geldpolitik und wird von Regierungen verboten}{%
+\misconceptionslide{Zentralbank-Bedenken}{Bitcoin bedroht die Geldpolitik und wird von Regierungen verboten}{%
         \item Ergänzt traditionelle Finanzsysteme
         \item Regierungen entwickeln crypto-freundliche Gesetze
         \item Zentralbanken erforschen digitale Währungen
@@ -278,20 +233,14 @@
 \only<2->{\footnotetext[1]{Sopra Banking Software, 2024}}
         \item Hedge gegen Geldpolitik-Versagen
     }{Koexistenz statt Konkurrenzkampf mit traditioneller Finanzwelt.}
-\end{frame}
 
-\stepcounter{mvnum}
-\subsection{\arabic{mvnum}. Weitere Mythen}
-
-\begin{frame}<1-2>{M\arabic{mvnum}: Technische Sicherheit}
-    \misconceptionslide{Bitcoin kann gehackt werden}{%
+\misconceptionslide{Technische Sicherheit}{Bitcoin kann gehackt werden}{%
         \item 99,98\% Uptime seit 2009
         \item Dezentralisierung verhindert Single Point of Failure
         \item Protokoll wird durch zehntausende Nodes robust abgesichert
         \item Kritische Netzwerk-Updates erfordern breiten Konsens\footnotemark
 \only<2->{\footnotetext[1]{The Blocksize War: The battle over who controls Bitcoin's protocol rules, Jonathan Bier}}
     }{Bitcoin ist seit über 15 Jahren ohne erfolgreichen Hack im Betrieb.}
-\end{frame}
 
 \begin{frame}{Was lernen wir daraus?}
     \begin{alertblock}{\textcolor{white}{Schlüsselerkenntnisse}}

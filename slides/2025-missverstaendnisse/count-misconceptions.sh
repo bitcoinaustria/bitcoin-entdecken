@@ -11,8 +11,8 @@ if [ ! -f "$TEX_FILE" ]; then
     exit 1
 fi
 
-# Count occurrences of \stepcounter{mvnum}
-COUNT=$(grep -c '\\stepcounter{mvnum}' "$TEX_FILE")
+# Count occurrences of \misconceptionslide, excluding the macro definition
+COUNT=$(grep '\\misconceptionslide' "$TEX_FILE" | grep -v '\\newcommand' | wc -l)
 
 echo "Found $COUNT misconceptions"
 

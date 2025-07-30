@@ -66,11 +66,14 @@ screenshots/%.png: 2025-missverstaendnisse.pdf screenshot-page.sh
 screenshot-samples: build screenshot-page.sh
 	@echo "Taking sample screenshots for style verification..."
 	@mkdir -p screenshots
-	./screenshot-page.sh 1 title_slide
-	./screenshot-page.sh 4 environment_misconception
-	./screenshot-page.sh 5 environment_facts
-	./screenshot-page.sh 6 volatility_misconception
-	./screenshot-page.sh 22 summary
+	@TOTAL_PAGES=$$(pdftk "2025-missverstaendnisse.pdf" dump_data | grep NumberOfPages | cut -d' ' -f2 2>/dev/null || echo "27"); \
+	echo "Total pages: $$TOTAL_PAGES"; \
+	./screenshot-page.sh 1 title; \
+	./screenshot-page.sh 2 index; \
+	./screenshot-page.sh 5 M1_misconception; \
+	./screenshot-page.sh 6 M1_facts; \
+	./screenshot-page.sh $$(($$TOTAL_PAGES - 1)) summary; \
+	./screenshot-page.sh $$TOTAL_PAGES sources
 	@echo "Sample screenshots saved in screenshots/ directory"
 	@echo "Use 'make screenshot-page PAGE=X NAME=name' for specific pages"
 
