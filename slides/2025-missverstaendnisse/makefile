@@ -3,7 +3,7 @@
 # This Makefile provides convenient commands to build and manage
 # the LaTeX Beamer presentation about Bitcoin misconceptions.
 
-.PHONY: all build clean clean-all view help screenshot-samples
+.PHONY: all build clean clean-all view help screenshot-samples watch
 
 # Default target
 all: build
@@ -85,6 +85,12 @@ screenshot-page: build screenshot-page.sh
 		./screenshot-page.sh $(PAGE) $(if $(NAME),$(NAME),page_$(PAGE)); \
 	fi
 
+# Watch for changes and rebuild automatically
+watch: logo-bitcoin-entdecken.pdf misconception-count.tex
+	@echo "Starting continuous compilation..."
+	@echo "Press Ctrl+C to stop watching"
+	latexmk -xelatex -f -interaction=nonstopmode -pdf -pvc 2025-missverstaendnisse.tex
+
 # Show help
 help:
 	@echo "Available commands:"
@@ -93,6 +99,7 @@ help:
 	@echo "  make clean        - Clean auxiliary files, keep PDF"
 	@echo "  make clean-all    - Clean all generated files including PDF"
 	@echo "  make view         - Build and view the presentation"
+	@echo "  make watch        - Watch files and rebuild automatically"
 	@echo "  make screenshot-samples - Take sample screenshots for debugging"
 	@echo "  make screenshot-page PAGE=X NAME=name - Screenshot specific page"
 	@echo "  make help         - Show this help message"

@@ -20,6 +20,7 @@ The repository is newly initialized with only Claude Code configuration present:
 
 ### LaTeX Compilation
 - **Build PDF**: `make` or `make build`
+- **Watch and rebuild**: `make watch` - Continuous compilation with `latexmk -pvc` (watches all input files and rebuilds automatically on changes)
 - **Clean build files**: `make clean`
 - **Full clean**: `make clean-all`
 - **View presentation**: `make view`
