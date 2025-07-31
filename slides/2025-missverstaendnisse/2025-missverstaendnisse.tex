@@ -3,6 +3,7 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{calc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{booktabs}
@@ -104,7 +105,10 @@
                     \only<1>{
                         \vspace{1em}
                         \centering
-                        \includegraphics[width=0.95\textwidth,keepaspectratio]{#1}
+                        \begin{tikzpicture}
+                            \clip[rounded corners=5pt] (0,0) rectangle (0.95\textwidth,0.95\textwidth);
+                            \node[anchor=south west, inner sep=0pt] at (0,0) {\includegraphics[width=0.95\textwidth,keepaspectratio]{#1}};
+                        \end{tikzpicture}
                         \vspace{1em}
                     }
                 \fi
