@@ -14,6 +14,7 @@ The repository is newly initialized with only Claude Code configuration present:
 ## Git Commit Guidelines
 
 - **Commit Prefix**: alle git commit sollen den prefix haben "Missverständnisse:" um es klar dieser präsenation zuordnen zu können
+- **IMPORTANT**: Do NOT automatically git commit and push after every change. Only commit when explicitly asked by the user to avoid too many commits.
 
 ## Build Commands
 

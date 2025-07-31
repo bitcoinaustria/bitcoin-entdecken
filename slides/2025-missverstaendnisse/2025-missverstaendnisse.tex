@@ -40,7 +40,7 @@
 \author{Bitcoin Entdecken / Bitcoin Austria}
 \date{\today}
 \institute{}
-\titlegraphic{\center\includegraphics[width=0.4\textwidth,keepaspectratio]{pix/missverstaendnisse.jpg}}
+\titlegraphic{\center\vspace{-1.5em}\roundedimage{pix/missverstaendnisse.jpg}{0.5\textwidth}{2}}
 
 % Custom footer with frame numbers only
 \setbeamertemplate{footline}{
@@ -78,6 +78,23 @@
 }
 
 
+% Macro for rounded corner images with aspect ratio support
+\newcommand{\roundedimage}[3]{%
+    % #1: image path
+    % #2: width (e.g., 0.4\textwidth)
+    % #3: aspect ratio (2 for 2:1, 1 for 1:1)
+    \begin{tikzpicture}
+        \ifnum#3=2
+            % 2:1 aspect ratio with extra height to avoid clipping heads (width:height ratio ~1.8:1)
+            \clip[rounded corners=5pt] (0,0) rectangle (#2,0.56*#2);
+        \else
+            % 1:1 aspect ratio (default)
+            \clip[rounded corners=5pt] (0,0) rectangle (#2,#2);
+        \fi
+        \node[anchor=south west, inner sep=0pt] at (0,0) {\includegraphics[width=#2,keepaspectratio]{#1}};
+    \end{tikzpicture}
+}
+
 % Macro for misconception slides with consistent layout
 \newcommand{\misconceptionslide}[5][]{%
     % #1: Optional image path (if provided, image shows on first slide where facts appear later)
@@ -105,10 +122,7 @@
                     \only<1>{
                         \vspace{1em}
                         \centering
-                        \begin{tikzpicture}
-                            \clip[rounded corners=5pt] (0,0) rectangle (0.95\textwidth,0.95\textwidth);
-                            \node[anchor=south west, inner sep=0pt] at (0,0) {\includegraphics[width=0.95\textwidth,keepaspectratio]{#1}};
-                        \end{tikzpicture}
+                        \roundedimage{#1}{0.95\textwidth}{1}
                         \vspace{1em}
                     }
                 \fi
@@ -166,14 +180,14 @@
         {\Large \textbf{Die \totalmisconceptions\ häufigsten Missverständnisse}}
         
         \vspace{1em}
-        \fbox{\includegraphics[width=0.7\textwidth,keepaspectratio]{pix/missverstaendnisse.jpg}}
+        \roundedimage{pix/missverstaendnisse.jpg}{0.7\textwidth}{2}
     \end{center}
     \vfill
 \end{frame}
 
 \misconceptionslide[pix/mining.jpg]{Umweltauswirkungen}{Bitcoin-Mining verbraucht zu viel Energie und zerstört die Umwelt}{%
+        \item Energieverbrauch \textbf{essentiell}, nicht ``sinnlos''.
         \item Nur 0,54\% des globalen Stromverbrauchs\footnotemark
-        \item Energieverbrauch \textit{essentiell}, nicht ``sinnlos''.
         \item Über 50\% erneuerbare Energiequellen\footnotemark
         \item Überschussenergie aus alternativen Quellen, macht diese lukrativ
         \item Weniger umweltschädlich als Goldbergbau
@@ -262,7 +276,7 @@
         \item Hedge gegen Geldpolitik-Versagen
     }{Koexistenz statt Konkurrenzkampf mit traditioneller Finanzwelt.}
 
-\misconceptionslide{Technische Sicherheit}{Bitcoin kann gehackt werden}{%
+\misconceptionslide[pix/hacking-2.jpg]{Technische Sicherheit}{Bitcoin kann gehackt werden}{%
         \item 99,98\% Uptime seit 2009
         \item Dezentralisierung verhindert Single Point of Failure
         \item Protokoll wird durch zehntausende Nodes robust abgesichert
