@@ -39,7 +39,7 @@
 \author{Bitcoin Entdecken / Bitcoin Austria}
 \date{\today}
 \institute{}
-\titlegraphic{\center\includegraphics[width=0.4\textwidth,keepaspectratio]{title-grafik.jpg}}
+\titlegraphic{\center\includegraphics[width=0.4\textwidth,keepaspectratio]{pix/title-grafik.jpg}}
 
 % Custom footer with frame numbers only
 \setbeamertemplate{footline}{
@@ -78,30 +78,42 @@
 
 
 % Macro for misconception slides with consistent layout
-\newcommand{\misconceptionslide}[4]{%
-    % #1: Frame title (e.g., "Umweltauswirkungen")
-    % #2: Misconception text (in quotes)
-    % #3: Facts list items
-    % #4: Fazit text
+\newcommand{\misconceptionslide}[5][]{%
+    % #1: Optional image path (if provided, image shows on first slide where facts appear later)
+    % #2: Frame title (e.g., "Umweltauswirkungen")
+    % #3: Misconception text (in quotes)
+    % #4: Facts list items
+    % #5: Fazit text
     \stepcounter{mvnum}
-    \subsection{\arabic{mvnum}. #1}
-    \begin{frame}<1-2>{M\arabic{mvnum}: #1}
+    \subsection{\arabic{mvnum}. #2}
+    \begin{frame}<1-2>{M\arabic{mvnum}: #2}
         \begin{columns}[T]
             \begin{column}[T]{0.48\textwidth}
                 \begin{block}{Das Missverständnis}
                     \vspace{0.5em}
-                    \textit{``#2''}
+                    \textit{``#3''}
                     \vspace{0.5em}
                 \end{block}
             \end{column}
             \hspace{0.02\textwidth}
             \begin{column}[T]{0.48\textwidth}
+                % Optional image only visible on first slide (where facts will appear later)
+                \ifx\relax#1\relax
+                    % No image provided
+                \else
+                    \only<1>{
+                        \vspace{1em}
+                        \centering
+                        \includegraphics[width=0.95\textwidth,keepaspectratio]{#1}
+                        \vspace{1em}
+                    }
+                \fi
                 \onslide<2->{
                     \begin{block}{Die Fakten}
                         \vspace{0.3em}
                         \begin{itemize}
                             \setlength{\itemsep}{0.3em}
-                            #3
+                            #4
                         \end{itemize}
                         \vspace{0.3em}
                     \end{block}
@@ -112,7 +124,7 @@
         \vfill
         
         \onslide<2->{
-            \textcolor{bitcoinorange}{\textbf{Fazit:}} #4
+            \textcolor{bitcoinorange}{\textbf{Fazit:}} #5
         }
     \end{frame}
 }
@@ -181,7 +193,7 @@
         \item Verbote schwer durchsetzbar
     }{Rechtliche Klarheit nimmt weltweit zu.}
 
-\misconceptionslide{Skalierbarkeit}{Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten}{%
+\misconceptionslide[pix/bitcoin-skalieren.jpg]{Skalierbarkeit}{Bitcoin kann nur 3-4 Transaktionen pro Sekunde verarbeiten}{%
         \item Blockchain-Trilemma: Skalierbarkeit vs. Sicherheit vs. Dezentralisierung
         \item Lightning Network: bis zu 1 Million TPS möglich
         \item Visa: 65.000 TPS, 150 Mio. Transaktionen/Tag\footnotemark
@@ -199,7 +211,7 @@
         \item Knappheit (21 Mio. Limit) ähnlich wie Gold
     }{Fundamentaler Nutzen wächst über reine Spekulation hinaus.}
 
-\misconceptionslide{Schneeballsystem}{Bitcoin ist ein Schneeballsystem}{%
+\misconceptionslide[pix/bitcoin-schneeball.jpg]{Schneeballsystem}{Bitcoin ist ein Schneeballsystem}{%
         \item Schneeballsysteme versprechen fixe Auszahlungen durch neue Teilnehmer
         \item Bitcoin gibt keine Renditegarantien
         \item Keine zentrale Organisation oder strukturierte Vertriebsarchitektur

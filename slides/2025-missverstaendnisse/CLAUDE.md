@@ -50,6 +50,38 @@ This is a LaTeX Beamer presentation project about Bitcoin misconceptions in Germ
 ### LaTeX Content
 - use the `\misconceptionslide` macro for the content slides, for consistency!
 
+#### Misconception Slide Macro Usage
+The `\misconceptionslide` macro supports an optional image parameter:
+
+**Without image (standard usage):**
+```latex
+\misconceptionslide{Title}{Misconception text}{%
+    \item Fact 1
+    \item Fact 2
+    \item Fact 3
+}{Conclusion text}
+```
+
+**With image (enhanced version):**
+```latex
+\misconceptionslide[pix/image-name.jpg]{Title}{Misconception text}{%
+    \item Fact 1
+    \item Fact 2
+    \item Fact 3
+}{Conclusion text}
+```
+
+**Image behavior:**
+- Image appears on first slide overlay (when only misconception is visible)
+- Image is positioned in right column where facts will appear later
+- Image automatically disappears when facts are revealed on second overlay
+- Image size: 95% of column width with proper aspect ratio
+- Proper spacing above and below image
+
+**Current slides with images:**
+- M5: Skalierbarkeit - `pix/bitcoin-skalieren.jpg` (Bitcoin on technical drawings/rulers)
+- M7: Schneeballsystem - `pix/bitcoin-schneeball.jpg` (Bitcoin coins on snowy mountain)
+
 ### Generated Files
 - `2025-missverstaendnisse.pdf` - Final presentation (27 pages)
 - `2025-missverstaendnisse.aux/nav/out/toc` - LaTeX auxiliary files (auto-ignored)
