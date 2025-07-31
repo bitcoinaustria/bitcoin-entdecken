@@ -11,6 +11,10 @@ This repository appears to be focused on Bitcoin-related content, specifically a
 The repository is newly initialized with only Claude Code configuration present:
 - `.claude/settings.json` - Contains permission settings for Claude Code
 
+## Git Commit Guidelines
+
+- **Commit Prefix**: alle git commit sollen den prefix haben "Missverständnisse:" um es klar dieser präsenation zuordnen zu können
+
 ## Build Commands
 
 ### LaTeX Compilation
