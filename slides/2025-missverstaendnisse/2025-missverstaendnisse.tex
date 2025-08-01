@@ -61,7 +61,7 @@
 \input{misconception-count.tex}
 
 % Remove top margin from beamer frames
-\setbeamersize{text margin left=10pt,text margin right=10pt}
+\setbeamersize{text margin left=5pt,text margin right=5pt}
 
 % Custom frametitle with logo on the right - no top margin
 \setbeamertemplate{frametitle}{
@@ -107,15 +107,15 @@
     \subsection{\arabic{mvnum}. #2}
     \begin{frame}<1-2>{M\arabic{mvnum}: #2}
         \begin{columns}[T]
-            \begin{column}[T]{0.48\textwidth}
+            \begin{column}[T]{0.49\textwidth}
                 \begin{block}{Das Missverständnis}
-                    \vspace{0.5em}
-                    \textit{``#3''}
-                    \vspace{0.5em}
+                    \vspace{0.6em}
+		    \textit{\textbf{``#3''}}
+                    \vspace{0.6em}
                 \end{block}
             \end{column}
-            \hspace{0.02\textwidth}
-            \begin{column}[T]{0.48\textwidth}
+            \hspace{0.01\textwidth}
+            \begin{column}[T]{0.5\textwidth}
                 % Optional image only visible on first slide (where facts will appear later)
                 \ifx\relax#1\relax
                     % No image provided
@@ -123,13 +123,13 @@
                     \only<1>{
                         \vspace{1em}
                         \centering
-                        \roundedimage{#1}{0.95\textwidth}{1}
+                        \roundedimage{#1}{0.9\textwidth}{1}
                         \vspace{1em}
                     }
                 \fi
                 \onslide<2->{
                     \begin{block}{Die Fakten}
-                        \vspace{0.3em}
+                        \vspace{0.2em}
                         \begin{itemize}
                             \setlength{\itemsep}{0.3em}
                             #4
