@@ -1,17 +1,30 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)",
-      "WebFetch(domain:www.wiwo.de)",
-      "Bash(git mv:*)",
-      "Bash(latexmk:*)",
-      "Bash(apt list:*)",
-      "Bash(make:*)",
-      "Bash(inkscape:*)",
-      "Bash(chmod:*)",
+      "Bash(./count-misconceptions.sh:*)",
       "Bash(./screenshot-page.sh:*)",
+      "Bash(apt list:*)",
+      "Bash(chmod:*)",
+      "Bash(dpkg:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git fetch:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git mv:*)",
+      "Bash(git push:*)",
+      "Bash(grep:*)",
+      "Bash(inkscape:*)",
+      "Bash(latexindent:*)",
+      "Bash(latexmk:*)",
+      "Bash(ls:*)",
+      "Bash(make:*)",
+      "Bash(mkdir:*)",
+      "Bash(rm:*)",
+      "Bash(sed:*)",
+      "Bash(xelatex:*)",
+      "WebFetch(domain:de.wikipedia.org)",
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": []
   }

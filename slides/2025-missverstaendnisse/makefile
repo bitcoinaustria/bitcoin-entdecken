@@ -38,6 +38,8 @@ clean:
 	@rm -f misconception-count.tex
 	@echo "Removing screenshots..."
 	@rm -rf screenshots/
+	@echo "Removing latexindent temporary files..."
+	@rm -rf .latexindent-tmp/
 	@echo "Clean complete"
 
 # Clean everything including the PDF
@@ -88,7 +90,8 @@ screenshot-page: build screenshot-page.sh
 # Format LaTeX source file
 format:
 	@echo "Formatting LaTeX source file..."
-	latexindent -w 2025-missverstaendnisse.tex
+	@mkdir -p .latexindent-tmp
+	latexindent -w -c .latexindent-tmp 2025-missverstaendnisse.tex
 	@echo "LaTeX source formatted"
 
 # Watch for changes and rebuild automatically

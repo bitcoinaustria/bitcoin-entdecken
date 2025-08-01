@@ -30,6 +30,10 @@ screenshots/
 # Backup files
 *~
 *.bak
+*.bak*
+
+# latexindent backup files and temp directory
+.latexindent-tmp/
 
 # OS generated files
 .DS_Store
