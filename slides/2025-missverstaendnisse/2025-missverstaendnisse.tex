@@ -21,6 +21,8 @@
 \usetheme[progressbar=foot]{metropolis}  % Enable progress bar in footer
 
 % Customize colors for Bitcoin orange theme
+\setbeamercolor{background canvas}{bg=white}  % Pure white background
+\setbeamercolor{normal text}{bg=white}        % Pure white background for text areas
 \setbeamercolor{progress bar}{fg=bitcoinorange, bg=bitcoindark!50}  % Orange fill, subtle dark background for unfilled part
 \setbeamercolor{palette primary}{bg=bitcoinorange,fg=white}
 \setbeamercolor{palette secondary}{bg=bitcoindark,fg=white}
@@ -60,8 +62,8 @@
 % Include auto-generated count of misconceptions
 \input{misconception-count.tex}
 
-% Remove top margin from beamer frames
-\setbeamersize{text margin left=5pt,text margin right=5pt}
+% Remove all margins from beamer frames
+\setbeamersize{text margin left=0pt,text margin right=0pt}
 
 % Custom frametitle with logo on the right - no top margin
 \setbeamertemplate{frametitle}{
@@ -69,10 +71,10 @@
     \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1ex,leftskip=0pt,rightskip=0pt]{frametitle}
         \hbox to \paperwidth{%
             \begin{beamercolorbox}[wd=0.75\paperwidth,left]{frametitle}%
-                \hspace*{1.3ex}\usebeamerfont{frametitle}\insertframetitle%
+                \hspace*{3pt}\usebeamerfont{frametitle}\insertframetitle%
             \end{beamercolorbox}%
             \begin{beamercolorbox}[wd=0.25\paperwidth,right]{frametitle}%
-                \hfill\raisebox{-1ex}{\includegraphics[height=3.8ex,keepaspectratio]{logo-bitcoin-entdecken.pdf}}\hspace*{1ex}%
+                \hfill\raisebox{-1ex}{\includegraphics[height=3.8ex,keepaspectratio]{logo-bitcoin-entdecken.pdf}}\hspace*{1pt}%
             \end{beamercolorbox}%
         }
     \end{beamercolorbox}
@@ -143,7 +145,12 @@
         \vfill
         
         \onslide<2->{
-            \textcolor{bitcoinorange}{\textbf{Fazit:}} #5
+	    \begin{alertblock}{\textcolor{white}{\textbf{Fazit:}}}
+		    #5
+	    \end{alertblock}
+            %\hspace{0.5em}\begin{minipage}[t]{\dimexpr\textwidth-1em\relax}
+            %    \textcolor{bitcoinorange}{} #5
+            %\end{minipage}
         }
     \end{frame}
 }
@@ -171,7 +178,9 @@
 	\end{itemize}
 	\vspace{2em}
 	\begin{alertblock}{\textcolor{white}{Ziel dieser Präsentation}}
+		\vspace{3pt}
 		Fakten statt Mythen - Was steht hinter den Argumenten?
+		\vspace{3pt}
 	\end{alertblock}
 \end{frame}
 
@@ -253,14 +262,14 @@
 }{Bitcoin erfüllt keines der zentralen Merkmale eines Schneeballsystems.}
 
 \misconceptionslide[pix/kriminalitaet.jpg]{Kriminalität}{Bitcoin wird hauptsächlich für illegale Aktivitäten verwendet}{%
-	\item Anteil illegaler Bitcoin-Transaktionen nur noch \textbf{0,34\%}\footnotemark
+	\item Anteil illegaler Bitcoin-TX nur noch \textbf{0,34\%}\footnotemark
 	\item Traditionell: \textbf{2\% - 5\%} des globalen BIP fließen durch illegale Kanäle\footnotemark
 	\only<2->{\footnotetext[1]{Chainalysis 2024}}
 	\only<2->{\footnotetext[2]{United Nations Schätzung}}
 	\item Blockchain ist \textbf{transparent und nachverfolgbar}
 	\item Die \textbf{unveränderliche, öffentliche Aufzeichnung} aller Transaktionen ist ein Albtraum für Kriminelle
-	\item \textbf{Europol} betrachtet vor allem Bargeld und das traditionelle Bankensystem als relevant für Geldwäsche
-}{Bitcoin ist schlechter für Kriminalität als traditionelle Methoden.}
+	\item \textbf{Europol} fokussiert sich vor allem Bargeld und das traditionelle Bankensystem
+}{Bitcoin ist schlechter für Kriminalität geeignet als traditionelle Methoden.}
 
 \misconceptionslide[pix/no-bitcoin-in-shop.png]{Praktische Adoption}{Bitcoin hat keine praktische Anwendung im Alltag}{%
 	\item Legales Zahlungsmittel (\textbf{El Salvador, CAR})
