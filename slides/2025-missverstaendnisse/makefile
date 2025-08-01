@@ -3,7 +3,7 @@
 # This Makefile provides convenient commands to build and manage
 # the LaTeX Beamer presentation about Bitcoin misconceptions.
 
-.PHONY: all build clean clean-all view help screenshot-samples watch
+.PHONY: all build clean clean-all view help screenshot-samples watch format
 
 # Default target
 all: build
@@ -85,6 +85,12 @@ screenshot-page: build screenshot-page.sh
 		./screenshot-page.sh $(PAGE) $(if $(NAME),$(NAME),page_$(PAGE)); \
 	fi
 
+# Format LaTeX source file
+format:
+	@echo "Formatting LaTeX source file..."
+	latexindent -w 2025-missverstaendnisse.tex
+	@echo "LaTeX source formatted"
+
 # Watch for changes and rebuild automatically
 watch: logo-bitcoin-entdecken.pdf misconception-count.tex
 	@echo "Starting continuous compilation..."
@@ -96,6 +102,7 @@ help:
 	@echo "Available commands:"
 	@echo "  make              - Build the presentation (default)"
 	@echo "  make build        - Build the presentation PDF"
+	@echo "  make format       - Format LaTeX source with latexindent"
 	@echo "  make clean        - Clean auxiliary files, keep PDF"
 	@echo "  make clean-all    - Clean all generated files including PDF"
 	@echo "  make view         - Build and view the presentation"
