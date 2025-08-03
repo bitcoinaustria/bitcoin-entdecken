@@ -13,7 +13,12 @@ Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse") - 
 
 ## Build Commands
 
-### Essential Workflow
+### GitHub Actions (Automated)
+- **PDF Build**: Automatically triggered on push to main when `.tex`, `makefile`, `.svg`, or `pix/**` files change
+- **Releases**: Automatically created when pushing tags with pattern `missverstaendnisse-*`
+- **PDF**: No longer stored in git - built automatically by GitHub Actions
+
+### Local Development Workflow
 1. **Format**: `make format` - Format LaTeX source with latexindent
 2. **Build**: `make build` - Compile PDF with microtype enhancement
 3. **View**: `make view` - Open PDF viewer
@@ -31,10 +36,11 @@ Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse") - 
 
 ### Main Files
 - `2025-missverstaendnisse.tex` - Main presentation source
-- `makefile` - Build automation with format/build/screenshot targets
+- `makefile` - Build automation with format/build/screenshot targets (requires inkscape, pdfcrop)
 - `logo-bitcoin-entdecken.svg/pdf` - Auto-processed logo
 - `misconception-count.tex` - Auto-generated counter (11 misconceptions)
 - `count-misconceptions.sh` - Dynamic counter script
+- `.github/workflows/` - GitHub Actions for automated PDF builds and releases
 
 ### Content Guidelines
 - Use `\misconceptionslide` macro for consistency
@@ -94,9 +100,33 @@ Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse") - 
 - Blocksize War book (Amazon)
 - Wikipedia Greshamsches Gesetz
 
+## Release Process
+
+### Creating a New Release
+1. **Automatic Method** (Recommended):
+   ```bash
+   git tag missverstaendnisse-v1.0
+   git push origin missverstaendnisse-v1.0
+   ```
+   - Tag pattern: `missverstaendnisse-*` (e.g., `missverstaendnisse-v1.0`, `missverstaendnisse-2025-01`)
+   - GitHub Actions automatically builds PDF and creates GitHub Release
+   - PDF becomes downloadable asset in the release
+
+2. **Manual Verification**:
+   - Check GitHub Actions success at: https://github.com/bitcoinaustria/bitcoin-entdecken/actions
+   - Verify release created at: https://github.com/bitcoinaustria/bitcoin-entdecken/releases
+
+### GitHub Actions Workflows
+- **build-pdf.yml**: Builds PDF on main branch changes to LaTeX files
+- **release.yml**: Creates releases on `missverstaendnisse-*` tag pushes
+- Both workflows install: LaTeX, inkscape, texlive-font-utils
+- Concurrency control prevents multiple simultaneous builds
+
 ## Development Notes
 
 ### Recent Updates
+- **GitHub Actions integration**: Automated PDF builds and releases
+- **PDF removed from git**: Now built automatically, not stored in repository
 - **microtype integration**: Enhanced typography with character protrusion
 - **latexindent integration**: Consistent code formatting via makefile
 - **Citation cleanup**: Removed "not found online" comments
