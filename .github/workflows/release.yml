@@ -17,7 +17,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Install LaTeX packages
+    - name: Install LaTeX packages and dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y \
@@ -29,7 +29,9 @@ jobs:
           texlive-latex-base \
           texlive-latex-extra \
           texlive-latex-recommended \
-          make
+          make \
+          inkscape \
+          texlive-font-utils
     
     - name: Build PDF
       working-directory: slides/2025-missverstaendnisse
