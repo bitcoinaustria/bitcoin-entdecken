@@ -13,6 +13,14 @@ on:
       - 'slides/2025-missverstaendnisse/makefile'
       - 'slides/2025-missverstaendnisse/**/*.svg'
       - 'slides/2025-missverstaendnisse/pix/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'slides/2025-missverstaendnisse/**/*.tex'
+      - 'slides/2025-missverstaendnisse/makefile'
+      - 'slides/2025-missverstaendnisse/**/*.svg'
+      - 'slides/2025-missverstaendnisse/pix/**'
 
 jobs:
   build:
