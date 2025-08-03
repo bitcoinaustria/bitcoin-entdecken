@@ -1,0 +1,63 @@
+name: Build PDF
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'slides/2025-missverstaendnisse/**/*.tex'
+      - 'slides/2025-missverstaendnisse/makefile'
+      - 'slides/2025-missverstaendnisse/**/*.svg'
+      - 'slides/2025-missverstaendnisse/pix/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'slides/2025-missverstaendnisse/**/*.tex'
+      - 'slides/2025-missverstaendnisse/makefile'
+      - 'slides/2025-missverstaendnisse/**/*.svg'
+      - 'slides/2025-missverstaendnisse/pix/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install LaTeX packages and dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          texlive \
+          texlive-base \
+          texlive-binaries \
+          texlive-extra-utils \
+          texlive-fonts-recommended \
+          texlive-latex-base \
+          texlive-latex-extra \
+          texlive-latex-recommended \
+          latexmk \
+          make \
+          inkscape \
+          texlive-font-utils \
+          xvfb
+    
+    - name: Build PDF
+      working-directory: slides/2025-missverstaendnisse
+      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        make build
+        
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: missverstaendnisse-pdf
+        path: slides/2025-missverstaendnisse/2025-missverstaendnisse.pdf
+        retention-days: 30

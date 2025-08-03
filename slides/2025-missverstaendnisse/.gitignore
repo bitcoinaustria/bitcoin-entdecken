@@ -14,9 +14,8 @@
 *.snm
 *.vrb
 
-# Generated PDF files (keep only source files in repo)
-# We keep the generated PDF in Git, for easy public access
-#2025-missverstaendnisse.pdf
+# Generated PDF files (built by GitHub Actions)
+2025-missverstaendnisse.pdf
 
 # Converted logo (generated from SVG)
 logo-bitcoin-entdecken.pdf
