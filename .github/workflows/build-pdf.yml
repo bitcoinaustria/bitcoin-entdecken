@@ -1,0 +1,48 @@
+name: Build PDF
+
+on:
+  push:
+    paths:
+      - 'slides/2025-missverstaendnisse/**/*.tex'
+      - 'slides/2025-missverstaendnisse/makefile'
+      - 'slides/2025-missverstaendnisse/**/*.svg'
+      - 'slides/2025-missverstaendnisse/pix/**'
+  pull_request:
+    paths:
+      - 'slides/2025-missverstaendnisse/**/*.tex'
+      - 'slides/2025-missverstaendnisse/makefile'
+      - 'slides/2025-missverstaendnisse/**/*.svg'
+      - 'slides/2025-missverstaendnisse/pix/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install LaTeX packages
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          texlive \
+          texlive-base \
+          texlive-binaries \
+          texlive-extra-utils \
+          texlive-fonts-recommended \
+          texlive-latex-base \
+          texlive-latex-extra \
+          texlive-latex-recommended \
+          make
+    
+    - name: Build PDF
+      working-directory: slides/2025-missverstaendnisse
+      run: make build
+        
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: missverstaendnisse-pdf
+        path: slides/2025-missverstaendnisse/2025-missverstaendnisse.pdf
+        retention-days: 30
