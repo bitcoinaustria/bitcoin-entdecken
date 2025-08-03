@@ -29,13 +29,18 @@ jobs:
           texlive-latex-base \
           texlive-latex-extra \
           texlive-latex-recommended \
+          latexmk \
           make \
           inkscape \
-          texlive-font-utils
+          texlive-font-utils \
+          xvfb
     
     - name: Build PDF
       working-directory: slides/2025-missverstaendnisse
-      run: make build
+      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        make build
         
     - name: Create Release
       uses: softprops/action-gh-release@v2
