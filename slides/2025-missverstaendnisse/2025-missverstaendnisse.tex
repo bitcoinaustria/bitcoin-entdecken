@@ -66,7 +66,7 @@
 % Remove all margins from beamer frames
 \setbeamersize{text margin left=0pt,text margin right=0pt}
 
-% Custom frametitle with logo on the right - no top margin
+% Custom frames with logo on the right - no top margin
 \setbeamertemplate{frametitle}{
     \nointerlineskip%
     \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1ex,leftskip=0pt,rightskip=0pt]{frametitle}
@@ -118,7 +118,7 @@
                 \end{block}
             \end{column}
             \hspace{0.01\textwidth}
-            \begin{column}[T]{0.5\textwidth}
+            \begin{column}[T]{0.49\textwidth}
                 % Optional image only visible on first slide (where facts will appear later)
                 \ifx\relax#1\relax
                     % No image provided
@@ -132,7 +132,7 @@
                 \fi
                 \onslide<2->{
                     \begin{block}{Die Fakten}
-                        \vspace{0.2em}
+                        \vspace{0.3em}
                         \begin{itemize}
                             \setlength{\itemsep}{0.3em}
                             #4
