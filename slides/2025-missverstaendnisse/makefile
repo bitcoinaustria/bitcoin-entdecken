@@ -35,7 +35,7 @@ clean:
 	@echo "Removing additional LaTeX files..."
 	@rm -f 2025-missverstaendnisse.nav 2025-missverstaendnisse.snm 2025-missverstaendnisse.vrb
 	@echo "Removing generated count file..."
-	@rm -f misconception-count.tex
+	@rm -f misconception-count.tex misconception-count.aux misconception-count.fdb_latexmk
 	@echo "Removing screenshots..."
 	@rm -rf screenshots/
 	@echo "Removing latexindent temporary files..."
