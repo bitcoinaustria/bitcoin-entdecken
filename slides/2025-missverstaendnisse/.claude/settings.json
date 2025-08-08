@@ -20,6 +20,8 @@
       "Bash(ls:*)",
       "Bash(make:*)",
       "Bash(mkdir:*)",
+      "Bash(git tag:*)",
+      "Bash(uv add:*)",
       "Bash(rm:*)",
       "Bash(sed:*)",
       "Bash(xelatex:*)",

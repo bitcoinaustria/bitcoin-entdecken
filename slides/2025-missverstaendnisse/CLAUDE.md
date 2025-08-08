@@ -149,3 +149,30 @@ Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse") - 
 - Automatic misconception counting ensures consistent numbering
 - Logo auto-processing maintains visual consistency
 - microtype warnings are normal and don't affect output quality
+## AI Image Generation
+
+### Generate Images with Replicate API
+```bash
+uv --directory generate-images run generate_image.py [options] "prompt"
+```
+
+**Examples:**
+```bash
+# Basic image generation (automatically adds "aspect ratio: 1:1")
+uv --directory generate-images run generate_image.py "cybercriminal with bitcoin symbols"
+
+# Replace specific slide image (M8 = Kriminalität)  
+uv --directory generate-images run generate_image.py -r M8 -n kriminalitaet-neu "two shady people in dark alley with smartphones"
+
+# Generate with custom aspect ratio (default is 1:1 for presentation)
+uv --directory generate-images run generate_image.py --aspect-ratio "16:9" "landscape bitcoin scene"
+
+# List available models
+uv --directory generate-images run generate_image.py --list-models
+
+# Image editing with flux-kontext-pro (with auto-replace)
+uv --directory generate-images run generate_image.py -m flux-kontext-pro -i pix/existing.jpg -r M8 -y "make more abstract"
+```
+
+**Available Models:** flux-krea-dev (default), flux-kontext-pro, flux-pro, flux-dev, sdxl
+**Requirements:** REPLICATE_API environment variable must be set
