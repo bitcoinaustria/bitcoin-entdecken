@@ -1,19 +1,5 @@
 \documentclass[aspectratio=169,t,9pt]{beamer}
-\usepackage[utf8]{inputenc}
-\usepackage{xcolor}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usetikzlibrary{calc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{booktabs}
-\usepackage[protrusion=true,expansion=false]{microtype}
 % GitHub Actions setup: PDF now built automatically, not stored in git repo
-
-% Bitcoin orange color theme
-\definecolor{bitcoinorange}{RGB}{247,147,26}
-\definecolor{bitcoindark}{RGB}{33,33,33}
-\definecolor{bitcoinlight}{RGB}{255,255,255}
 
 % Metropolis theme - Modern, minimalist Beamer theme
 % Source: https://github.com/matze/mtheme
@@ -21,140 +7,15 @@
 % Features: Clean design, optional progress bar, maximizes content space
 \usetheme[progressbar=foot]{metropolis}  % Enable progress bar in footer
 
-% Customize colors for Bitcoin orange theme
-\setbeamercolor{background canvas}{bg=white}  % Pure white background
-\setbeamercolor{normal text}{bg=white}        % Pure white background for text areas
-\setbeamercolor{progress bar}{fg=bitcoinorange, bg=bitcoindark!50}  % Orange fill, subtle dark background for unfilled part
-\setbeamercolor{palette primary}{bg=bitcoinorange,fg=white}
-\setbeamercolor{palette secondary}{bg=bitcoindark,fg=white}
-\setbeamercolor{structure}{fg=bitcoinorange}
-\setbeamercolor{frametitle}{bg=bitcoinorange,fg=white}
-\setbeamercolor{title}{bg=bitcoindark,fg=bitcoindark}  % Dark text for visibility on light background
-\setbeamercolor{block title}{bg=bitcoinorange,fg=white}
-\setbeamercolor{block body}{bg=bitcoinorange!10}
-\setbeamercolor{frame footer}{bg=bitcoinorange!10}
-\setbeamercolor{date in head/foot}{bg=bitcoinorange, fg=bitcoinlight}
+% Bitcoin Entdecken style package
+\usepackage{bitcoin-entdecken}
 
-% Adjust fonts
-\setbeamerfont{footnote}{size=\tiny}
+% Title information using Bitcoin Entdecken style helpers
+\bitcointitle{Bitcoin: Häufige Missverständnisse und was wirklich dahinter steckt}{Ein faktenbasierter Impulsvortrag}
+\bitcointitlegraphic{pix/missverstaendnisse.jpg}
 
-% Title information
-\title[Bitcoin Missverständnisse]{\vspace{1.5in}Bitcoin: Häufige Missverständnisse und was wirklich dahinter steckt}
-\subtitle{Ein faktenbasierter Impulsvortrag}
-\author{Bitcoin Entdecken / Bitcoin Austria}
-\date{\today}
-\institute{}
-\titlegraphic{\center\vspace{-1.5em}\roundedimage{pix/missverstaendnisse.jpg}{0.5\textwidth}{2}}
-
-% Custom footer with frame numbers only
-\setbeamertemplate{footline}{
-    \leavevmode%
-    \hbox{%
-        \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
-        \end{beamercolorbox}%
-    }
-    \vskip0pt%
-}
-
-% Counter for misconceptions
-\newcounter{mvnum}
-\setcounter{mvnum}{0}
 % Include auto-generated count of misconceptions
 \input{misconception-count.tex}
-
-% Remove all margins from beamer frames
-\setbeamersize{text margin left=0pt,text margin right=0pt}
-
-% Custom frames with logo on the right - no top margin
-\setbeamertemplate{frametitle}{
-    \nointerlineskip%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1ex,leftskip=0pt,rightskip=0pt]{frametitle}
-        \hbox to \paperwidth{%
-            \begin{beamercolorbox}[wd=0.75\paperwidth,left]{frametitle}%
-                \hspace*{3pt}\usebeamerfont{frametitle}\insertframetitle%
-            \end{beamercolorbox}%
-            \begin{beamercolorbox}[wd=0.25\paperwidth,right]{frametitle}%
-                \hfill\raisebox{-1ex}{\includegraphics[height=3.8ex,keepaspectratio]{logo-bitcoin-entdecken.pdf}}\hspace*{1pt}%
-            \end{beamercolorbox}%
-        }
-    \end{beamercolorbox}
-}
-
-
-% Macro for rounded corner images with aspect ratio support
-\newcommand{\roundedimage}[3]{%
-    % #1: image path
-    % #2: width (e.g., 0.4\textwidth)
-    % #3: aspect ratio (2 for 2:1, 1 for 1:1)
-    \begin{tikzpicture}
-        \ifnum#3=2
-            % 2:1 aspect ratio with extra height to avoid clipping heads (width:height ratio ~1.8:1)
-            \clip[rounded corners=5pt] (0,0) rectangle (#2,0.56*#2);
-        \else
-            % 1:1 aspect ratio (default)
-            \clip[rounded corners=5pt] (0,0) rectangle (#2,#2);
-        \fi
-        \node[anchor=south west, inner sep=0pt] at (0,0) {\includegraphics[width=#2,keepaspectratio]{#1}};
-    \end{tikzpicture}
-}
-
-% Macro for misconception slides with consistent layout
-\newcommand{\misconceptionslide}[5][]{%
-    % #1: Optional image path (if provided, image shows on first slide where facts appear later)
-    % #2: Frame title (e.g., "Umweltauswirkungen")
-    % #3: Misconception text (in quotes)
-    % #4: Facts list items
-    % #5: Fazit text
-    \stepcounter{mvnum}
-    \subsection{\arabic{mvnum}. #2}
-    \begin{frame}<1-2>{M\arabic{mvnum}: #2}
-        \begin{columns}[T]
-            \begin{column}[T]{0.49\textwidth}
-                \begin{block}{Das Missverständnis}
-                    \vspace{0.6em}
-		    \textit{\textbf{``#3''}}
-                    \vspace{0.6em}
-                \end{block}
-            \end{column}
-            \hspace{0.01\textwidth}
-            \begin{column}[T]{0.49\textwidth}
-                % Optional image only visible on first slide (where facts will appear later)
-                \ifx\relax#1\relax
-                    % No image provided
-                \else
-                    \only<1>{
-                        \vspace{1em}
-                        \centering
-                        \roundedimage{#1}{0.9\textwidth}{1}
-                        \vspace{1em}
-                    }
-                \fi
-                \onslide<2->{
-                    \begin{block}{Die Fakten}
-                        \vspace{0.3em}
-                        \begin{itemize}
-                            \setlength{\itemsep}{0.3em}
-                            #4
-                        \end{itemize}
-                        \vspace{0.3em}
-                    \end{block}
-                }
-            \end{column}
-        \end{columns}
-        
-        \vfill
-        
-        \onslide<2->{
-	    \begin{alertblock}{\textcolor{white}{\textbf{Fazit:}}}
-		    #5
-	    \end{alertblock}
-            %\hspace{0.5em}\begin{minipage}[t]{\dimexpr\textwidth-1em\relax}
-            %    \textcolor{bitcoinorange}{} #5
-            %\end{minipage}
-        }
-    \end{frame}
-}
 
 \begin{document}
 
