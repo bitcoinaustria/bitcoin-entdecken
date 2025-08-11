@@ -47,5 +47,21 @@ else
 fi
 
 echo "Creating release: missverstaendnisse-$new_version (from $latest)"
-git tag "missverstaendnisse-$new_version" && git push origin "missverstaendnisse-$new_version"
+
+# Create the tag
+if git tag "missverstaendnisse-$new_version"; then
+  echo "✓ Tag created successfully: missverstaendnisse-$new_version"
+else
+  echo "✗ Failed to create tag"
+  exit 1
+fi
+
+# Push the tag
+if git push origin "missverstaendnisse-$new_version"; then
+  echo "✓ Tag pushed successfully to origin"
+  echo "🚀 GitHub Actions should now build PDF and create release"
+else
+  echo "✗ Failed to push tag"
+  exit 1
+fi
 '
