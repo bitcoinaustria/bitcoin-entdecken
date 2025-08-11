@@ -4,7 +4,12 @@ This file provides guidance to Claude Code when working with this LaTeX Beamer p
 
 ## Project Overview
 
-Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse") - a factual, evidence-based presentation addressing common Bitcoin misunderstandings.
+This directory contains LaTeX Beamer presentations about Bitcoin topics. Currently contains:
+- `2025-missverstaendnisse/` - Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse")
+
+**Important**: When working with a specific LaTeX presentation, always `cd` into the presentation subdirectory first, or use `make -C <directory>` to call the appropriate make targets from the root level.
+
+**License**: All content is licensed under [MIT-Lizenz](https://opensource.org/licenses/MIT).
 
 ## Git Guidelines
 
@@ -34,13 +39,22 @@ Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse") - 
 
 ## Project Structure
 
-### Main Files
+### Root Level Structure
+- `styles/` - Shared LaTeX style packages and documentation
+  - `bitcoin-entdecken.sty` - Bitcoin Entdecken Beamer style package  
+  - `BITCOIN-ENTDECKEN-STYLE.md` - Style package documentation
+- `generate-images/` - Shared AI image generation tools
+- `2025-missverstaendnisse/` - Bitcoin misconceptions presentation
+- `.claude/` - Claude Code configuration and slash commands
+- `.github/workflows/` - GitHub Actions for automated PDF builds and releases
+
+### Per-Presentation Files (e.g., 2025-missverstaendnisse/)
 - `2025-missverstaendnisse.tex` - Main presentation source
 - `makefile` - Build automation with format/build/screenshot targets (requires inkscape, pdfcrop)
 - `logo-bitcoin-entdecken.svg/pdf` - Auto-processed logo
 - `misconception-count.tex` - Auto-generated counter (11 misconceptions)
 - `count-misconceptions.sh` - Dynamic counter script
-- `.github/workflows/` - GitHub Actions for automated PDF builds and releases
+- `pix/` - Presentation-specific images
 
 ### Content Guidelines
 - Use `\misconceptionslide` macro for consistency

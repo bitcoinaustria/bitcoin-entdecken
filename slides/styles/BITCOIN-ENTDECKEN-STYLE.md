@@ -200,7 +200,7 @@ If migrating from a presentation with embedded customizations:
 
 ## License
 
-Creative Commons Attribution-ShareAlike 4.0 International
+[MIT-Lizenz](https://opensource.org/licenses/MIT)
 
 ## Support
 
