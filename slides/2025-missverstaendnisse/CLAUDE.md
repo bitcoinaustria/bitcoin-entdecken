@@ -151,28 +151,93 @@ Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse") - 
 - microtype warnings are normal and don't affect output quality
 ## AI Image Generation
 
-### Generate Images with Replicate API
+### Multi-Provider Support
+The script now supports both **Replicate.com** and **fal.ai** APIs with Google's Imagen4 model.
+
 ```bash
 uv --directory generate-images run generate_image.py [options] "prompt"
 ```
 
-**Examples:**
+**API Keys Required:**
+- `REPLICATE_API` for Replicate models
+- `FAL_AI` for fal.ai models
+
+### Basic Examples
 ```bash
-# Basic image generation (automatically adds "aspect ratio: 1:1")
+# Basic generation with Replicate (flux-krea-dev default)
 uv --directory generate-images run generate_image.py "cybercriminal with bitcoin symbols"
 
-# Replace specific slide image (M8 = Kriminalität)  
-uv --directory generate-images run generate_image.py -r M8 -n kriminalitaet-neu "two shady people in dark alley with smartphones"
+# Generate with Google Imagen4 via fal.ai
+uv --directory generate-images run generate_image.py -m imagen4 "bitcoin logo in cyberpunk style"
 
-# Generate with custom aspect ratio (default is 1:1 for presentation)
-uv --directory generate-images run generate_image.py --aspect-ratio "16:9" "landscape bitcoin scene"
+# Force specific provider
+uv --directory generate-images run generate_image.py -p fal -m imagen4 "crypto hacker scene"
 
-# List available models
+# List all available models from both providers
 uv --directory generate-images run generate_image.py --list-models
+```
+
+### Advanced Features
+```bash
+# Replace specific slide image (M8 = Kriminalität) with Imagen4
+uv --directory generate-images run generate_image.py -m imagen4 -r M8 -n kriminalitaet-neu "cybercriminal silhouette"
+
+# Multiple images with fal.ai (generates 1-4 images)
+uv --directory generate-images run generate_image.py -m imagen4 --num-images 3 "bitcoin mining facility"
+
+# Use negative prompts (fal.ai only)
+uv --directory generate-images run generate_image.py -m imagen4 --negative-prompt "ugly, blurry" "clean bitcoin symbol"
+
+# Reproducible generation with seed
+uv --directory generate-images run generate_image.py -m imagen4 --seed 42 "bitcoin conference crowd"
 
 # Image editing with flux-kontext-pro (with auto-replace)
 uv --directory generate-images run generate_image.py -m flux-kontext-pro -i pix/existing.jpg -r M8 -y "make more abstract"
 ```
 
-**Available Models:** flux-krea-dev (default), flux-kontext-pro, flux-pro, flux-dev, sdxl
-**Requirements:** REPLICATE_API environment variable must be set
+### Available Models
+
+**Replicate Models:**
+- flux-krea-dev (default)
+- flux-kontext-pro (requires input image)
+- flux-pro, flux-dev, sdxl
+
+**fal.ai Models:**
+- imagen4 (Google's Imagen4)
+- imagen4-turbo (faster variant)
+
+**Provider Auto-Detection:** Use `-p auto` (default) to automatically select the right provider based on the model chosen.
+
+### Metadata Tracking
+
+Every generated image is automatically accompanied by a JSON metadata file with the same basename:
+
+```
+generated-20250111_153000.jpg       # The generated image
+generated-20250111_153000.json      # Metadata with generation parameters
+```
+
+**Metadata includes:**
+- Original prompt and generation timestamp
+- Provider and model used
+- All generation parameters (aspect ratio, seed, negative prompt, etc.)
+- Slide replacement information (if applicable)
+- Input image path (for editing workflows)
+
+**Example metadata:**
+```json
+{
+  "prompt": "cybercriminal with bitcoin symbols",
+  "time": "2025-01-11T15:30:00.123456",
+  "provider": "fal",
+  "model": "imagen4",
+  "aspect_ratio": "1:1",
+  "negative_prompt": "ugly, blurry",
+  "seed": 42,
+  "slide_replacement": {
+    "slide": "M8",
+    "description": "Kriminalität",
+    "original_image": "pix/kriminalitaet.jpg"
+  }
+}
+```
