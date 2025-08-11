@@ -1,18 +1,18 @@
 #!/bin/bash
 
 # Script to take a screenshot of a specific PDF page
-# Usage: ./screenshot-page.sh <page_number> [output_name]
+# Usage: ./screenshot-page.sh <pdf_file> <page_number> [output_name]
 
-if [ $# -lt 1 ]; then
-    echo "Usage: $0 <page_number> [output_name]"
-    echo "Example: $0 4 environment_slide"
-    echo "         $0 6 volatility_slide"
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <pdf_file> <page_number> [output_name]"
+    echo "Example: $0 2025-missverstaendnisse/2025-missverstaendnisse.pdf 4 environment_slide"
+    echo "         $0 2025-missverstaendnisse/2025-missverstaendnisse.pdf 6 volatility_slide"
     exit 1
 fi
 
-PAGE_NUMBER=$1
-OUTPUT_NAME=${2:-page_${PAGE_NUMBER}}
-PDF_FILE="2025-missverstaendnisse.pdf"
+PDF_FILE=$1
+PAGE_NUMBER=$2
+OUTPUT_NAME=${3:-page_${PAGE_NUMBER}}
 OUTPUT_FILE="screenshots/${OUTPUT_NAME}.png"
 
 # Create screenshots directory if it doesn't exist

@@ -36,6 +36,7 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 - `make watch` - Continuous compilation with file watching
 - `make screenshot-samples` - Debug screenshots for key pages
 - `make screenshot-page PAGE=X NAME=desc` - Screenshot specific page
+- `./screenshot-page.sh <pdf> <page> [name]` - Direct script usage
 
 ## Project Structure
 
@@ -47,6 +48,7 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 - `2025-missverstaendnisse/` - Bitcoin misconceptions presentation
 - `.claude/` - Claude Code configuration and slash commands
 - `.github/workflows/` - GitHub Actions for automated PDF builds and releases
+- `screenshot-page.sh` - Shared screenshot utility for PDF pages
 
 ### Per-Presentation Files (e.g., 2025-missverstaendnisse/)
 - `2025-missverstaendnisse.tex` - Main presentation source
@@ -55,6 +57,8 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 - `misconception-count.tex` - Auto-generated counter (11 misconceptions)
 - `count-misconceptions.sh` - Dynamic counter script
 - `pix/` - Presentation-specific images
+
+**Naming Convention**: All main presentation files must have the same name as their directory (e.g., `2025-missverstaendnisse/2025-missverstaendnisse.tex`). This standardizes commands and processing across presentations.
 
 ### Content Guidelines
 - Use `\misconceptionslide` macro for consistency
@@ -156,7 +160,7 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 
 ### Screenshots
 - `make screenshot-samples` generates: title, index, M1 misconception/facts, summary, sources
-- Manual: `./screenshot-page.sh <page> [name]`
+- Manual: `./screenshot-page.sh <pdf_file> <page> [name]`
 - Output: 150 DPI PNG files in `screenshots/` directory
 
 ### Build Verification

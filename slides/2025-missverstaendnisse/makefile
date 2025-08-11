@@ -60,31 +60,31 @@ view: build
 	fi
 
 # Take screenshots of specific slides for style debugging
-screenshots/%.png: 2025-missverstaendnisse.pdf screenshot-page.sh
+screenshots/%.png: 2025-missverstaendnisse.pdf ../screenshot-page.sh
 	@echo "Taking screenshot of slide..."
-	./screenshot-page.sh $(word 2,$(subst _, ,$*)) $(word 1,$(subst _, ,$*))
+	../screenshot-page.sh 2025-missverstaendnisse.pdf $(word 2,$(subst _, ,$*)) $(word 1,$(subst _, ,$*))
 
 # Take sample screenshots for style verification
-screenshot-samples: build screenshot-page.sh
+screenshot-samples: build ../screenshot-page.sh
 	@echo "Taking sample screenshots for style verification..."
 	@mkdir -p screenshots
 	@TOTAL_PAGES=$$(pdftk "2025-missverstaendnisse.pdf" dump_data | grep NumberOfPages | cut -d' ' -f2 2>/dev/null || echo "27"); \
 	echo "Total pages: $$TOTAL_PAGES"; \
-	./screenshot-page.sh 1 title; \
-	./screenshot-page.sh 2 index; \
-	./screenshot-page.sh 5 M1_misconception; \
-	./screenshot-page.sh 6 M1_facts; \
-	./screenshot-page.sh $$(($$TOTAL_PAGES - 1)) summary; \
-	./screenshot-page.sh $$TOTAL_PAGES sources
+	../screenshot-page.sh 2025-missverstaendnisse.pdf 1 title; \
+	../screenshot-page.sh 2025-missverstaendnisse.pdf 2 index; \
+	../screenshot-page.sh 2025-missverstaendnisse.pdf 5 M1_misconception; \
+	../screenshot-page.sh 2025-missverstaendnisse.pdf 6 M1_facts; \
+	../screenshot-page.sh 2025-missverstaendnisse.pdf $$(($$TOTAL_PAGES - 1)) summary; \
+	../screenshot-page.sh 2025-missverstaendnisse.pdf $$TOTAL_PAGES sources
 	@echo "Sample screenshots saved in screenshots/ directory"
 	@echo "Use 'make screenshot-page PAGE=X NAME=name' for specific pages"
 
 # Screenshot a specific page
-screenshot-page: build screenshot-page.sh
+screenshot-page: build ../screenshot-page.sh
 	@if [ -z "$(PAGE)" ]; then \
 		echo "Error: Please specify PAGE number. Example: make screenshot-page PAGE=4 NAME=environment"; \
 	else \
-		./screenshot-page.sh $(PAGE) $(if $(NAME),$(NAME),page_$(PAGE)); \
+		../screenshot-page.sh 2025-missverstaendnisse.pdf $(PAGE) $(if $(NAME),$(NAME),page_$(PAGE)); \
 	fi
 
 # Format LaTeX source file
