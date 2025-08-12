@@ -48,7 +48,7 @@ jobs:
         files: slides/2025-missverstaendnisse/2025-missverstaendnisse.pdf
         name: Bitcoin Missverständnisse ${{ github.ref_name }}
         body: |
-          PDF-Präsentation: Die 11 häufigsten Bitcoin-Missverständnisse
+          PDF-Präsentation: Die häufigsten Bitcoin-Missverständnisse
           
           Automatisch generiert aus dem LaTeX-Quellcode.
         draft: false
