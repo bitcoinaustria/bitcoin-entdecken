@@ -49,11 +49,11 @@ jobs:
           xvfb
     
     - name: Build PDF
-      working-directory: slides/2025-missverstaendnisse
+      working-directory: slides/
       run: |
         export DISPLAY=:99
         Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-        make build
+        make build PRESENTATION=2025-missverstaendnisse
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
