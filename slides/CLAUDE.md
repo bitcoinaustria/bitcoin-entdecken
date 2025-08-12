@@ -23,20 +23,39 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 - **Releases**: Automatically created when pushing tags with pattern `missverstaendnisse-*`
 - **PDF**: No longer stored in git - built automatically by GitHub Actions
 
-### Local Development Workflow
-1. **Format**: `make format` - Format LaTeX source with latexindent
-2. **Build**: `make build` - Compile PDF with microtype enhancement
-3. **View**: `make view` - Open PDF viewer
+### Local Development Workflow (Root Level)
+**IMPORTANT**: The makefile is now at the **root level** and works for all presentations using fuzzy matching.
 
-**WORKFLOW**: After editing tex files, always run `make format` then `make build`
+1. **Format**: `make format PRESENTATION=keyword` - Format LaTeX source with latexindent
+2. **Build**: `make build PRESENTATION=keyword` - Compile PDF with microtype enhancement  
+3. **View**: `make view PRESENTATION=keyword` - Open PDF viewer
 
-### Additional Commands
-- `make clean` - Clean auxiliary files, keep PDF
-- `make clean-all` - Clean everything including PDF
-- `make watch` - Continuous compilation with file watching
-- `make screenshot-samples` - Debug screenshots for key pages
-- `make screenshot-page PAGE=X NAME=desc` - Screenshot specific page
-- `./screenshot-page.sh <pdf> <page> [name]` - Direct script usage
+**WORKFLOW**: After editing tex files, always run `make format PRESENTATION=keyword` then `make build PRESENTATION=keyword`
+
+### Universal Commands (from root directory)
+All commands now support `PRESENTATION=keyword` parameter for fuzzy matching:
+
+- `make [PRESENTATION=key]` - Build presentation (default: miss)
+- `make build [PRESENTATION=key]` - Build presentation PDF (quiet)
+- `make build-verbose [PRESENTATION=key]` - Build with full LaTeX output for debugging
+- `make format [PRESENTATION=key]` - Format LaTeX source with latexindent
+- `make clean [PRESENTATION=key]` - Clean auxiliary files, keep PDF
+- `make clean-all [PRESENTATION=key]` - Clean everything including PDF
+- `make view [PRESENTATION=key]` - Build and view presentation
+- `make watch [PRESENTATION=key]` - Continuous compilation (verbose)
+- `make watch-quiet [PRESENTATION=key]` - Continuous compilation (quiet)
+- `make screenshot-samples [PRESENTATION=key]` - Sample screenshots for debugging
+- `make screenshot-page PAGE=X NAME=desc [PRESENTATION=key]` - Screenshot specific page
+- `make help` - Show all available presentations and commands
+
+**Examples:**
+- `make PRESENTATION=miss` (builds 2025-missverstaendnisse)
+- `make build PRESENTATION=2025` (same result with different keyword)
+- `make screenshot-page PAGE=4 NAME=environment PRESENTATION=miss`
+
+**Build Output**: By default, `make build` runs in quiet mode with minimal output. If compilation fails or you need to debug LaTeX errors, use `make build-verbose` to see the full LaTeX compilation log.
+
+**Migration**: The individual presentation makefiles are no longer needed - everything works from the root level with universal fuzzy matching.
 
 ## Project Structure
 
@@ -49,14 +68,16 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 - `.claude/` - Claude Code configuration and slash commands
 - `.github/workflows/` - GitHub Actions for automated PDF builds and releases
 - `screenshot-page.sh` - Shared screenshot utility for PDF pages
+- `makefile` - Universal makefile for all presentations (supports fuzzy matching)
 
 ### Per-Presentation Files (e.g., 2025-missverstaendnisse/)
 - `2025-missverstaendnisse.tex` - Main presentation source
-- `makefile` - Build automation with format/build/screenshot targets (requires inkscape, pdfcrop)
 - `logo-bitcoin-entdecken.svg/pdf` - Auto-processed logo
 - `misconception-count.tex` - Auto-generated counter (11 misconceptions)
-- `count-misconceptions.sh` - Dynamic counter script
+- `count-misconceptions.sh` - Optional dynamic counter script
 - `pix/` - Presentation-specific images
+
+**Note**: Individual makefiles are no longer needed - all build commands work from root level.
 
 **Naming Convention**: All main presentation files must have the same name as their directory (e.g., `2025-missverstaendnisse/2025-missverstaendnisse.tex`). This standardizes commands and processing across presentations.
 

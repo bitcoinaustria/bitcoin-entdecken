@@ -137,7 +137,7 @@ The style package automatically loads these packages:
 - `microtype` (Typography enhancement)
 
 ### Logo File
-Ensure you have `logo-bitcoin-entdecken.pdf` in your document directory for automatic logo placement.
+Ensure you have `logo-bitcoin-entdecken.pdf` in the root slides directory for automatic logo placement.
 
 ### Theme Compatibility
 - **Required**: Metropolis Beamer theme must be loaded before the style package
@@ -159,14 +159,16 @@ The package removes default Beamer margins and provides:
 ## File Structure Example
 
 ```
-your-project/
-├── your-presentation.tex
-├── bitcoin-entdecken.sty
-├── logo-bitcoin-entdecken.pdf
-└── pix/
-    ├── image1.jpg
-    ├── image2.jpg
-    └── title-image.jpg
+slides/                              # Root directory
+├── logo-bitcoin-entdecken.pdf       # Shared logo (auto-generated)
+├── styles/
+│   └── bitcoin-entdecken.sty        # Style package
+└── your-presentation/
+    ├── your-presentation.tex         # Main LaTeX file
+    └── pix/
+        ├── image1.jpg
+        ├── image2.jpg
+        └── title-image.jpg
 ```
 
 ## Migration from Standalone Implementation
