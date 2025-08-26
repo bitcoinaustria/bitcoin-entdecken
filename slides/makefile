@@ -50,7 +50,8 @@ $(PRES_DIR)/generated-count.tex: $(TEX_FILE)
 # Build the presentation PDF
 build: logo-bitcoin-entdecken.pdf $(PRES_DIR)/generated-count.tex
 	@echo "Building $(PRES_NAME) presentation..."
-	@cd $(PRES_DIR) && latexmk -xelatex -f -interaction=batchmode -silent -pdf $(PRES_NAME).tex > /dev/null 2>&1 || (echo "Build failed. Run 'make build-verbose PRESENTATION=$(PRESENTATION)' for details." && exit 1)
+	@cd $(PRES_DIR) && latexmk -xelatex -f -interaction=nonstopmode -silent -pdf $(PRES_NAME).tex || true
+	@test -f $(PDF_FILE) || (echo "Build failed. PDF file not created. Run 'make build-verbose PRESENTATION=$(PRESENTATION)' for details." && exit 1)
 	@echo "Build complete: $(PDF_FILE)"
 
 # Build with full output for debugging
