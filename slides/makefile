@@ -10,7 +10,7 @@
 
 # Default presentation (if not specified)
 ifndef PRESENTATION
-    PRESENTATION := miss
+    PRESENTATION := erste
 endif
 
 # Find presentation directory using fuzzy matching

@@ -280,3 +280,4 @@ generated-20250111_153000.json      # Metadata with generation parameters
   }
 }
 ```
+- Alle *.tex Quelldateien sollen in UTF-8 kodiert sein

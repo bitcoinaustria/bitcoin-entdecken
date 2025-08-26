@@ -3,6 +3,13 @@
     "allow": [
       "Bash(./count-misconceptions.sh:*)",
       "Bash(./screenshot-page.sh:*)",
+      "Bash(git tag:*)",
+      "Bash(uv add:*)",
+      "Bash(python:*)",
+      "Bash(uv:*)",
+      "WebFetch(domain:fal.ai)",
+      "Bash(pdftk:*)",
+      "Bash(convert:*)",
       "Bash(apt list:*)",
       "Bash(chmod:*)",
       "Bash(dpkg:*)",

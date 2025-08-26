@@ -1,0 +1,219 @@
+\documentclass[aspectratio=169,t,9pt]{beamer}
+% License: MIT-Lizenz (https://opensource.org/licenses/MIT)
+% Author: Bitcoin Entdecken / Bitcoin Austria
+
+% Metropolis theme - Modern, minimalist Beamer theme
+\usetheme[progressbar=foot]{metropolis}
+
+% Bitcoin Entdecken style package
+\usepackage{../styles/bitcoin-entdecken}
+
+% Title information using Bitcoin Entdecken style helpers
+\bitcointitle{Bitcoin}{Einfach erklärt}
+\bitcointitlegraphic{pix/title.jpg}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}{Übersicht}
+	\begin{itemize}
+		\item Open Source
+		\item Technische Geschichte
+		\item Gewaltenteilung
+		\item Was macht ein User
+		      \begin{itemize}
+			      \item Public-Key Cryptography (Adressen)
+			      \item Generiert Adressen, verschickt Geld
+		      \end{itemize}
+		\item Was macht ein Node
+		      \begin{itemize}
+			      \item Validating, Messaging, Consensus
+		      \end{itemize}
+		\item Was macht ein Miner
+		      \begin{itemize}
+			      \item Generiert Bitcoin, Brute Forcing, Tic-Toc
+		      \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Open Source}
+
+\begin{frame}{Open Source}
+	Bei den meisten Programmen ist der Code nicht einsehbar
+
+	\vspace{1em}
+	Man vertraut dem Entwickler, dass der Code tut was man denkt.
+
+	\vspace{1em}
+	Open Source bedeutet der Code ist verfügbar und das Programm kann auch von jedem wiederholt „berechnet" aka kompiliert werden.
+
+	\vspace{1em}
+	Bitcoin ist eine Open Source Technologie, die „Closed Source" kein Vertrauen genießen und somit nicht funktionieren würde.
+
+	\vspace{2em}
+	\begin{alertblock}{\textcolor{white}{Vertrauen ist gut, Kontrolle ist besser}}
+		\vspace{3pt}
+
+		\vspace{3pt}
+	\end{alertblock}
+\end{frame}
+
+\section{Gewaltenteilung}
+
+\begin{frame}{Gewaltenteilung}
+	\begin{columns}[T]
+		\begin{column}{0.45\textwidth}
+			\centering
+			\textbf{Staatsgewalt}
+			\vspace{1em}
+
+			\begin{tikzpicture}[scale=0.8]
+				% Legislative circle
+				\node[circle, fill=gray!70, text=white, minimum size=1.5cm, font=\scriptsize, text width=1.2cm, align=center] (leg) at (0,2.5) {Legislative\\Gesetzgebung};
+
+				% Judikative circle
+				\node[circle, fill=gray!70, text=white, minimum size=1.5cm, font=\scriptsize, text width=1.2cm, align=center] (jud) at (2.8,0) {Judikative\\Rechtsprechung};
+
+				% Exekutive circle
+				\node[circle, fill=gray!70, text=white, minimum size=1.5cm, font=\scriptsize, text width=1.2cm, align=center] (exe) at (-2.8,0) {Exekutive\\vollzieh. Gewalt\\Regierung\\Verwaltung};
+
+				% Arrows showing separation
+				\draw[<->, gray, thick] (leg) -- (jud);
+				\draw[<->, gray, thick] (jud) -- (exe);
+				\draw[<->, gray, thick] (exe) -- (leg);
+			\end{tikzpicture}
+
+			\vspace{0.5em}
+			\textcolor{gray}{\textbf{Staatsgewalt}}
+		\end{column}
+
+		\begin{column}{0.45\textwidth}
+			\centering
+			\textbf{Bitcoin}
+			\vspace{1em}
+
+			\begin{tikzpicture}[scale=0.8]
+				% User circle
+				\node[circle, draw=black, minimum size=1.5cm, font=\small] (user) at (0,2.5) {User};
+
+				% Nodes circle
+				\node[circle, draw=black, minimum size=1.5cm, font=\small] (nodes) at (2.8,0) {Nodes};
+
+				% Miner circle
+				\node[circle, draw=black, minimum size=1.5cm, font=\small] (miner) at (-2.8,0) {Miner};
+
+				% Arrows showing interaction
+				\draw[<->, black, thick] (user) -- (nodes);
+				\draw[<->, black, thick] (nodes) -- (miner);
+				\draw[<->, black, thick] (miner) -- (user);
+			\end{tikzpicture}
+		\end{column}
+	\end{columns}
+
+	\vspace{1em}
+	\textbf{Dient demselben Zweck}
+\end{frame}
+
+\section{User}
+
+\begin{frame}{User}
+	\begin{columns}[T]
+		\begin{column}{0.15\textwidth}
+			\begin{tikzpicture}
+				\node[circle, fill=bitcoinorange, text=white, minimum size=1.5cm, font=\huge] at (0,0) {₿};
+				\node[below=0.3cm] at (0,-0.75) {\small User};
+			\end{tikzpicture}
+		\end{column}
+
+		\begin{column}{0.8\textwidth}
+			Verwendet Computer Code und erstellt einen zufälligen Privaten Schlüssel.\\
+			Am Computer selbst nicht online.
+
+			\vspace{1em}
+			Berechnet daraus den zugehörigen Öffentlichen Schlüssel.
+
+			\vspace{1em}
+			Mit dem Privaten Schlüssel kann ich beweisen das mir der öffentliche Schlüssel gehört.
+
+			\vspace{1em}
+			Der User teilt jemandem den öffentlichen Schlüssel seiner Adresse mit und schickt an diese Adresse Bitcoin.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Node}
+
+\begin{frame}{Node}
+	\begin{itemize}
+		\item \textbf{Validating} - Überprüft alle Transaktionen und Blöcke
+		\item \textbf{Messaging} - Kommuniziert mit anderen Nodes
+		\item \textbf{Consensus} - Einigt sich mit anderen Nodes über gültige Regeln
+	\end{itemize}
+\end{frame}
+
+\section{Miner}
+
+\begin{frame}{Miner}
+	\begin{itemize}
+		\item \textbf{Generiert Bitcoin} - Erstellt neue Bitcoin durch Mining
+		\item \textbf{Brute Forcing} - Sucht durch Ausprobieren nach gültigen Hashes
+		\item \textbf{Tic-Toc} - Sorgt für regelmäßige Blockzeiten (~10 Minuten)
+	\end{itemize}
+\end{frame}
+
+\section{Bitcoin Blöcke}
+
+\begin{frame}{Bitcoin Blöcke}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth,height=0.7\textheight,keepaspectratio]{pix/blockchain.jpg}
+	\end{center}
+\end{frame}
+
+\section{Bitcoin Updates}
+
+\begin{frame}{Bitcoin „Updates"}
+	Werden nur dann adaptiert wenn fast alle Teilnehmer dafür sind
+
+	\vspace{2em}
+
+	\textbf{User} (sonst verlieren diese Vertrauen und verkaufen ihre Bitcoin)
+
+	\vspace{1em}
+
+	\textbf{Nodes} (sonst updaten diese nicht zu den neuen Regeln)
+
+	\vspace{1em}
+
+	\textbf{Miner} (sonst machen diese keinen Profit)
+
+	\vspace{2em}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=south east] at ([xshift=-1cm,yshift=1cm]current page.south east) {
+			\includegraphics[width=3cm]{pix/update.jpg}
+		};
+	\end{tikzpicture}
+\end{frame}
+
+\section{Zusammenfassung}
+
+\begin{frame}{Zu wenige Fragen und noch Zeit?}
+	\begin{itemize}
+		\item Schauen wir uns einmal einen Block an
+
+		      \vspace{2em}
+
+		\item Wie funktioniert die Ausgabe neuer Bitcoin
+
+		      \vspace{2em}
+
+		\item Wie sieht eine Transaktion im Detail aus
+	\end{itemize}
+\end{frame}
+
+\end{document}

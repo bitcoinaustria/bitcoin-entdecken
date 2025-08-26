@@ -2,11 +2,6 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Bash(git tag:*)",
-      "Bash(uv add:*)",
-      "Bash(python:*)",
-      "Bash(uv:*)",
-      "WebFetch(domain:fal.ai)"
     ],
     "deny": []
   }
