@@ -4,62 +4,114 @@ description: Create and push a new release tag (triggers GitHub Actions)
 
 Create a new release tag and push it to trigger GitHub Actions automated PDF build and release creation.
 
-Usage: `/release major` or `/release minor`
-- `major`: Increment major version (e.g., v1.2 → v2.0)
-- `minor`: Increment minor version (e.g., v1.2 → v1.3)
+Usage: `/release <presentation> <type>`
+- `<presentation>`: Presentation keyword (e.g., `miss`, `erste`, `2025`)
+- `<type>`: `major` or `minor`
+
+Examples:
+- `/release erste minor` - Create minor release for erste-schritte
+- `/release miss major` - Create major release for missverstaendnisse
 
 Note: We use simple [major].[minor] versioning only (no patch numbers) to keep it clean.
 
 The command will:
-1. Find the latest tag matching `missverstaendnisse-v*`
-2. Parse the version and increment appropriately
-3. Create and push the new tag
-4. GitHub Actions builds PDF and creates release automatically
+1. Find the presentation directory using fuzzy matching
+2. Find the latest tag matching `<presentation>-v*`
+3. Parse the version and increment appropriately
+4. Create and push the new tag
+5. GitHub Actions builds PDF and creates release automatically
 
 !bash -c '
-# Debug: show what ARGUMENTS contains
+# Parse arguments: presentation and type
 echo "ARGUMENTS received: [${ARGUMENTS}]"
+ARG1=$(echo "${ARGUMENTS}" | cut -d" " -f1 | xargs)
+ARG2=$(echo "${ARGUMENTS}" | cut -d" " -f2 | xargs)
 
-# Clean up ARGUMENTS (trim whitespace and handle empty)
-ARG=$(echo "${ARGUMENTS}" | xargs)
-if [ -z "$ARG" ]; then
-  ARG="minor"
+# Validate arguments
+if [ -z "$ARG1" ] || [ -z "$ARG2" ]; then
+  echo "Usage: /release <presentation> <type>"
+  echo "Examples: /release erste minor, /release miss major"
+  exit 1
 fi
 
-echo "Using argument: $ARG"
+PRESENTATION_KEY="$ARG1"
+RELEASE_TYPE="$ARG2"
 
-latest=$(git tag -l "missverstaendnisse-v*" | sort -V | tail -1 | sed "s/missverstaendnisse-v//")
-echo "Latest version: $latest"
+echo "Presentation: $PRESENTATION_KEY, Type: $RELEASE_TYPE"
 
+# Find presentation directory using fuzzy matching
+PRESENTATION_DIR=""
+for dir in */; do
+  if echo "$dir" | grep -i "$PRESENTATION_KEY" > /dev/null; then
+    PRESENTATION_DIR=$(basename "$dir")
+    break
+  fi
+done
+
+if [ -z "$PRESENTATION_DIR" ]; then
+  echo "✗ No presentation found matching: $PRESENTATION_KEY"
+  echo "Available presentations:"
+  ls -d */ | sed "s|/||"
+  exit 1
+fi
+
+echo "Found presentation: $PRESENTATION_DIR"
+
+# Find latest tag for this presentation
+# First try to find existing tags by searching for common patterns
+POSSIBLE_PREFIXES="$PRESENTATION_DIR $(echo $PRESENTATION_DIR | sed 's/-//g') $(echo $PRESENTATION_KEY)"
+TAG_PREFIX=""
+latest=""
+
+for prefix in $POSSIBLE_PREFIXES; do
+  existing_tags=$(git tag -l "$prefix-v*" | sort -V)
+  if [ -n "$existing_tags" ]; then
+    TAG_PREFIX="$prefix"
+    latest=$(echo "$existing_tags" | tail -1 | sed "s/$prefix-v//")
+    echo "Found existing tags with prefix: $TAG_PREFIX"
+    break
+  fi
+done
+
+# If no existing tags found, use directory name as prefix
+if [ -z "$TAG_PREFIX" ]; then
+  TAG_PREFIX="$PRESENTATION_DIR"
+  echo "No existing tags found, using directory name: $TAG_PREFIX"
+fi
+
+echo "Latest version for $TAG_PREFIX: $latest"
+
+# Calculate new version
 if [ -z "$latest" ]; then
   new_version="v1.0"
 else
   major=$(echo $latest | cut -d. -f1 | sed "s/v//")
   minor=$(echo $latest | cut -d. -f2)
   
-  if [ "$ARG" = "major" ]; then
+  if [ "$RELEASE_TYPE" = "major" ]; then
     new_version="v$((major + 1)).0"
-  elif [ "$ARG" = "minor" ]; then
+  elif [ "$RELEASE_TYPE" = "minor" ]; then
     new_version="v${major}.$((minor + 1))"
   else
-    echo "Usage: /release major|minor (got: $ARG)"; exit 1
+    echo "Usage: /release <presentation> major|minor (got: $RELEASE_TYPE)"; exit 1
   fi
 fi
 
-echo "Creating release: missverstaendnisse-$new_version (from $latest)"
+NEW_TAG="$TAG_PREFIX-$new_version"
+echo "Creating release: $NEW_TAG (from $latest)"
 
 # Create the tag
-if git tag "missverstaendnisse-$new_version"; then
-  echo "✓ Tag created successfully: missverstaendnisse-$new_version"
+if git tag "$NEW_TAG"; then
+  echo "✓ Tag created successfully: $NEW_TAG"
 else
   echo "✗ Failed to create tag"
   exit 1
 fi
 
 # Push the tag
-if git push origin "missverstaendnisse-$new_version"; then
+if git push origin "$NEW_TAG"; then
   echo "✓ Tag pushed successfully to origin"
-  echo "🚀 GitHub Actions should now build PDF and create release"
+  echo "🚀 GitHub Actions should now build PDF and create release for $PRESENTATION_DIR"
 else
   echo "✗ Failed to push tag"
   exit 1
