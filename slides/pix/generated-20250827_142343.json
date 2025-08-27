@@ -1,0 +1,10 @@
+{
+  "prompt": "linear chain of bitcoin blocks, 3d glass-like transparent blocks connected in sequence, each block labeled 'BLOCK #48291' with numbers, transaction inputs outputs visible, stylized merkle tree, bitcoin orange color blocks (#F7931A), overall bitcoin orange coloring, modern infographic, no nonce",
+  "time": "2025-08-27T14:23:43.815735",
+  "provider": "fal",
+  "model": "imagen4",
+  "aspect_ratio": "16:9",
+  "output_format": "jpg",
+  "timestamp": "20250827_142343",
+  "num_images": 1
+}

@@ -25,7 +25,7 @@
 		\item Open Source
 		\item Technische Geschichte
 		\item Gewaltenteilung
-		\item Was macht ein User
+		\item Was macht ein:e Nutzer:in
 		      \begin{itemize}
 			      \item Public-Key Cryptography (Adressen)
 			      \item Generiert Adressen, verschickt Geld
@@ -47,7 +47,7 @@
 	\textbf{Closed Source} bedeutet:
 	\begin{itemize}
 		\item Bei den meisten Programmen ist der \textbf{Code nicht einsehbar}
-		\item Man \textbf{vertraut} dem Entwickler blindlings
+		\item Man \textbf{vertraut} der/dem Entwickler:in blindlings
 	\end{itemize}
 
 	\vspace{0.5em}
@@ -102,8 +102,8 @@
 			\vspace{1em}
 
 			\begin{tikzpicture}[scale=0.8]
-				% User rounded rectangle
-				\node[rectangle, rounded corners=8pt, fill=orange, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (user) at (0,3.0) {\textbf{\large User}};
+				% Nutzer:in rounded rectangle
+				\node[rectangle, rounded corners=8pt, fill=orange, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (user) at (0,3.0) {\textbf{\large Nutzer:in}};
 
 				% Nodes rounded rectangle
 				\node[rectangle, rounded corners=8pt, fill=orange, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (nodes) at (3.0,0) {\textbf{\large Nodes}};
@@ -126,51 +126,100 @@
 	\end{alertblock}
 \end{frame}
 
-\section{User}
+\section{Nutzer:in}
 
-\begin{frame}{User}
-	\begin{columns}[T]
-		\begin{column}{0.15\textwidth}
-			\begin{tikzpicture}
-				\node[circle, fill=bitcoinorange, text=white, minimum size=1.5cm, font=\huge] at (0,0) {₿};
-				\node[below=0.3cm] at (0,-0.75) {\small User};
-			\end{tikzpicture}
-		\end{column}
+\begin{frame}{Nutzer:in}
+\begin{columns}[T]
+\begin{column}{0.25\textwidth}
+	\centering
+	\roundedimage{pix/nutzer.jpg}{2.5cm}{1}
+	\vspace{0.3cm}
 
-		\begin{column}{0.8\textwidth}
-			Verwendet Computer Code und erstellt einen zufälligen Privaten Schlüssel.\\
-			Am Computer selbst nicht online.
+	{\small Mobile Wallet}
+\end{column}
 
-			\vspace{1em}
-			Berechnet daraus den zugehörigen Öffentlichen Schlüssel.
-
-			\vspace{1em}
-			Mit dem Privaten Schlüssel kann ich beweisen das mir der öffentliche Schlüssel gehört.
-
-			\vspace{1em}
-			Der User teilt jemandem den öffentlichen Schlüssel seiner Adresse mit und schickt an diese Adresse Bitcoin.
-		\end{column}
-	\end{columns}
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+	\item Verwendet \textbf{Computer Code} und erstellt einen zufälligen \textbf{Privaten Schlüssel}
+	\item Offline-Prozess: Am Computer selbst \textbf{nicht online}
+	\item Berechnet daraus den zugehörigen \textbf{Öffentlichen Schlüssel}
+	\item Mit dem Privaten Schlüssel kann bewiesen werden, dass der öffentliche Schlüssel zu einem gehört
+	\item Teilt anderen den \textbf{öffentlichen Schlüssel} (Adresse) mit
+	      \begin{itemize}
+		      \item[\tiny\textcolor{gray}{z.B.}] \scriptsize\texttt{bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh}
+	      \end{itemize}
+	\item Sendet und empfängt \textbf{Bitcoin} über diese Adressen
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 \section{Node}
 
 \begin{frame}{Node}
-	\begin{itemize}
-		\item \textbf{Validating} - Überprüft alle Transaktionen und Blöcke
-		\item \textbf{Messaging} - Kommuniziert mit anderen Nodes
-		\item \textbf{Consensus} - Einigt sich mit anderen Nodes über gültige Regeln
-	\end{itemize}
+	\begin{columns}[T]
+		\begin{column}{0.25\textwidth}
+			\centering
+			\roundedimage{pix/node.jpg}{2.5cm}{1}
+			\vspace{0.3cm}
+			
+			{\small Bitcoin Knoten}
+		\end{column}
+
+		\begin{column}{0.7\textwidth}
+			\begin{itemize}
+				\item \textbf{Validierung} - Überprüft alle Transaktionen und Blöcke nach Bitcoin-Protokoll
+				      \begin{itemize}
+					      \item Verhindert Doppelausgaben (Double Spending)
+					      \item Prüft digitale Signaturen und Guthaben
+				      \end{itemize}
+				\item \textbf{Nachrichtenaustausch} - Kommuniziert kontinuierlich mit anderen Knoten
+				      \begin{itemize}
+					      \item Empfängt und verbreitet neue Transaktionen
+					      \item Synchronisiert Blockchain mit dem Netzwerk
+				      \end{itemize}
+				\item \textbf{Konsensbildung} - Einigt sich mit anderen Knoten über gültige Regeln
+				      \begin{itemize}
+					      \item Setzt Bitcoin-Protokollregeln durch
+					      \item Bestimmt welche Blockchain-Version korrekt ist
+				      \end{itemize}
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Miner}
 
 \begin{frame}{Miner}
-	\begin{itemize}
-		\item \textbf{Generiert Bitcoin} - Erstellt neue Bitcoin durch Mining
-		\item \textbf{Brute Forcing} - Sucht durch Ausprobieren nach gültigen Hashes
-		\item \textbf{Tic-Toc} - Sorgt für regelmäßige Blockzeiten (~10 Minuten)
-	\end{itemize}
+	\begin{columns}[T]
+		\begin{column}{0.25\textwidth}
+			\centering
+			\roundedimage{pix/miner.jpg}{2.5cm}{1}
+			\vspace{0.3cm}
+			
+			{\small Mining Hardware}
+		\end{column}
+
+		\begin{column}{0.7\textwidth}
+			\begin{itemize}
+				\item \textbf{Schürft neue Bitcoin} - Generiert neue Bitcoin als Blockbelohnung
+				      \begin{itemize}
+					      \item Aktuell \textbf{3,125 BTC} pro Block (nach Halving \textbf{2024})
+					      \item Zusätzlich Transaktionsgebühren aus dem Block
+				      \end{itemize}
+				\item \textbf{Löst kryptografische Rätsel} - Berechnet Proof-of-Work Hashes
+				      \begin{itemize}
+					      \item Sucht nach gültigem Hash unter dem Target-Wert
+					      \item Erster Miner mit Lösung gewinnt den Block
+				      \end{itemize}
+				\item \textbf{Reguliert Blockzeiten} - Stabilisiert \textbf{10-Minuten}-Rhythmus
+				      \begin{itemize}
+					      \item Schwierigkeit passt sich alle \textbf{2016 Blöcke} an
+					      \item Hält Blockzeit konstant bei ca. \textbf{10 Minuten}
+				      \end{itemize}
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Bitcoin Blöcke}
@@ -184,30 +233,87 @@
 \section{Bitcoin Updates}
 
 \begin{frame}{Bitcoin Updates}
-	Werden nur dann adaptiert wenn fast alle Teilnehmer dafür sind
+	\begin{columns}[T]
+		\begin{column}{0.25\textwidth}
+			\centering
+			\roundedimage{pix/governance.jpg}{2.5cm}{1}
+			\vspace{0.3cm}
+			
+			{\small Governance}
+		\end{column}
 
-	\vspace{2em}
-
-	\textbf{User} (sonst verlieren diese Vertrauen und verkaufen ihre Bitcoin)
-
-	\vspace{1em}
-
-	\textbf{Nodes} (sonst updaten diese nicht zu den neuen Regeln)
-
-	\vspace{1em}
-
-	\textbf{Miner} (sonst machen diese keinen Profit)
-
-	\vspace{2em}
-
-	\begin{tikzpicture}[remember picture,overlay]
-		\node[anchor=south east] at ([xshift=-1cm,yshift=1cm]current page.south east) {
-			\includegraphics[width=3cm]{pix/update.jpg}
-		};
-	\end{tikzpicture}
+		\begin{column}{0.7\textwidth}
+			\textbf{Wer hat das "Sagen" im Bitcoin-Netzwerk?}
+			
+			\vspace{0.5em}
+			Werden nur dann adaptiert wenn \textbf{fast alle Teilnehmer:innen} dafür sind:
+			
+			\begin{itemize}
+				\item \textbf{Nutzer:innen} - Haben die ultimative Kontrolle
+				      \begin{itemize}
+					      \item Bei Unzufriedenheit: Vertrauen verlieren und Bitcoin verkaufen
+					      \item Bestimmen Bitcoin-Wert durch Marktakzeptanz
+				      \end{itemize}
+				\item \textbf{Nodes} - Setzen Protokollregeln durch\footnotemark
+				      \begin{itemize}
+					      \item Müssen neue Software akzeptieren und installieren
+					      \item Ohne Node-Unterstützung ist Update wertlos
+				      \end{itemize}
+				\item \textbf{Miner} - Folgen wirtschaftlichen Anreizen
+				      \begin{itemize}
+					      \item Müssen profitabel bleiben oder gehen bankrott
+					      \item Können Netzwerk nicht alleine kontrollieren
+				      \end{itemize}
+			\end{itemize}
+			
+		\end{column}
+	\end{columns}
+	
+	\footnotetext{Bier, Jonathan. \textit{The Blocksize War: The battle over who controls Bitcoin's protocol rules.} 2021.}
 \end{frame}
 
 \section{Zusammenfassung}
+
+\begin{frame}{Bitcoin: Einfach erklärt}
+	\begin{columns}[T]
+		\begin{column}{0.25\textwidth}
+			\centering
+			\roundedimage{pix/zusammenfassung-edited.png}{2.5cm}{1}
+			\vspace{0.3cm}
+			
+			{\small Bitcoin System}
+		\end{column}
+
+		\begin{column}{0.7\textwidth}
+			\begin{itemize}
+				\item \textbf{Open Source} - Vertrauen durch Kontrolle statt Glaube
+				      \begin{itemize}
+					      \item Code ist überprüfbar und transparent
+				      \end{itemize}
+				\item \textbf{Gewaltenteilung} - Drei wichtige Akteur:innen
+				      \begin{itemize}
+					      \item Nutzer:innen, Nodes und Miner balancieren sich aus
+				      \end{itemize}
+				\item \textbf{Nutzer:innen} - Erstellen Adressen, senden/empfangen Bitcoin
+				      \begin{itemize}
+					      \item Private/öffentliche Schlüssel-Kryptografie
+				      \end{itemize}
+				\item \textbf{Nodes} - Validierung, Nachrichtenaustausch, Konsensbildung
+				      \begin{itemize}
+					      \item Durchsetzung der Bitcoin-Protokollregeln
+				      \end{itemize}
+				\item \textbf{Miner} - Schürfen neue Bitcoin (\textbf{3,125 BTC}/Block)
+				      \begin{itemize}
+					      \item Stabilisieren \textbf{10-Minuten}-Blockzeit
+				      \end{itemize}
+				\item \textbf{Governance} - Dezentrale Entscheidungsfindung
+				      \begin{itemize}
+					      \item Niemand kontrolliert Bitcoin alleine
+				      \end{itemize}
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
 
 \begin{frame}{Zu wenige Fragen und noch Zeit?}
 	\begin{itemize}
