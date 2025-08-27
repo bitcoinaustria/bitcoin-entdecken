@@ -22,8 +22,11 @@
 % Table of contents
 \begin{frame}{Übersicht}
 	\begin{itemize}
+		\item Was ist Bitcoin?
+		      \begin{itemize}
+			      \item Digitales Geld, Wertetransfer, Peer-to-Peer
+		      \end{itemize}
 		\item Open Source
-		\item Technische Geschichte
 		\item Gewaltenteilung
 		\item Was macht ein:e Nutzer:in
 		      \begin{itemize}
@@ -32,13 +35,52 @@
 		      \end{itemize}
 		\item Was macht ein Node
 		      \begin{itemize}
-			      \item Validating, Messaging, Consensus
+			      \item Validierung, Nachrichtenaustausch, Konsensbildung
 		      \end{itemize}
 		\item Was macht ein Miner
 		      \begin{itemize}
-			      \item Generiert Bitcoin, Brute Forcing, Tic-Toc
+			      \item Schürft Bitcoin, Proof-of-Work, Blockzeit
 		      \end{itemize}
 	\end{itemize}
+\end{frame}
+
+\section{Was ist Bitcoin?}
+
+\begin{frame}{Was ist Bitcoin?}
+	\begin{columns}[T]
+		\begin{column}{0.25\textwidth}
+			\centering
+			\roundedimage{pix/was-ist-bitcoin.jpg}{2.5cm}{1}
+			\vspace{0.3cm}
+
+			{\small Peer-to-Peer Transfer}
+		\end{column}
+
+		\begin{column}{0.7\textwidth}
+			\begin{itemize}
+				\item \textbf{Digitales Geld} - Elektronisch und funktioniert ohne Banken
+				      \begin{itemize}
+					      \item Funktioniert komplett elektronisch über Computer
+					      \item Keine physischen Münzen oder Scheine
+				      \end{itemize}
+				\item \textbf{Wertetransfer} - Direkte Übertragung zwischen Nutzer:innen
+				      \begin{itemize}
+					      \item Person A hat weniger Bitcoin nach dem Transfer
+					      \item Person B hat mehr Bitcoin nach dem Transfer
+				      \end{itemize}
+				\item \textbf{Weltweites Netzwerk} - Keine zentrale Kontrolle
+				      \begin{itemize}
+					      \item Funktioniert ohne Regierung oder Bank
+					      \item \textbf{Keine Zensur} - niemand kann Transaktionen blockieren
+				      \end{itemize}
+				\item \textbf{Pseudonyme Konten} - Keine persönlichen Daten erforderlich
+				      \begin{itemize}
+					      \item Keine E-Mail-Adresse oder Passwort nötig
+					      \item Nur kryptographische Schlüssel (Adressen)
+				      \end{itemize}
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Open Source}
@@ -129,29 +171,29 @@
 \section{Nutzer:in}
 
 \begin{frame}{Nutzer:in}
-\begin{columns}[T]
-\begin{column}{0.25\textwidth}
-	\centering
-	\roundedimage{pix/nutzer.jpg}{2.5cm}{1}
-	\vspace{0.3cm}
+	\begin{columns}[T]
+		\begin{column}{0.25\textwidth}
+			\centering
+			\roundedimage{pix/nutzer.jpg}{2.5cm}{1}
+			\vspace{0.3cm}
 
-	{\small Mobile Wallet}
-\end{column}
+			{\small Mobile Wallet}
+		\end{column}
 
-\begin{column}{0.7\textwidth}
-\begin{itemize}
-	\item Verwendet \textbf{Computer Code} und erstellt einen zufälligen \textbf{Privaten Schlüssel}
-	\item Offline-Prozess: Am Computer selbst \textbf{nicht online}
-	\item Berechnet daraus den zugehörigen \textbf{Öffentlichen Schlüssel}
-	\item Mit dem Privaten Schlüssel kann bewiesen werden, dass der öffentliche Schlüssel zu einem gehört
-	\item Teilt anderen den \textbf{öffentlichen Schlüssel} (Adresse) mit
-	      \begin{itemize}
-		      \item[\tiny\textcolor{gray}{z.B.}] \scriptsize\texttt{bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh}
-	      \end{itemize}
-	\item Sendet und empfängt \textbf{Bitcoin} über diese Adressen
-\end{itemize}
-\end{column}
-\end{columns}
+		\begin{column}{0.7\textwidth}
+			\begin{itemize}
+				\item Verwendet \textbf{Computer Code} und erstellt einen zufälligen \textbf{Privaten Schlüssel}
+				\item Offline-Prozess: Am Computer selbst \textbf{nicht online}
+				\item Berechnet daraus den zugehörigen \textbf{Öffentlichen Schlüssel}
+				\item Mit dem Privaten Schlüssel kann bewiesen werden, dass der öffentliche Schlüssel zu einem gehört
+				\item Teilt anderen den \textbf{öffentlichen Schlüssel} (Adresse) mit
+				      \begin{itemize}
+					      \item[\tiny\textcolor{gray}{z.B.}] \scriptsize\texttt{bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh}
+				      \end{itemize}
+				\item Sendet und empfängt \textbf{Bitcoin} über diese Adressen
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Node}
@@ -162,7 +204,7 @@
 			\centering
 			\roundedimage{pix/node.jpg}{2.5cm}{1}
 			\vspace{0.3cm}
-			
+
 			{\small Bitcoin Knoten}
 		\end{column}
 
@@ -196,7 +238,7 @@
 			\centering
 			\roundedimage{pix/miner.jpg}{2.5cm}{1}
 			\vspace{0.3cm}
-			
+
 			{\small Mining Hardware}
 		\end{column}
 
@@ -238,16 +280,16 @@
 			\centering
 			\roundedimage{pix/governance.jpg}{2.5cm}{1}
 			\vspace{0.3cm}
-			
+
 			{\small Governance}
 		\end{column}
 
 		\begin{column}{0.7\textwidth}
 			\textbf{Wer hat das "Sagen" im Bitcoin-Netzwerk?}
-			
+
 			\vspace{0.5em}
-			Werden nur dann adaptiert wenn \textbf{fast alle Teilnehmer:innen} dafür sind:
-			
+			Konsens von \textbf{fast allen Teilnehmer:innen} nötig:
+
 			\begin{itemize}
 				\item \textbf{Nutzer:innen} - Haben die ultimative Kontrolle
 				      \begin{itemize}
@@ -265,10 +307,10 @@
 					      \item Können Netzwerk nicht alleine kontrollieren
 				      \end{itemize}
 			\end{itemize}
-			
+
 		\end{column}
 	\end{columns}
-	
+
 	\footnotetext{Bier, Jonathan. \textit{The Blocksize War: The battle over who controls Bitcoin's protocol rules.} 2021.}
 \end{frame}
 
@@ -280,7 +322,7 @@
 			\centering
 			\roundedimage{pix/zusammenfassung-edited.png}{2.5cm}{1}
 			\vspace{0.3cm}
-			
+
 			{\small Bitcoin System}
 		\end{column}
 
@@ -315,17 +357,31 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Zu wenige Fragen und noch Zeit?}
+\begin{frame}{Weiterführende Diskussionsfragen}
 	\begin{itemize}
-		\item Schauen wir uns einmal einen Block an
+		\item \textbf{Technische Vertiefung}
+		      \begin{itemize}
+			      \item Wie sicher sind meine Private Keys wirklich?
+			      \item Was passiert, wenn das Internet ausfällt?
+		      \end{itemize}
 
-		      \vspace{2em}
+		\item \textbf{Wirtschaftliche Aspekte}
+		      \begin{itemize}
+			      \item Warum schwankt der Bitcoin-Preis so stark?
+			      \item Können Regierungen Bitcoin wirklich verbieten?
+		      \end{itemize}
 
-		\item Wie funktioniert die Ausgabe neuer Bitcoin
+		\item \textbf{Gesellschaftliche Auswirkungen}
+		      \begin{itemize}
+			      \item Ersetzt Bitcoin traditionelle Banken komplett?
+			      \item Wie verändert Bitcoin unser Geldsystem?
+		      \end{itemize}
 
-		      \vspace{2em}
-
-		\item Wie sieht eine Transaktion im Detail aus
+		\item \textbf{Praktische Anwendung}
+		      \begin{itemize}
+			      \item Welche Wallet ist die richtige für mich?
+			      \item Wie verwende ich Bitcoin im Alltag?
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 
