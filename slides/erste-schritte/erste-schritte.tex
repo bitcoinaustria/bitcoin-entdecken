@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,t,9pt]{beamer}
+\documentclass[aspectratio=169,t,11pt]{beamer}
 % License: MIT-Lizenz (https://opensource.org/licenses/MIT)
 % Author: Bitcoin Entdecken / Bitcoin Austria
 
@@ -43,22 +43,27 @@
 
 \section{Open Source}
 
-\begin{frame}{Open Source}
-	Bei den meisten Programmen ist der Code nicht einsehbar
+\begin{frame}{Closed Source vs. Open Source Software}
+	\textbf{Closed Source} bedeutet:
+	\begin{itemize}
+		\item Bei den meisten Programmen ist der \textbf{Code nicht einsehbar}
+		\item Man \textbf{vertraut} dem Entwickler blindlings
+	\end{itemize}
+
+	\vspace{0.5em}
+	\textbf{Open Source} bedeutet:
+	\begin{itemize}
+		\item Code ist \textbf{verfügbar} und \textbf{überprüfbar}
+		\item Programm kann von jedem \textbf{kompiliert} werden
+	\end{itemize}
+
+	\vspace{0.5em}
+	\textbf{Bitcoin} funktioniert nur als \textbf{Open Source} Technologie
 
 	\vspace{1em}
-	Man vertraut dem Entwickler, dass der Code tut was man denkt.
-
-	\vspace{1em}
-	Open Source bedeutet der Code ist verfügbar und das Programm kann auch von jedem wiederholt ,,berechnet'' aka kompiliert werden.
-
-	\vspace{1em}
-	Bitcoin ist eine Open Source Technologie, die ,,Closed Source'' kein Vertrauen genießen und somit nicht funktionieren würde.
-
-	\vspace{2em}
-	\begin{alertblock}{\textcolor{white}{Vertrauen ist gut, Kontrolle ist besser}}
+	\begin{alertblock}{\textcolor{white}{Grundsatz}}
 		\vspace{3pt}
-
+		\textbf{Vertrauen} ist gut, \textbf{Kontrolle} ist besser
 		\vspace{3pt}
 	\end{alertblock}
 \end{frame}
@@ -73,23 +78,22 @@
 			\vspace{1em}
 
 			\begin{tikzpicture}[scale=0.8]
-				% Legislative circle
-				\node[circle, fill=gray!70, text=white, minimum size=1.5cm, font=\scriptsize, text width=1.2cm, align=center] (leg) at (0,2.5) {Legislative\\Gesetzgebung};
+				% Legislative rounded rectangle
+				\node[rectangle, rounded corners=8pt, fill=gray!70, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (leg) at (0,3.0) {\textbf{\large Legislative}\\Gesetzgebung};
 
-				% Judikative circle
-				\node[circle, fill=gray!70, text=white, minimum size=1.5cm, font=\scriptsize, text width=1.2cm, align=center] (jud) at (2.8,0) {Judikative\\Rechtsprechung};
+				% Judikative rounded rectangle
+				\node[rectangle, rounded corners=8pt, fill=gray!70, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (jud) at (3.0,0) {\textbf{\large Judikative}\\Rechtsprechung};
 
-				% Exekutive circle
-				\node[circle, fill=gray!70, text=white, minimum size=1.5cm, font=\scriptsize, text width=1.2cm, align=center] (exe) at (-2.8,0) {Exekutive\\vollzieh. Gewalt\\Regierung\\Verwaltung};
+				% Exekutive rounded rectangle
+				\node[rectangle, rounded corners=8pt, fill=gray!70, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (exe) at (-3.0,0) {\textbf{\large Exekutive}\\vollzieh. Gewalt\\Regierung};
 
 				% Arrows showing separation
-				\draw[<->, gray, thick] (leg) -- (jud);
-				\draw[<->, gray, thick] (jud) -- (exe);
-				\draw[<->, gray, thick] (exe) -- (leg);
+				\draw[<->, gray, very thick] (leg) -- (jud);
+				\draw[<->, gray, very thick] (jud) -- (exe);
+				\draw[<->, gray, very thick] (exe) -- (leg);
 			\end{tikzpicture}
 
 			\vspace{0.5em}
-			\textcolor{gray}{\textbf{Staatsgewalt}}
 		\end{column}
 
 		\begin{column}{0.45\textwidth}
@@ -98,25 +102,28 @@
 			\vspace{1em}
 
 			\begin{tikzpicture}[scale=0.8]
-				% User circle
-				\node[circle, draw=black, minimum size=1.5cm, font=\small] (user) at (0,2.5) {User};
+				% User rounded rectangle
+				\node[rectangle, rounded corners=8pt, fill=orange, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (user) at (0,3.0) {\textbf{\large User}};
 
-				% Nodes circle
-				\node[circle, draw=black, minimum size=1.5cm, font=\small] (nodes) at (2.8,0) {Nodes};
+				% Nodes rounded rectangle
+				\node[rectangle, rounded corners=8pt, fill=orange, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (nodes) at (3.0,0) {\textbf{\large Nodes}};
 
-				% Miner circle
-				\node[circle, draw=black, minimum size=1.5cm, font=\small] (miner) at (-2.8,0) {Miner};
+				% Miner rounded rectangle
+				\node[rectangle, rounded corners=8pt, fill=orange, text=white, minimum width=2.5cm, minimum height=1.8cm, font=\scriptsize, text width=2.2cm, align=center] (miner) at (-3.0,0) {\textbf{\large Miner}};
 
 				% Arrows showing interaction
-				\draw[<->, black, thick] (user) -- (nodes);
-				\draw[<->, black, thick] (nodes) -- (miner);
-				\draw[<->, black, thick] (miner) -- (user);
+				\draw[<->, orange, very thick] (user) -- (nodes);
+				\draw[<->, orange, very thick] (nodes) -- (miner);
+				\draw[<->, orange, very thick] (miner) -- (user);
 			\end{tikzpicture}
 		\end{column}
 	\end{columns}
 
 	\vspace{1em}
-	\textbf{Dient demselben Zweck}
+	\begin{alertblock}{\textcolor{white}{Zweck der Gewaltenteilung}}
+		\small
+		Beide Systeme trennen Macht auf verschiedene Akteure auf, um Machtmissbrauch zu verhindern und ein Gleichgewicht der Kräfte zu schaffen.
+	\end{alertblock}
 \end{frame}
 
 \section{User}

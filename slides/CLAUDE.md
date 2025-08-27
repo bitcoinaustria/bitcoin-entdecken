@@ -30,7 +30,7 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 2. **Build**: `make build PRESENTATION=keyword` - Compile PDF with microtype enhancement  
 3. **View**: `make view PRESENTATION=keyword` - Open PDF viewer
 
-**WORKFLOW**: After editing tex files, always run `make format PRESENTATION=keyword` then `make build PRESENTATION=keyword`
+**WORKFLOW**: After editing tex files, always run `make format PRESENTATION=keyword` then `make build PRESENTATION=keyword` to verify compilation still works
 
 ### Universal Commands (from root directory)
 All commands now support `PRESENTATION=keyword` parameter for fuzzy matching:
