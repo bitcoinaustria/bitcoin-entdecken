@@ -24,7 +24,7 @@
       "Bash(make format:*)",
       "Bash(make:*)",
       "Bash(mkdir:*)",
-      "Bash(pdfinfo:*)",,
+      "Bash(pdfinfo:*)",
       "Bash(pdftk:*)",
       "Bash(python:*)",
       "Bash(rm:*)",
