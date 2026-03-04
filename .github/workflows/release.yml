@@ -44,7 +44,7 @@ jobs:
           echo "title=Bitcoin Erste Schritte" >> $GITHUB_OUTPUT
           echo "description=PDF-Präsentation: Bitcoin Erste Schritte" >> $GITHUB_OUTPUT
         elif [[ "${{ github.ref_name }}" == missverstaendnisse-* ]]; then
-          echo "name=2025-missverstaendnisse" >> $GITHUB_OUTPUT
+          echo "name=missverstaendnisse" >> $GITHUB_OUTPUT
           echo "title=Bitcoin Missverständnisse" >> $GITHUB_OUTPUT
           echo "description=PDF-Präsentation: Die häufigsten Bitcoin-Missverständnisse" >> $GITHUB_OUTPUT
         fi

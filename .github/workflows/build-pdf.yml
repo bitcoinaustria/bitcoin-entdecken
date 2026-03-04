@@ -9,10 +9,10 @@ on:
     branches:
       - main
     paths:
-      - 'slides/2025-missverstaendnisse/**/*.tex'
-      - 'slides/2025-missverstaendnisse/makefile'
-      - 'slides/2025-missverstaendnisse/**/*.svg'
-      - 'slides/2025-missverstaendnisse/pix/**'
+      - 'slides/missverstaendnisse/**/*.tex'
+      - 'slides/missverstaendnisse/makefile'
+      - 'slides/missverstaendnisse/**/*.svg'
+      - 'slides/missverstaendnisse/pix/**'
       - 'slides/erste-schritte/**/*.tex'
       - 'slides/erste-schritte/makefile'
       - 'slides/erste-schritte/**/*.svg'
@@ -21,10 +21,10 @@ on:
     branches:
       - main
     paths:
-      - 'slides/2025-missverstaendnisse/**/*.tex'
-      - 'slides/2025-missverstaendnisse/makefile'
-      - 'slides/2025-missverstaendnisse/**/*.svg'
-      - 'slides/2025-missverstaendnisse/pix/**'
+      - 'slides/missverstaendnisse/**/*.tex'
+      - 'slides/missverstaendnisse/makefile'
+      - 'slides/missverstaendnisse/**/*.svg'
+      - 'slides/missverstaendnisse/pix/**'
       - 'slides/erste-schritte/**/*.tex'
       - 'slides/erste-schritte/makefile'
       - 'slides/erste-schritte/**/*.svg'
@@ -61,11 +61,11 @@ jobs:
       run: |
         export DISPLAY=:99
         Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-        make build PRESENTATION=2025-missverstaendnisse
+        make build PRESENTATION=missverstaendnisse
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
       with:
         name: missverstaendnisse-pdf
-        path: slides/2025-missverstaendnisse/2025-missverstaendnisse.pdf
+        path: slides/missverstaendnisse/missverstaendnisse.pdf
         retention-days: 30
