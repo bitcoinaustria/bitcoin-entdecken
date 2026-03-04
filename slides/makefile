@@ -1,7 +1,7 @@
 # Universal Makefile for Bitcoin Entdecken Presentations
 # 
 # This Makefile works with any presentation following the pattern:
-# ./[name]/[name].tex (e.g., ./2025-missverstaendnisse/2025-missverstaendnisse.tex)
+# ./[name]/[name].tex (e.g., ./missverstaendnisse/missverstaendnisse.tex)
 #
 # Usage: make [target] PRESENTATION=keyword
 # The keyword is fuzzy-matched using .claude/find-presentation.sh

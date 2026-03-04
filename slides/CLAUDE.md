@@ -5,7 +5,7 @@ This file provides guidance to Claude Code when working with this LaTeX Beamer p
 ## Project Overview
 
 This directory contains LaTeX Beamer presentations about Bitcoin topics. Currently contains:
-- `2025-missverstaendnisse/` - Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse")
+- `missverstaendnisse/` - Bitcoin misconceptions presentation ("Die 11 häufigsten Missverständnisse")
 
 **Important**: When working with a specific LaTeX presentation, always `cd` into the presentation subdirectory first, or use `make -C <directory>` to call the appropriate make targets from the root level.
 
@@ -49,7 +49,7 @@ All commands now support `PRESENTATION=keyword` parameter for fuzzy matching:
 - `make help` - Show all available presentations and commands
 
 **Examples:**
-- `make PRESENTATION=miss` (builds 2025-missverstaendnisse)
+- `make PRESENTATION=miss` (builds missverstaendnisse)
 - `make build PRESENTATION=2025` (same result with different keyword)
 - `make screenshot-page PAGE=4 NAME=environment PRESENTATION=miss`
 
@@ -64,14 +64,14 @@ All commands now support `PRESENTATION=keyword` parameter for fuzzy matching:
   - `bitcoin-entdecken.sty` - Bitcoin Entdecken Beamer style package  
   - `BITCOIN-ENTDECKEN-STYLE.md` - Style package documentation
 - `generate-images/` - Shared AI image generation tools
-- `2025-missverstaendnisse/` - Bitcoin misconceptions presentation
+- `missverstaendnisse/` - Bitcoin misconceptions presentation
 - `.claude/` - Claude Code configuration and slash commands
 - `.github/workflows/` - GitHub Actions for automated PDF builds and releases
 - `screenshot-page.sh` - Shared screenshot utility for PDF pages
 - `makefile` - Universal makefile for all presentations (supports fuzzy matching)
 
-### Per-Presentation Files (e.g., 2025-missverstaendnisse/)
-- `2025-missverstaendnisse.tex` - Main presentation source
+### Per-Presentation Files (e.g., missverstaendnisse/)
+- `missverstaendnisse.tex` - Main presentation source
 - `logo-bitcoin-entdecken.svg/pdf` - Auto-processed logo
 - `misconception-count.tex` - Auto-generated counter (11 misconceptions)
 - `count-misconceptions.sh` - Optional dynamic counter script
@@ -79,7 +79,7 @@ All commands now support `PRESENTATION=keyword` parameter for fuzzy matching:
 
 **Note**: Individual makefiles are no longer needed - all build commands work from root level.
 
-**Naming Convention**: All main presentation files must have the same name as their directory (e.g., `2025-missverstaendnisse/2025-missverstaendnisse.tex`). This standardizes commands and processing across presentations.
+**Naming Convention**: All main presentation files must have the same name as their directory (e.g., `missverstaendnisse/missverstaendnisse.tex`). This standardizes commands and processing across presentations.
 
 ### Content Guidelines
 - Use `\misconceptionslide` macro for consistency

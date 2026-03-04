@@ -3,7 +3,7 @@
 # Script to count the number of misconceptions and generate LaTeX macro
 # Usage: ./count-misconceptions.sh
 
-TEX_FILE="2025-missverstaendnisse.tex"
+TEX_FILE="missverstaendnisse.tex"
 OUTPUT_FILE="misconception-count.tex"
 
 if [ ! -f "$TEX_FILE" ]; then

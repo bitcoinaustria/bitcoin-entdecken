@@ -46,6 +46,16 @@
 
 %% Font Customizations
 \setbeamerfont{footnote}{size=\tiny}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\renewcommand{\thempfootnote}{\arabic{mpfootnote}}
+
+% Ensure footnote markers are always numeric even in templates
+\setbeamertemplate{footnote}{%
+  \parindent 1em\noindent
+  \raggedright
+  \hbox to 1.8em{\hfil\insertfootnotemark}\insertfootnotetext\par
+}
+\setbeamertemplate{footnote reference}{\insertfootnotemark}
 
 %% Custom Footer with frame numbers only
 \setbeamertemplate{footline}{%

@@ -389,7 +389,7 @@ def download_image(image_url: str, output_path: Path, metadata: Optional[Dict] =
 
 
 def replace_in_latex(current_image: str, new_image: str, 
-                    latex_file: Path = Path("../2025-missverstaendnisse.tex")) -> bool:
+                    latex_file: Path = Path("../missverstaendnisse.tex")) -> bool:
     """Replace image reference in LaTeX file."""
     if not latex_file.exists():
         print(f"Error: {latex_file} not found")

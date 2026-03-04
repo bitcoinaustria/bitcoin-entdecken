@@ -15,7 +15,7 @@
 *.vrb
 
 # Generated PDF files (built by GitHub Actions)
-2025-missverstaendnisse.pdf
+missverstaendnisse.pdf
 erste-schritte.pdf
 
 # Converted logo (generated from SVG)

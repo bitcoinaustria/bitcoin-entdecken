@@ -5,8 +5,8 @@
 
 if [ $# -lt 2 ]; then
     echo "Usage: $0 <pdf_file> <page_number> [output_name]"
-    echo "Example: $0 2025-missverstaendnisse/2025-missverstaendnisse.pdf 4 environment_slide"
-    echo "         $0 2025-missverstaendnisse/2025-missverstaendnisse.pdf 6 volatility_slide"
+    echo "Example: $0 missverstaendnisse/missverstaendnisse.pdf 4 environment_slide"
+    echo "         $0 missverstaendnisse/missverstaendnisse.pdf 6 volatility_slide"
     exit 1
 fi
 
