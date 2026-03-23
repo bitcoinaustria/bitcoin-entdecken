@@ -33,7 +33,8 @@ REPLICATE_SIMPLE_MODELS = {"nano-banana-2"}
 
 FAL_MODELS = {
     "imagen4": "fal-ai/imagen4/preview",
-    "imagen4-turbo": "fal-ai/imagen4-turbo"
+    "imagen4-turbo": "fal-ai/imagen4-turbo",
+    "nano-banana-2": "fal-ai/nano-banana-2",
 }
 
 # Combined models dictionary for easy access
@@ -73,11 +74,11 @@ SLIDE_DESCRIPTIONS = {
 
 
 def get_provider_for_model(model_name: str) -> str:
-    """Determine which provider hosts the given model."""
-    if model_name in REPLICATE_MODELS:
-        return "replicate"
-    elif model_name in FAL_MODELS:
+    """Determine which provider hosts the given model. Prefers fal.ai when available on both."""
+    if model_name in FAL_MODELS:
         return "fal"
+    elif model_name in REPLICATE_MODELS:
+        return "replicate"
     else:
         raise ValueError(f"Unknown model: {model_name}")
 
@@ -193,16 +194,26 @@ async def generate_image_fal(model_name: str, prompt: str, input_image: Optional
             print(f"Error: Input image {input_image} does not exist")
             return None
     
-    # Prepare input arguments
-    arguments = {
-        "prompt": prompt,
-        "aspect_ratio": aspect_ratio,
-        "num_images": num_images
-    }
-    
+    # Prepare input arguments — nano-banana-2 has different params than imagen4
+    if model_name == "nano-banana-2":
+        arguments = {
+            "prompt": prompt,
+            "num_images": num_images,
+            "aspect_ratio": aspect_ratio,
+            "output_format": "png",
+            "safety_tolerance": "4",
+            "resolution": "1K",
+        }
+    else:
+        arguments = {
+            "prompt": prompt,
+            "aspect_ratio": aspect_ratio,
+            "num_images": num_images,
+        }
+
     if negative_prompt:
         arguments["negative_prompt"] = negative_prompt
-    
+
     if seed is not None:
         arguments["seed"] = seed
     
