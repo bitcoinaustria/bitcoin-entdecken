@@ -17,6 +17,9 @@ on:
       - 'slides/erste-schritte/makefile'
       - 'slides/erste-schritte/**/*.svg'
       - 'slides/erste-schritte/pix/**'
+      - 'slides/mythen/**/*.tex'
+      - 'slides/mythen/**/*.svg'
+      - 'slides/mythen/pix/**'
   pull_request:
     branches:
       - main
@@ -29,6 +32,9 @@ on:
       - 'slides/erste-schritte/makefile'
       - 'slides/erste-schritte/**/*.svg'
       - 'slides/erste-schritte/pix/**'
+      - 'slides/mythen/**/*.tex'
+      - 'slides/mythen/**/*.svg'
+      - 'slides/mythen/pix/**'
 
 jobs:
   build:
@@ -56,16 +62,28 @@ jobs:
           texlive-font-utils \
           xvfb
     
+    - name: Determine changed presentation
+      id: pres
+      run: |
+        CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} 2>/dev/null || git diff --name-only HEAD~1 HEAD)
+        if echo "$CHANGED" | grep -q 'slides/mythen/'; then
+          echo "name=mythen" >> $GITHUB_OUTPUT
+        else
+          echo "name=missverstaendnisse" >> $GITHUB_OUTPUT
+        fi
+
     - name: Build PDF
       working-directory: slides/
+      env:
+        PRES: ${{ steps.pres.outputs.name }}
       run: |
         export DISPLAY=:99
         Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-        make build PRESENTATION=missverstaendnisse
-        
+        make build PRESENTATION="$PRES"
+
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
       with:
-        name: missverstaendnisse-pdf
-        path: slides/missverstaendnisse/missverstaendnisse.pdf
+        name: ${{ steps.pres.outputs.name }}-pdf
+        path: slides/${{ steps.pres.outputs.name }}/${{ steps.pres.outputs.name }}.pdf
         retention-days: 30

@@ -1,0 +1,346 @@
+\documentclass[aspectratio=169,t,9pt]{beamer}
+% License: MIT-Lizenz (https://opensource.org/licenses/MIT)
+% Author: Bitcoin Entdecken / Bitcoin Austria
+
+% Metropolis theme - Modern, minimalist Beamer theme
+\usetheme[progressbar=foot]{metropolis}
+
+% Bitcoin Entdecken style package
+\usepackage{../styles/bitcoin-entdecken}
+
+% Title information
+\bitcointitle{Wer ist Satoshi Nakamoto?}{Die \totalmythen\ Ursprungs-Mythen -- Fakten, Indizien und Wahrscheinlichkeiten}
+% \bitcointitlegraphic{pix/mythen.jpg}
+
+% Include auto-generated count of myths
+\input{myth-count.tex}
+
+\begin{document}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\renewcommand{\thempfootnote}{\arabic{mpfootnote}}
+
+% Title slide
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}{Überblick}
+	\tableofcontents
+\end{frame}
+
+\begin{frame}{Warum entstehen Ursprungs-Mythen?}
+	\begin{itemize}
+		\item \textbf{Anonymer Gründer} -- Satoshi Nakamotos Identität ist seit 2008 unbekannt
+		\item \textbf{1 Mio. BTC} -- Satoshis unangetastetes Vermögen nährt Spekulationen
+		\item \textbf{Dezentrale Entstehung} -- Kein Unternehmen, kein offizieller Ursprung
+		\item \textbf{Medien und Dokumentationen} -- Sensationelle Enthüllungen generieren Klicks
+		\item \textbf{Menschliches Bedürfnis} -- Wir wollen Gesichter hinter Geschichten sehen
+		\item \textbf{Machtinteressen} -- Wer Satoshi ``ist'', kontrolliert das Narrativ
+	\end{itemize}
+	\vspace{2em}
+	\begin{alertblock}{\textcolor{white}{Ziel dieser Präsentation}}
+		\vspace{3pt}
+		13 Theorien. Pro und Contra. Geschätzte Wahrscheinlichkeit. Fakten statt Fiktion.
+		\vspace{3pt}
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}[plain]
+	\vfill
+	\begin{center}
+		{\Large \textbf{Die \totalmythen\ bekanntesten Ursprungs-Mythen}}
+		\vspace{1em}
+
+		{\normalsize Wer steckt hinter dem Pseudonym Satoshi Nakamoto?}
+	\end{center}
+	\vfill
+\end{frame}
+
+% ═══════════════════════════════════════════════════════════════════
+% MYTH SLIDES
+% ═══════════════════════════════════════════════════════════════════
+
+\mythslide{Der Cypherpunk-Märtyrer (Len Sassaman)}{%
+	Der brillante Datenschutz-Aktivist Len Sassaman sei Satoshi gewesen.
+	Sein Tod im Juli 2011 erkläre Nakamotos plötzliches Verschwinden.
+	Sein Vermächtnis ist durch ein ASCII-Art-Denkmal in Block 138.725 der Blockchain verewigt.
+}{%
+	\item Satoshis letzte Kommunikation (April 2011) fand \textbf{zwei Monate} vor Sassamans Tod statt
+	\item Ein permanentes ASCII-Art-Tribut wurde von Dan Kaminsky in \textbf{Block 138.725} kodiert
+	\item Sassaman war Weltklasse-Experte für \textbf{P2P-Netzwerke} und anonyme Remailer (``Mixmaster'')
+}{%
+	\item Seine Witwe \textbf{Meredith Patterson} hat mehrfach öffentlich dementiert
+	\item Sassaman \textbf{kritisierte} Aspekte von Bitcoins Design -- andere Vision für Privacy-Tools
+	\item Der ``I am not Dorian Nakamoto''-Post von \textbf{2014} erschien Jahre nach Sassamans Tod
+}{%
+	Plausibler Kandidat durch zeitliche Übereinstimmungen und technische Expertise, aber ohne belastbare Beweise. Die Aussagen seiner Witwe wiegen schwer.
+}{$\sim$15\%}{%
+	\item \href{https://phemex.com/academy/the-myth-of-satoshi-nakamoto}{Phemex Academy: The Myth of Satoshi Nakamoto}
+	\item \href{https://en.wikipedia.org/wiki/Len_Sassaman}{Wikipedia: Len Sassaman}
+	\item \href{https://www.blockchain.com/btc/block/138725}{Blockchain.com: Block 138.725}
+}
+
+\mythslide{Der Dokumentarfilm-Verdächtige (Peter Todd)}{%
+	Eine HBO-Dokumentation (``Money Electric'') identifizierte 2024 den kanadischen Entwickler Peter Todd als Bitcoin-Erfinder. Basis: ein Bitcointalk-Post von 2010, in dem Todd scheinbar ``Satoshis Sätze beendete''.
+}{%
+	\item Todd kommunizierte mit \textbf{15 Jahren} bereits mit den Cypherpunks
+	\item Die Doku hebt einen \textbf{2010er Bitcointalk-Post} als möglichen ``Alt-Account-Fehler'' hervor
+	\item Todds \textbf{britisches Englisch} und C++-Kenntnisse passen zu Satoshis Profil
+}{%
+	\item Todd war erst \textbf{23 und noch Student} als das Whitepaper erschien
+	\item Er dementierte vehement: \textbf{``Zufallsbasiertes Verschwörungsdenken''}
+	\item Die meisten \textbf{Bitcoin Core-Entwickler} lehnen die Theorie entschieden ab
+}{%
+	Die HBO-Theorie basiert auf Indizien und wurde von der Community weitgehend abgelehnt. Todd war zu jung und seine Hauptbeiträge kamen Jahre später.
+}{$\sim$5\%}{%
+	\item \href{https://www.ccn.com/education/crypto/peter-todd-hbo-claim-bitcoin-satoshi-nakamoto/}{CCN: Is Peter Todd Really Satoshi?}
+	\item \href{https://en.wikipedia.org/wiki/Money_Electric:_The_Bitcoin_Mystery}{Wikipedia: Money Electric}
+	\item \href{https://gizmodo.com/controversial-hbo-documentary-concludes-peter-todd-invented-bitcoin-2000509751}{Gizmodo: HBO Documentary}
+}
+
+\mythslide{Der Börsen-Architekt (Jed McCaleb)}{%
+	Jed McCaleb lebte in Japan und gründete Mt.~Gox, Ripple und Stellar. Seine tiefe Beteiligung an jeder großen Iteration dezentraler Finanzsysteme macht ihn zum Verdächtigen.
+}{%
+	\item McCaleb hatte die technischen Fähigkeiten und lebte \textbf{in Japan} -- passend zu Satoshis Angabe
+	\item Er gründete \textbf{Mt.~Gox}, die erste große Bitcoin-Börse
+	\item Seine spätere Arbeit an \textbf{Ripple und Stellar} zeigt lebenslange Beschäftigung mit denselben Problemen
+}{%
+	\item Der frühe Mt.~Gox-Code war \textbf{``unverzeihlich schlampig''} -- Widerspruch zu Satoshis Präzision
+	\item McCalebs \textbf{öffentliches Profil} widerspricht Satoshis Bedürfnis nach Anonymität
+	\item Er fokussierte sich auf \textbf{zentralisierte Modelle}, die von Bitcoins Ethos abweichen
+}{%
+	McCaleb passt oberflächlich, aber die Qualität seines Codes und seine Präferenz für zentralisierte Systeme sprechen klar dagegen.
+}{$\sim$3\%}{%
+	\item \href{https://trakx.io/resources/insights/what-is-the-identity-satoshi-nakamoto/}{Trakx: Identity of Satoshi Nakamoto}
+	\item \href{https://cryptonary.com/cryptoschool/who-could-satoshi-nakamoto-be/}{Cryptonary: Who Could Satoshi Be?}
+}
+
+\mythslide{Der kriminelle Mastermind (Paul Le Roux)}{%
+	Eine bizarre Theorie von 2019: Satoshi sei Paul Le Roux, ein rhodesischer Programmierer und globaler Verbrecherboss, derzeit in US-Haft. Sein Alias ``Solotshi'' und seine Verschlüsselungssoftware E4M dienen als ``Beweis''.
+}{%
+	\item Le Roux entwickelte \textbf{E4M}, Grundstein für die Verschlüsselungssoftware \textbf{TrueCrypt}
+	\item Sein Alias ``Paul \textbf{Solotshi} Calder Le Roux'' klingt phonetisch ähnlich wie ``Satoshi''
+	\item Seine Verhaftung \textbf{2012} erklärt, warum die 1 Mio.~BTC nie bewegt wurden
+}{%
+	\item Während Satoshi Bitcoin entwickelte, managte Le Roux ein \textbf{globales Drogen- und Waffenimperium}
+	\item Keine seiner illegalen Seiten akzeptierte jemals \textbf{Bitcoin als Zahlung}
+	\item Die Theorie wurde v.a. durch \textbf{Craig Wright} verbreitet -- dessen Glaubwürdigkeit zerstört ist
+}{%
+	Zu abwegig. Le Roux war kriminell aktiv, als Satoshi Bitcoin codierte. Die Craig-Wright-Verbindung diskreditiert die Theorie zusätzlich.
+}{$\sim$2\%}{%
+	\item \href{https://www.share-talk.com/satoshi-nakamoto-could-be-criminal-mastermind-paul-le-roux/}{Share Talk: Paul Le Roux Theory}
+	\item \href{https://financefactandfiction.com/publications/finance-tales-king-satoshi/}{Finance Fact and Fiction: King Satoshi}
+}
+
+\mythslide{Der Milliardärs-Künstler (Jack Dorsey)}{%
+	Der Twitter- und Block-Gründer Jack Dorsey soll Bitcoin als ``digitales Kunstwerk'' geschaffen haben. Persönliche Meilensteine in Dorseys Leben korrelieren angeblich mit frühen Bitcoin-Daten.
+}{%
+	\item Netzwerk-Meilensteine fallen auf \textbf{Dorsey-Familiengeburtstage}: erste Transaktion, Forum-Launch
+	\item Seine Freundin \textbf{Alyssa Milano} schrieb den Graphic Novel \textit{Hacktivist} -- über einen Milliardär mit geheimem Hacker-Doppelleben
+	\item Frühe Bitcoin-Code-Timestamps um \textbf{4:00 Uhr morgens} passen zu Dorseys Frühaufsteher-Routine
+}{%
+	\item Während Bitcoins Entwicklung war Dorsey extrem \textbf{öffentlich} mit Twitter und Square beschäftigt
+	\item Seine Zusammenarbeit mit dem \textbf{US State Department} widerspricht Satoshis Anti-Staat-OpSec
+	\item Sein Online-Verhalten war \textbf{unregelmäßig}, Satoshi zeigte konsistentes Pacific-Time-Schlafmuster
+}{%
+	Unterhaltsame Theorie mit kreativen Zufällen, aber ohne substanzielle Beweise. Dorseys öffentliches Profil ist mit Satoshis Anonymität unvereinbar.
+}{$\sim$1\%}{%
+	\item \href{https://www.tradingview.com/news/cointelegraph:3886a7d7f094b:0-6-reasons-jack-dorsey-is-definitely-satoshi-and-5-reasons-he-s-not/}{TradingView: 6 Reasons Jack Dorsey}
+	\item \href{https://m.economictimes.com/news/international/global-trends/was-satoshi-nakamoto-not-the-real-creator-of-bitcoin-new-theories-suggest-it-was-former-twitter-ceo-jack-dorsey/articleshow/118375009.cms}{Economic Times: Jack Dorsey Theory}
+}
+
+\mythslide{Der Mars-Erfinder (Elon Musk)}{%
+	Musks Hintergrund in Ökonomie und C++ mache ihn zum einzigen Menschen, der Bitcoin hätte bauen können. Befeuert durch ein virales Interview, in dem Musk 15 Sekunden schwieg, als er gefragt wurde.
+}{%
+	\item Musk gründete \textbf{X.com} (später PayPal), um traditionelles Banking zu umgehen
+	\item Sowohl Satoshi als auch Musk beherrschen \textbf{C++} und denken in ``First Principles''
+	\item \textbf{15 Sekunden Schweigen} in einem Interview, als er direkt gefragt wurde
+}{%
+	\item Musk hat \textbf{explizit dementiert} und besitzt nach eigener Aussage kein Bitcoin
+	\item Sein Profil als \textbf{``Credit-Maximalist''} widerspricht Satoshis extremer Bescheidenheit
+	\item Er scherzte, er sei ein \textbf{``Marsianer''}, um die Absurdität der Suche zu unterstreichen
+}{%
+	Populär, aber absurd. Musks Persönlichkeit -- maximale Öffentlichkeit und Selbstvermarktung -- ist das genaue Gegenteil von Satoshis Verhalten.
+}{$\sim$0\%}{%
+	\item \href{https://www.theguardian.com/technology/2017/nov/28/as-bitcoin-surges-in-value-elon-musk-denies-hes-its-mysterious-inventor}{The Guardian: Elon Musk Denies}
+	\item \href{https://mashable.com/article/elon-musk-bitcoin-creator}{Mashable: Elon Musk Bitcoin Creator}
+}
+
+\mythslide{Der Serienfälscher (Craig Wright)}{%
+	Craig Wright beanspruchte fast ein Jahrzehnt, Satoshi zu sein -- durch Klagen und Medienauftritte. Dieser ``Faketoshi''-Mythos wurde 2024 im UK High Court (COPA v. Wright) endgültig zerlegt.
+}{%
+	\item 2015: \textbf{Wired und Gizmodo} veröffentlichten Berichte basierend auf geleakten E-Mails
+	\item Sein akademischer Hintergrund \textbf{schien zu passen}: multidisziplinäre Fähigkeiten
+}{%
+	\item März 2024: \textbf{UK High Court} urteilte -- ``überwältigende'' Beweise gegen ihn
+	\item Forensische Experten bewiesen \textbf{``Fälschung in großem Stil''}, inkl. rückdatierter Dokumente
+	\item Er konnte den \textbf{einzigen definitiven Beweis nicht erbringen}: Signatur mit dem Genesis-Block-Schlüssel
+}{%
+	Rechtskräftig widerlegt. Wright hat die Community durch systematische Fälschung getäuscht.
+}{0\%}{%
+	\item \href{https://www.aippi.org/news/copa-v-wright-high-court-finds-that-dr-wright-is-not-satoshi-nakamoto-bitcoins-pseudonymous-founder/}{AIPPI: COPA v. Wright Urteil}
+	\item \href{https://www.twobirds.com/en/news-and-deals/2024/uk/written-judgment-delivered-in-copa-v-wright-trial}{Bird \& Bird: COPA v. Wright}
+	\item \href{https://www.morganlewis.com/pubs/2024/05/bitcoin-identity-trial-concludes-dr-craig-wright-is-not-the-creator-of-bitcoin}{Morgan Lewis: Bitcoin Identity Trial}
+}
+
+\mythslide{Der verwechselte Jedermann (Dorian Nakamoto)}{%
+	2014 identifizierte Newsweek den pensionierten Physiker Dorian Satoshi Nakamoto als Bitcoin-Erfinder. Der Fall wurde zur Warnung vor den Gefahren von Doxing und vorschnellem Journalismus.
+}{%
+	\item Gleicher \textbf{Geburtsname} wie das Pseudonym: Satoshi Nakamoto
+	\item Wohnte nur wenige Straßen von \textbf{Hal Finney} entfernt, dem ersten Bitcoin-Empfänger
+	\item Hintergrund in \textbf{geheimen Verteidigungsprojekten} mit Computersystemen
+}{%
+	\item Dorian dementierte ausdrücklich -- er habe die Fragen \textbf{missverstanden}
+	\item Satoshi reaktivierte eigens sein Profil: \textbf{``I am not Dorian Nakamoto''}
+	\item Schreibstil und technischer Hintergrund \textbf{passen nicht} zum Whitepaper
+}{%
+	Ein tragisches Missverständnis. Dorian wurde Opfer von vorschnellem Journalismus. Satoshis eigenes Dementi ist eindeutig.
+}{$\sim$0\%}{%
+	\item \href{https://www.britannica.com/biography/Satoshi-Nakamoto}{Britannica: Satoshi Nakamoto}
+	\item \href{https://en.wikipedia.org/wiki/Satoshi_Nakamoto}{Wikipedia: Satoshi Nakamoto}
+}
+
+\mythslide{Die Trinity-Verbindung (Michael Clear)}{%
+	The New Yorker identifizierte 2011 den irischen Kryptographie-Studenten Michael Clear als möglichen Satoshi. Clear verwies wiederum auf den finnischen Soziologen Vili Lehdonvirta.
+}{%
+	\item Clear war \textbf{2008 bester Informatik-Student} am Trinity College -- im Jahr von Bitcoins Entwicklung
+	\item Er war ein versierter \textbf{C++-Programmierer}
+	\item Er arbeitete bei der \textbf{Allied Irish Banks} während der Finanzkrise 2008
+}{%
+	\item Clear hat erklärt, er habe \textbf{kein Interesse an Ökonomie} -- ein Kernthema für Satoshi
+	\item Lehdonvirta gab zu: \textbf{keine Erfahrung in Kryptographie}, wenig C++-Kenntnisse
+	\item Beide haben \textbf{wiederholt öffentlich dementiert}
+}{%
+	Akademisch interessante Kandidaten, aber durch persönliche Dementis und fehlende ökonomische Expertise ausgeschlossen.
+}{$\sim$2\%}{%
+	\item \href{https://coinmarketcap.com/academy/article/satoshi-files-michael-clear}{CoinMarketCap: Satoshi Files -- Michael Clear}
+}
+
+\mythslide{Das mathematische Genie (Shinichi Mochizuki)}{%
+	Ted Nelson postulierte, der japanische Mathematiker Shinichi Mochizuki sei Satoshi. Basierend auf seiner Gewohnheit, ``brillante Arbeit abzuliefern und zu verschwinden'' -- und seiner Lösung der ABC-Vermutung.
+}{%
+	\item Löste die \textbf{ABC-Vermutung} -- eines der schwierigsten Probleme der Mathematik
+	\item Notorisch \textbf{zurückgezogen} -- veröffentlichte Arbeit im Internet statt in Fachzeitschriften
+	\item \textbf{Princeton-Absolvent}, kam mit 5 Jahren in die USA -- Muttersprachler in Englisch
+}{%
+	\item \textbf{Kein dokumentierter Hintergrund} in Informatik oder Programmierung
+	\item Mathematiker, die ihn kennen, \textbf{bezweifeln} seine Beteiligung
+	\item Satoshi kommunizierte \textbf{jahrelang aktiv} -- Widerspruch zu Mochizukis ``abliefern und gehen''-Stil
+}{%
+	Elegante aber unrealistische Theorie. Mathematisches Genie allein reicht nicht -- Bitcoin erforderte praktische Programmier- und Netzwerk-Expertise.
+}{$\sim$1\%}{%
+	\item \href{https://qz.com/86255/the-mysterious-creator-of-bitcoin-could-be-japanese-mathematician-shinichi-mochizuki-says-the-inventor-of-hypertext}{Quartz: Mochizuki Theory}
+}
+
+\mythslide{Das CIA-Projekt (Verdeckte Finanzierung)}{%
+	Bitcoin sei von der CIA als ``finanzielle Biowaffe'' entwickelt worden, um verdeckte Operationen zu finanzieren.
+	Die Parallele zum TOR-Protokoll, das ebenfalls von der US-Regierung initiiert wurde, stützt diese These.
+}{%
+	\item Wie das \textbf{TOR-Netzwerk} (ursprünglich für Geheimdienst-Kommunikation) bietet Bitcoin eine staatsunabhängige Wertübertragung
+	\item Satoshi übergab die Kontrolle an Gavin Andresen \textbf{direkt nachdem} dieser ankündigte, die CIA zu briefen
+	\item Die professionelle \textbf{OpSec} des Schöpfers deutet auf nachrichtendienstliche Ausbildung hin
+}{%
+	\item Bitcoins Kernzweck -- \textbf{Ende der staatlichen Geldkontrolle} -- widerspricht den Interessen jeder Regierungsbehörde
+	\item Nach 15 Jahren Open-Source-Audit: \textbf{keine Hintertüren} oder ``Kill Switches'' gefunden
+	\item Ein Staatakteur hätte wahrscheinlich einen \textbf{proprietären Algorithmus} statt des öffentlichen SHA-256 verwendet
+}{%
+	Die TOR-Parallele ist faszinierend, aber Bitcoins radikal anti-staatliches Design widerspricht dem Zweck einer Geheimdienstoperation.
+}{$\sim$3\%}{%
+	\item \href{https://www.reddit.com/r/web3/comments/1p256zo/the_bitcoin_origin_theory_nobody_wants_to_touch/}{Reddit: The Bitcoin Origin Theory Nobody Wants to Touch}
+	\item \href{https://financefactandfiction.com/publications/finance-tales-king-satoshi/}{Finance Fact and Fiction: King Satoshi}
+}
+
+\mythslide{Das Staatsprojekt (NSA / Okamoto-Theorie)}{%
+	Bitcoin sei eine ``finanzielle Biowaffe'' der NSA. Ein Paper von 1996 (``How to Make a Mint'') beschrieb ein ähnliches System. Der Name ``Satoshi Nakamoto'' sei von japanischen Kryptographen in NSA-Dokumenten abgeleitet.
+}{%
+	\item Das NSA-Paper von 1996 beschrieb ein \textbf{P2P-E-Cash-System} mit Zeitstempel-Ledgern
+	\item Bitcoin nutzt \textbf{SHA-256} -- einen von der NSA entwickelten Hash-Algorithmus
+	\item ``Satoshi Nakamoto'' ähnelt \textbf{``Tatsuaki Okamoto''}, einem in NSA-Docs zitierten Kryptographen
+}{%
+	\item Bitcoins Kernmission -- \textbf{Ende der staatlichen Geldkontrolle} -- widerspricht jeder Regierungsbehörde
+	\item Nach 15 Jahren Open-Source-Audit: \textbf{keine ``Kill Switches''} oder Hintertüren gefunden
+	\item Die NSA konnte nicht mal ihre \textbf{eigene Überwachung} geheim halten (Snowden)
+}{%
+	Die SHA-256-Verbindung ist real, aber Bitcoin widerspricht aktiv dem staatlichen Interesse. Ein Geheimdienst, der Snowden nicht verhindern konnte, hätte dieses Geheimnis kaum 15 Jahre bewahrt.
+}{$\sim$3\%}{%
+	\item \href{https://news.ycombinator.com/item?id=37599194}{Hacker News: The NSA Invented Bitcoin?}
+	\item \href{https://www.reddit.com/r/Bitcoin/comments/1xi1px/1996_nsa_paper_on_digital_currency_bitcoin/}{Reddit: 1996 NSA Paper}
+}
+
+\mythslide{Das Unternehmens-Kartell (Samsung-Toshiba-Nakamichi-Motorola)}{%
+	Eine populäre ``spielerische'' Theorie: Der Name Satoshi Nakamoto sei ein Portmanteau aus \textbf{SA}msung, \textbf{TOSHI}ba, \textbf{NAKA}michi und \textbf{MOTO}rola. Bitcoin als geheimes Industrieprojekt.
+}{%
+	\item Diese Firmen verfügten zusammen über \textbf{massive Ressourcen} in Hardware und Kryptographie
+	\item Ein Konsortium hätte die \textbf{juristischen Mittel} (NDAs) für totale Geheimhaltung
+}{%
+	\item Großkonzerne priorisieren \textbf{Quartalsgewinne} -- ein Open-Source-Geschenk ist unlogisch
+	\item \textbf{Null Beweise} für eine Zusammenarbeit dieser vier Unternehmen
+	\item Der \textbf{libertäre Ethos} des Whitepapers widerspricht multinationalen Techkonzernen
+}{%
+	Ein Wortspiel, keine Theorie. Unterhaltsam, aber ohne jede faktische Grundlage.
+}{$\sim$0\%}{%
+	\item \href{https://cryptonary.com/cryptoschool/who-could-satoshi-nakamoto-be/}{Cryptonary: Who Could Satoshi Be?}
+}
+
+\mythslide{Das fühlende Protokoll (KI aus der Zukunft)}{%
+	Eine Randtheorie: Eine zeitreisende KI sandte Bitcoin 2008 zurück, um die Menschheit vor dem wirtschaftlichen Ruin zu retten. Der Code sei ``zu perfekt'' und das Timing ``zu präzise'' für ein menschliches Gehirn.
+}{%
+	\item Befürworter behaupten, der Code zeige \textbf{keine ``typisch menschlichen Fehler''}
+	\item Satoshis Vermögen bleibt \textbf{unangetastet} -- der Schöpfer braucht kein Fiat-Geld
+	\item Bitcoins Start \textbf{Wochen nach dem Bankenkollaps} wirke ``vorherbestimmt''
+}{%
+	\item Frühe Bitcoin-Versionen waren \textbf{``klobig''} und erforderten umfangreiche Korrekturen
+	\item Die Technologie basiert auf \textbf{dokumentierter menschlicher Forschung} (Bit Gold, Hashcash, B-money)
+	\item Hardware von 2008 konnte \textbf{keine fühlende KI} betreiben
+}{%
+	Eine amüsante Science-Fiction-Erzählung. Bitcoin war ein menschliches Gemeinschaftswerk, aufgebaut auf Jahrzehnten kryptographischer Forschung.
+}{0\%}{%
+	\item \href{https://www.tradingview.com/news/cointelegraph:44f9dd683094b:0-big-questions-did-a-time-traveling-ai-invent-bitcoin/}{TradingView: Did a Time-Traveling AI Invent Bitcoin?}
+}
+
+% ═══════════════════════════════════════════════════════════════════
+% ZUSAMMENFASSUNG
+% ═══════════════════════════════════════════════════════════════════
+
+\begin{frame}{Was lernen wir daraus?}
+	\begin{alertblock}{\textcolor{white}{Schlüsselerkenntnisse}}
+		\begin{enumerate}
+			\item \textbf{Keine Theorie} hat bisher überzeugende Beweise geliefert
+			\item Die \textbf{Anonymität Satoshis} ist ein Feature, kein Bug
+			\item Der \textbf{Quellcode ist offen} -- jeder kann ihn prüfen, niemand muss dem Gründer vertrauen
+			\item Bitcoin funktioniert seit über 15 Jahren \textbf{ohne} dass die Identität des Gründers relevant wäre
+			\item Der einzige definitive Beweis wäre eine \textbf{kryptographische Signatur} mit Satoshis Schlüsseln
+		\end{enumerate}
+	\end{alertblock}
+
+	\vspace{0.5em}
+	\begin{block}{Die wichtigste Erkenntnis}
+		Die Identität von Satoshi Nakamoto spielt für die Funktionsweise von Bitcoin \textbf{keine Rolle}.
+		Bitcoin ist ein \textbf{offenes Protokoll} -- es funktioniert durch Mathematik und Konsens, nicht durch Vertrauen in eine Person.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Quellen und weitere Informationen}
+	\footnotesize
+	\begin{itemize}
+		\item \href{https://phemex.com/academy/the-myth-of-satoshi-nakamoto}{Phemex Academy: The Myth of Satoshi Nakamoto}
+		\item \href{https://en.wikipedia.org/wiki/Satoshi_Nakamoto}{Wikipedia: Satoshi Nakamoto}
+		\item \href{https://www.aippi.org/news/copa-v-wright-high-court-finds-that-dr-wright-is-not-satoshi-nakamoto-bitcoins-pseudonymous-founder/}{AIPPI: COPA v. Wright -- High Court Judgment}
+		\item \href{https://trakx.io/resources/insights/what-is-the-identity-satoshi-nakamoto/}{Trakx: What is the Identity of Satoshi Nakamoto?}
+		\item \href{https://cryptonary.com/cryptoschool/who-could-satoshi-nakamoto-be/}{Cryptonary: Who Could Satoshi Nakamoto Be?}
+		\item \href{https://www.ccn.com/education/crypto/peter-todd-hbo-claim-bitcoin-satoshi-nakamoto/}{CCN: Peter Todd HBO Claim}
+		\item \href{https://en.wikipedia.org/wiki/Money_Electric:_The_Bitcoin_Mystery}{Wikipedia: Money Electric (HBO)}
+		\item \href{https://financefactandfiction.com/publications/finance-tales-king-satoshi/}{Finance Fact and Fiction: The Myths of King Satoshi}
+		\item \href{https://www.britannica.com/biography/Satoshi-Nakamoto}{Britannica: Satoshi Nakamoto}
+	\end{itemize}
+
+	\vspace{1em}
+	\begin{center}
+		\textcolor{bitcoinorange}{\Large Fragen und Diskussion?}
+		\\[1em]
+		\textcolor{bitcoinorange}{\rule{0.5\textwidth}{2pt}}
+	\end{center}
+\end{frame}
+
+\end{document}

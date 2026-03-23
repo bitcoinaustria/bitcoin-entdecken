@@ -178,6 +178,108 @@
     \titlegraphic{\center\vspace{-1.5em}\roundedimage{#1}{0.5\textwidth}{2}}
 }
 
+%% Myth Counter (for Mythen presentation)
+\newcounter{mythennum}
+\setcounter{mythennum}{0}
+
+%% Pro block color (darker, represents "myth believer" side)
+\setbeamercolor{block title problock}{bg=bitcoindark!65,fg=white}
+\setbeamercolor{block body problock}{bg=bitcoindark!12}
+
+%% Macro: Myth slides with 3-overlay layout
+%% Overlay 1: Description + Image | Overlay 2: Pro + Contra side by side | Overlay 3: Fazit + Probability + Sources
+\newcommand{\mythslide}[8][]{%
+    % #1: Optional image path (1:1, shown on overlay 1)
+    % #2: Short title
+    % #3: Myth description text
+    % #4: Pro items (\item ... why the myth seems plausible)
+    % #5: Contra items (\item ... facts that debunk it)
+    % #6: Conclusion text
+    % #7: Probability text (e.g., "$\sim$15\%")
+    % #8: Source items (\item \href{url}{text} ...)
+    \stepcounter{mythennum}
+    \subsection{\arabic{mythennum}. #2}
+    \begin{frame}<1-3>{Mythos \arabic{mythennum}: #2}
+        % Overlay 1: Description + Image
+        \only<1>{%
+            \ifx\relax#1\relax
+                % No image: full-width description
+                \begin{block}{Der Mythos}
+                    \vspace{0.4em}
+                    #3
+                    \vspace{0.4em}
+                \end{block}
+            \else
+                % With image: two-column layout
+                \begin{columns}[c]
+                    \begin{column}{0.55\textwidth}
+                        \begin{block}{Der Mythos}
+                            \vspace{0.4em}
+                            \small #3
+                            \vspace{0.4em}
+                        \end{block}
+                    \end{column}
+                    \hspace{0.01\textwidth}
+                    \begin{column}{0.43\textwidth}
+                        \centering
+                        \roundedimage{#1}{0.95\textwidth}{1}
+                    \end{column}
+                \end{columns}
+            \fi
+        }%
+        % Overlay 2: Pro (orange) + Contra (dark) side by side
+        \only<2>{%
+            \begin{columns}[T]
+                \begin{column}[T]{0.49\textwidth}
+                    \begin{block}{\textbf{Dafür spricht \ldots}}
+                        \vspace{0.2em}
+                        \begin{itemize}
+                            \setlength{\itemsep}{0.3em}
+                            #4
+                        \end{itemize}
+                        \vspace{0.2em}
+                    \end{block}
+                \end{column}
+                \hspace{0.01\textwidth}
+                \begin{column}[T]{0.49\textwidth}
+                    \begingroup
+                        \setbeamercolor{block title}{bg=bitcoindark!65,fg=white}
+                        \setbeamercolor{block body}{bg=bitcoindark!12}
+                        \begin{block}{\textbf{Dagegen spricht \ldots}}
+                            \vspace{0.2em}
+                            \begin{itemize}
+                                \setlength{\itemsep}{0.3em}
+                                #5
+                            \end{itemize}
+                            \vspace{0.2em}
+                        \end{block}
+                    \endgroup
+                \end{column}
+            \end{columns}
+        }%
+        % Overlay 3: Conclusion + centered probability + sources
+        \only<3>{%
+            \begin{alertblock}{\textcolor{white}{\textbf{Schlussfolgerung}}}
+                #6
+            \end{alertblock}
+            \vspace{0.3em}
+            \begin{center}
+                \colorbox{bitcoinorange!15}{%
+                    \hspace{1em}\textbf{\large Geschätzte Wahrscheinlichkeit: #7}\hspace{1em}%
+                }
+            \end{center}
+            \vspace{0.3em}
+            {\footnotesize
+            \textbf{Quellen:}
+            \begin{itemize}
+                \setlength{\itemsep}{0.1em}
+                #8
+            \end{itemize}
+            }
+        }%
+    \end{frame}
+}
+
 %% Package options handling (for future extensions)
 \ProcessOptions\relax
 

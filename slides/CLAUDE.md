@@ -9,6 +9,8 @@ This directory contains LaTeX Beamer presentations about Bitcoin topics. Current
 
 **Important**: When working with a specific LaTeX presentation, always `cd` into the presentation subdirectory first, or use `make -C <directory>` to call the appropriate make targets from the root level.
 
+**Sprache**: Das gesamte Projekt ist auf **Deutsch**. Alle Präsentationsinhalte, Kommentare in `.tex`-Dateien und neue Texte sollen auf Deutsch verfasst sein. Zielgruppe ist die deutschsprachige Bitcoin-Community (DACH-Raum).
+
 **License**: All content is licensed under [MIT-Lizenz](https://opensource.org/licenses/MIT).
 
 ## Git Guidelines

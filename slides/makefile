@@ -37,11 +37,13 @@ logo-bitcoin-entdecken.pdf: logo-bitcoin-entdecken.svg
 	@echo "Logo processed: cropped and ready for use"
 
 # Handle presentation-specific generated files (e.g., misconception-count.tex)
-# This target will run any count script found in the presentation directory
+# Discovers any count-*.sh script in the presentation directory
+COUNT_SCRIPT := $(firstword $(wildcard $(PRES_DIR)/count-*.sh))
+
 $(PRES_DIR)/generated-count.tex: $(TEX_FILE)
-	@if [ -f "$(PRES_DIR)/count-misconceptions.sh" ]; then \
+	@if [ -n "$(COUNT_SCRIPT)" ]; then \
 		echo "Counting content in $(PRES_DIR)..."; \
-		cd $(PRES_DIR) && ./count-misconceptions.sh; \
+		cd $(PRES_DIR) && ./$(notdir $(COUNT_SCRIPT)); \
 	else \
 		echo "No count script found, skipping content counting"; \
 		touch $(PRES_DIR)/generated-count.tex; \

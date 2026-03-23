@@ -9,6 +9,7 @@ on:
     tags:
       - 'missverstaendnisse-*'
       - 'ersteschritte-*'
+      - 'mythen-*'
 
 jobs:
   release:
@@ -38,15 +39,21 @@ jobs:
     
     - name: Determine presentation type
       id: presentation
+      env:
+        TAG_NAME: ${{ github.ref_name }}
       run: |
-        if [[ "${{ github.ref_name }}" == ersteschritte-* ]]; then
+        if [[ "$TAG_NAME" == ersteschritte-* ]]; then
           echo "name=erste-schritte" >> $GITHUB_OUTPUT
           echo "title=Bitcoin Erste Schritte" >> $GITHUB_OUTPUT
           echo "description=PDF-Präsentation: Bitcoin Erste Schritte" >> $GITHUB_OUTPUT
-        elif [[ "${{ github.ref_name }}" == missverstaendnisse-* ]]; then
+        elif [[ "$TAG_NAME" == missverstaendnisse-* ]]; then
           echo "name=missverstaendnisse" >> $GITHUB_OUTPUT
           echo "title=Bitcoin Missverständnisse" >> $GITHUB_OUTPUT
           echo "description=PDF-Präsentation: Die häufigsten Bitcoin-Missverständnisse" >> $GITHUB_OUTPUT
+        elif [[ "$TAG_NAME" == mythen-* ]]; then
+          echo "name=mythen" >> $GITHUB_OUTPUT
+          echo "title=Bitcoin Ursprungs-Mythen" >> $GITHUB_OUTPUT
+          echo "description=PDF-Präsentation: Bitcoin Ursprungs-Mythen und was wirklich dahinter steckt" >> $GITHUB_OUTPUT
         fi
     
     - name: Build PDF

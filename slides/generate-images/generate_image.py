@@ -21,11 +21,15 @@ import fal_client
 # Available models by provider
 REPLICATE_MODELS = {
     "flux-krea-dev": "black-forest-labs/flux-krea-dev",
-    "flux-kontext-pro": "black-forest-labs/flux-kontext-pro", 
+    "flux-kontext-pro": "black-forest-labs/flux-kontext-pro",
     "flux-pro": "black-forest-labs/flux-pro",
     "flux-dev": "black-forest-labs/flux-dev",
-    "sdxl": "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b"
+    "sdxl": "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
+    "nano-banana-2": "google/nano-banana-2",
 }
+
+# Models that use a simplified parameter set (no guidance/output_quality)
+REPLICATE_SIMPLE_MODELS = {"nano-banana-2"}
 
 FAL_MODELS = {
     "imagen4": "fal-ai/imagen4/preview",
@@ -256,9 +260,10 @@ def generate_image_replicate(model_name: str, prompt: str, input_image: Optional
     """Generate image using Replicate API."""
     model_id = REPLICATE_MODELS[model_name]
     
-    # Ensure aspect ratio is always appended to prompt
-    if f"aspect ratio: {aspect_ratio}" not in prompt.lower():
-        prompt = f"{prompt}. aspect ratio: {aspect_ratio}"
+    # Flux models don't have a native aspect_ratio param — embed it in the prompt
+    if model_name not in REPLICATE_SIMPLE_MODELS:
+        if f"aspect ratio: {aspect_ratio}" not in prompt.lower():
+            prompt = f"{prompt}. aspect ratio: {aspect_ratio}"
     
     print(f"Generating image with model: {model_id}")
     print(f"Prompt: {prompt}")
@@ -269,14 +274,21 @@ def generate_image_replicate(model_name: str, prompt: str, input_image: Optional
             print(f"Error: Input image {input_image} does not exist")
             return None
     
-    # Prepare input
-    input_data = {
-        "prompt": prompt,
-        "guidance": guidance,
-        "output_quality": quality,
-        "output_format": output_format
-    }
-    
+    # Prepare input — simple models (e.g. nano-banana-2) only accept prompt/aspect_ratio/output_format
+    if model_name in REPLICATE_SIMPLE_MODELS:
+        input_data = {
+            "prompt": prompt,
+            "aspect_ratio": aspect_ratio,
+            "output_format": output_format,
+        }
+    else:
+        input_data = {
+            "prompt": prompt,
+            "guidance": guidance,
+            "output_quality": quality,
+            "output_format": output_format,
+        }
+
     # Add input image if provided (required for flux-kontext-pro)
     if input_image:
         input_data["input_image"] = open(input_image, "rb")
