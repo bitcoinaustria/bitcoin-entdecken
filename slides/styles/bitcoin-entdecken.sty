@@ -210,8 +210,8 @@
                     \vspace{0.4em}
                 \end{block}
             \else
-                % With image: two-column layout
-                \begin{columns}[c]
+                % With image: two-column layout, top-aligned
+                \begin{columns}[T]
                     \begin{column}{0.55\textwidth}
                         \begin{block}{Der Mythos}
                             \vspace{0.4em}
@@ -222,7 +222,11 @@
                     \hspace{0.01\textwidth}
                     \begin{column}{0.43\textwidth}
                         \centering
-                        \includegraphics[width=0.95\textwidth,height=0.65\textheight,keepaspectratio]{#1}
+                        \begin{tikzpicture}
+                            \node[inner sep=0pt, rounded corners=5pt, clip] {%
+                                \includegraphics[width=0.95\textwidth,height=0.65\textheight,keepaspectratio]{#1}%
+                            };
+                        \end{tikzpicture}
                     \end{column}
                 \end{columns}
             \fi
