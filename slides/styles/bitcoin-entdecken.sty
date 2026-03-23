@@ -212,7 +212,7 @@
             \else
                 % With image: two-column layout, top-aligned
                 \begin{columns}[T]
-                    \begin{column}{0.55\textwidth}
+                    \begin{column}{0.45\textwidth}
                         \begin{block}{Der Mythos}
                             \vspace{0.4em}
                             \small #3
@@ -220,11 +220,11 @@
                         \end{block}
                     \end{column}
                     \hspace{0.01\textwidth}
-                    \begin{column}{0.43\textwidth}
+                    \begin{column}{0.52\textwidth}
                         \centering
                         \begin{tikzpicture}
                             \node[inner sep=0pt, rounded corners=5pt, clip] {%
-                                \includegraphics[width=0.95\textwidth,height=0.65\textheight,keepaspectratio]{#1}%
+                                \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{#1}%
                             };
                         \end{tikzpicture}
                     \end{column}
