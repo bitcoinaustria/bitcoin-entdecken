@@ -42,7 +42,7 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
@@ -95,7 +95,7 @@ jobs:
         make build PRESENTATION="$PRES"
 
     - name: Upload PDF artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ steps.pres.outputs.name }}-pdf
         path: slides/${{ steps.pres.outputs.name }}/${{ steps.pres.outputs.name }}.pdf
