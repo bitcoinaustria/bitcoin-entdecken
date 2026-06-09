@@ -17,9 +17,11 @@
 # Generated PDF files (built by GitHub Actions)
 missverstaendnisse.pdf
 erste-schritte.pdf
+mythen.pdf
 
 # Converted logo (generated from SVG)
 logo-bitcoin-entdecken.pdf
+logo-bitcoin-entdecken-temp.pdf
 
 # Generated misconception count file
 misconception-count.tex
