@@ -8,6 +8,9 @@
 % Bitcoin Entdecken style package
 \usepackage{../styles/bitcoin-entdecken}
 
+% Zweispaltiges Inhaltsverzeichnis (alle \totalmythen\ Mythen auf einer Seite)
+\usepackage{multicol}
+
 % Title information
 \bitcointitle{Wer ist Satoshi Nakamoto?}{Die \totalmythen\ Ursprungs-Mythen -- Fakten, Indizien und Wahrscheinlichkeiten}
 \bitcointitlegraphic{pix/mythen-title.jpg}
@@ -26,7 +29,9 @@
 
 % Table of contents
 \begin{frame}{Überblick}
-	\tableofcontents
+	\begin{multicols}{2}
+		\tableofcontents
+	\end{multicols}
 \end{frame}
 
 \begin{frame}{Warum entstehen Ursprungs-Mythen?}
@@ -61,8 +66,7 @@
 % MYTH SLIDES
 % ═══════════════════════════════════════════════════════════════════
 
-% TODO: Bild ergänzen, z.B. pix/nick-szabo.jpg (Platzhalter -- Slide funktioniert auch ohne Bild)
-\mythslide{Der Bit-Gold-Architekt (Nick Szabo)}{%
+\mythslide[pix/bitgold.jpg]{Der Bit-Gold-Architekt (Nick Szabo)}{%
 	Der Kryptograph und Rechtswissenschaftler Nick Szabo -- Erfinder von ``Bit Gold'' und des Begriffs ``Smart Contracts'' -- sei Satoshi. Sein Bit-Gold-Entwurf gilt als der direkteste architektonische Vorläufer von Bitcoin. Er ist der historisch am häufigsten genannte Kandidat.
 }{%
 	\item \textbf{Bit Gold} (1998/2005): dezentrale digitale Knappheit per Proof-of-Work -- konzeptionell fast deckungsgleich mit Bitcoin
@@ -84,8 +88,7 @@
 	\item \href{https://en.wikipedia.org/wiki/Satoshi_Nakamoto}{Wikipedia: Satoshi Nakamoto}
 }
 
-% TODO: Bild ergänzen, z.B. pix/hal-finney.jpg (Platzhalter -- Slide funktioniert auch ohne Bild)
-\mythslide{Der erste Empfänger (Hal Finney)}{%
+\mythslide[pix/hal-finney-first-tx.jpg]{Der erste Empfänger (Hal Finney)}{%
 	Der PGP-Entwickler und Cypherpunk Hal Finney -- Empfänger der allerersten Bitcoin-Transaktion -- sei Satoshi gewesen und habe das Pseudonym als zweite Identität geführt. Sein Tod 2014 (ALS) erkläre Satoshis endgültiges Schweigen.
 }{%
 	\item Empfänger der \textbf{ersten Bitcoin-Transaktion}: 10 BTC von Satoshi (Block 170, 12.~Januar 2009); legendärer Tweet \textbf{``Running bitcoin''}
