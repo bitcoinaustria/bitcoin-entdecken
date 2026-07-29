@@ -7,5 +7,7 @@ requires-python = ">=3.11"
 dependencies = [
     "fal-client>=0.7.0",
     "httpx>=0.28.1",
+    # transitive über httpx/anyio -- gepinnt wegen CVE-2026-45409 (DoS in idna.encode)
+    "idna>=3.15",
     "replicate>=1.0.7",
 ]
