@@ -20,6 +20,16 @@ Der Erfolg von Initiativen wie dem DACH-weiten "Bitcoin entdecken"-Tag hat den W
 
 Wir ermutigen dich ausdrücklich, diese Ressourcen für deine eigenen "Bitcoin entdecken"-Events zu verwenden\!
 
+## **Präsentationen (fertige PDFs)**
+
+Die LaTeX-Quellen liegen unter [`/slides`](/slides), die fertigen PDFs werden automatisch von GitHub Actions gebaut und als Release veröffentlicht. Die folgenden Links zeigen immer das **jeweils neueste Release** der Präsentation — das PDF hängt dort als Asset:
+
+* **[Bitcoin — Erste Schritte](https://github.com/bitcoinaustria/bitcoin-entdecken/releases?q=ersteschritte&expanded=true)** — Einstieg: Wallet, erste Sats, Sicherheit
+* **[Die häufigsten Missverständnisse](https://github.com/bitcoinaustria/bitcoin-entdecken/releases?q=missverstaendnisse&expanded=true)** — Mythen und Einwände, faktenbasiert entkräftet
+* **[Bitcoin Ursprungs-Mythen](https://github.com/bitcoinaustria/bitcoin-entdecken/releases?q=mythen&expanded=true)** — Entstehungsgeschichte und was wirklich dahinter steckt
+
+Eine Übersicht über alle Releases gibt es unter [Releases](https://github.com/bitcoinaustria/bitcoin-entdecken/releases).
+
 ## **Beitragen**
 
 Dieses Projekt lebt von der Community. Wir freuen uns über Pull Requests mit neuen Vorlagen, Verbesserungen oder Beispielen von deinen Events.
