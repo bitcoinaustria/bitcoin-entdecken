@@ -1,9 +1,6 @@
 ---
 description: Clean auxiliary LaTeX files, keep PDF
+argument-hint: [presentation keyword]
 ---
 
-Clean auxiliary LaTeX build files while keeping the PDF output.
-
-!cd 2025-missverstaendnisse && make clean
-
-$ARGUMENTS
+Run `make clean PRESENTATION=$ARGUMENTS` from the slides/ directory. If no keyword was given, omit the PRESENTATION parameter (the makefile defaults to erste-schritte).

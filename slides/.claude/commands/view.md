@@ -1,9 +1,6 @@
 ---
-description: Open the compiled PDF in the default viewer
+description: Build and open the compiled PDF in the default viewer
+argument-hint: [presentation keyword]
 ---
 
-Open the compiled PDF presentation in your default PDF viewer.
-
-!cd 2025-missverstaendnisse && make view
-
-$ARGUMENTS
+Run `make view PRESENTATION=$ARGUMENTS` from the slides/ directory. If no keyword was given, omit the PRESENTATION parameter (the makefile defaults to erste-schritte).

@@ -1,9 +1,6 @@
 ---
 description: Generate debug screenshots of key presentation pages
+argument-hint: [presentation keyword]
 ---
 
-Generate screenshots of key pages (title, index, M1 misconception/facts, summary, sources) for debugging and preview purposes. Output saved to screenshots/ directory as 150 DPI PNG files.
-
-!cd 2025-missverstaendnisse && make screenshot-samples
-
-$ARGUMENTS
+Run `make screenshot-samples PRESENTATION=$ARGUMENTS` from the slides/ directory — 150 DPI PNGs of key pages land in screenshots/. If no keyword was given, omit the PRESENTATION parameter (the makefile defaults to erste-schritte).

@@ -8,7 +8,7 @@ Format and build the LaTeX presentation following the project workflow:
 2. Run `make format` to format the LaTeX source with latexindent  
 3. Run `make build` to compile the PDF with microtype enhancement
 
-Usage: `/build <keyword>` (e.g. `/build miss` for 2025-missverstaendnisse)
+Usage: `/build <keyword>` (e.g. `/build miss` for missverstaendnisse)
 
 !bash
 if [ -n "$ARGUMENTS" ]; then
