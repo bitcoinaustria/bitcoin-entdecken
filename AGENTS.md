@@ -1,6 +1,6 @@
 # AGENTS.md — Bitcoin entdecken
 
-Open-source brand for "Bitcoin entdecken" events, MIT-licensed — anyone may use it. Bitcoin Austria funds and supports the project; the brand itself belongs to the community. The repo holds brand assets, print/social templates, and LaTeX Beamer presentations that CI builds into release PDFs.
+Open-source repo for "Bitcoin entdecken" events — brand, marketing materials, presentations, and info material, MIT-licensed — anyone may use it. Bitcoin Austria funds and supports the project; the brand itself belongs to the community. The repo holds brand assets, print/social templates, and LaTeX Beamer presentations that CI builds into release PDFs.
 
 **Direction:** Baselayer workshop materials (Bitcoin Austria's workshop format) will be added to this repo as a new top-level area.
 
