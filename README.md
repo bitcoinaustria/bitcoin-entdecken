@@ -13,6 +13,7 @@ Dies ist das offizielle Open-Source-Repository für "Bitcoin entdecken": Brand, 
   * Dark Orange: #E35F00
   * Very Dark Orange: #BF5000
 * **Vorlagen:** Nutzbare Vorlagen für Social Media, Präsentationen und Drucksorten liegen im Ordner [`/templates`](/templates).
+* **Editierbare Eventvorlagen:** Datengetriebene Social-, Flyer-, Poster- und Bauzaunformate liegen unter [`/templates/events`](/templates/events). Datum, Ort und QR-Code werden aus einem gemeinsamen Eventdatensatz erzeugt.
 
 Wir ermutigen dich ausdrücklich, diese Ressourcen für deine eigenen "Bitcoin entdecken"-Events zu verwenden\!
 

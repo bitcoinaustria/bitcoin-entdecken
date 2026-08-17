@@ -1,0 +1,20 @@
+{
+  "id": "voitsberg-2026-08-28",
+  "date": "2026-08-28",
+  "start": "17:00",
+  "end": "19:00",
+  "venue": "Haus des Lebens",
+  "address": "Conrad-von-Hötzendorf-Straße 25b",
+  "postalCode": "8570",
+  "city": "Voitsberg",
+  "region": "Voitsberg",
+  "registrationUrl": "https://pretix.bitcoin-austria.at/BA/BE/",
+  "summary": "2008 retteten Staaten die Banken. Bezahlt haben es alle, über Staatsschulden und Inflation. Deshalb geht sich immer weniger aus.",
+  "outputs": [
+    { "type": "jpeg", "layout": "social.html", "pages": ["social-front"], "file": "social-front-1080x1080.jpg" },
+    { "type": "jpeg", "layout": "social.html", "pages": ["social-back"], "file": "social-back-1080x1080.jpg" },
+    { "type": "pdf", "layout": "poster-a3.html", "pages": ["poster-event"], "file": "poster-a3.pdf", "size": "a3" },
+    { "type": "png300", "from": "poster-a3.pdf", "file": "poster-a3-300dpi.png" },
+    { "type": "pdf", "layout": "flyer-a5.html", "pages": ["flyer-bankenrettung-front", "flyer-bankenrettung-back"], "file": "flyer-bankenrettung-a5.pdf", "size": "a5" }
+  ]
+}

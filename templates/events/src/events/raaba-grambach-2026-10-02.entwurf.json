@@ -1,0 +1,14 @@
+{
+  "id": "raaba-grambach-2026-10-02",
+  "draft": true,
+  "date": "2026-10-02",
+  "start": null,
+  "end": null,
+  "venue": "Gemeindezentrum Grambach",
+  "address": null,
+  "postalCode": null,
+  "city": "Raaba-Grambach",
+  "region": "Steiermark",
+  "registrationUrl": "https://pretix.bitcoin-austria.at/BA/BE/",
+  "note": "Uhrzeit und vollständige Adresse fehlen im Claude-Export. Vor dem Export ergänzen und in .json umbenennen."
+}

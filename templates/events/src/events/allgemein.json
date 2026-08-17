@@ -1,0 +1,7 @@
+{
+  "id": "allgemein",
+  "registrationUrl": "https://pretix.bitcoin-austria.at/BA/BE/",
+  "outputs": [
+    { "type": "pdf", "layout": "poster-general-a3.html", "pages": ["poster-general-money", "poster-general-21m"], "file": "poster-allgemein-a3.pdf", "size": "a3" }
+  ]
+}
