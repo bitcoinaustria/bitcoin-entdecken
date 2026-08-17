@@ -24,4 +24,4 @@ pnpm check
 pnpm export:event -- voitsberg-2026-08-28
 ```
 
-Der Export prüft Datensätze, Platzhalter, Seitenzahlen, Poppins-Ladung und die Außenkanten der PDF-Dateien. Für PDF/PNG-Prüfungen werden `pdfinfo` und `pdftoppm` aus Poppler benötigt.
+Der Export prüft Datensätze, Platzhalter, Seitenzahlen, Poppins-Ladung, Rasterbildauflösung und die Außenkanten aller nicht weißen PDF-Seiten. Für PDF/PNG-Prüfungen werden `pdfinfo`, `pdfimages` und `pdftoppm` aus Poppler benötigt.

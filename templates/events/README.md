@@ -19,7 +19,7 @@ Der frühere Claude-Canvas und ältere Dubletten sind nicht Teil der editierbare
 - Node.js 20 oder neuer
 - pnpm
 - Chromium, Chrome oder Brave
-- Poppler (`pdfinfo` und `pdftoppm`)
+- Poppler (`pdfinfo`, `pdfimages` und `pdftoppm`)
 
 ```bash
 cd templates/events
@@ -63,7 +63,9 @@ pnpm export:event -- allgemein
 pnpm export:event -- --all
 ```
 
-Fertige Dateien liegen danach unter `exports/<event-id>/`. PDF-Ausgaben werden auf Seitenzahl und randlose Außenkanten geprüft; das Poster-PNG entsteht mit 300 DPI aus dem geprüften PDF.
+Fertige Dateien liegen danach unter `exports/<event-id>/`. Nicht mehr konfigurierte Dateien im jeweiligen Eventordner werden beim Export entfernt. PDF-Ausgaben werden auf Seitenzahl, randlose Außenkanten und eine formatabhängige Mindestauflösung der Rasterbilder geprüft; das Poster-PNG entsteht mit 300 DPI aus dem geprüften PDF. Text, Logos und QR-Codes bleiben in den PDFs Vektoren.
+
+Beim 340 × 165 cm großen Bauzaun erreicht das vorhandene Semmelbild in der aktuellen Größe rund 21 PPI; der Export verhindert mit einer Untergrenze von 20 PPI eine weitere unbemerkte Verschlechterung. Für etwa 50 PPI wäre eine echte Bildquelle mit ungefähr 2500 × 3750 Pixeln nötig. Bloßes Hochskalieren erzeugt keine zusätzlichen Details.
 
 ## Wo wird was geändert?
 

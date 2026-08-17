@@ -18,6 +18,7 @@ const sizes = {
   a5: ["420pt", "594.96pt"],
   bauzaun: ["3400mm", "1650mm"],
 };
+const minimumRasterPpi = { a3: 100, a5: 300, bauzaun: 20 };
 
 function fail(message) {
   throw new Error(message);
@@ -31,6 +32,13 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+function formatTime(value, eventId) {
+  const match = value.match(/^([01]\d|2[0-3]):([0-5]\d)$/);
+  if (!match) fail(`${eventId}: Uhrzeit muss HH:MM sein`);
+  const hour = String(Number(match[1]));
+  return match[2] === "00" ? hour : `${hour}:${match[2]}`;
+}
+
 function computedEvent(event) {
   const result = { ...event };
   if (event.date) {
@@ -39,8 +47,9 @@ function computedEvent(event) {
     result.dateShort = `${day}.${month}.`;
     if (result.dateShort.includes(year)) fail(`${event.id}: Kurzdatum enthält fälschlich das Jahr`);
   }
-  if (event.start && event.end) {
-    result.timeRange = `${event.start.slice(0, 2)}–${event.end.slice(0, 2)} Uhr`;
+  if (event.start || event.end) {
+    if (!event.start || !event.end) fail(`${event.id}: Start- und Endzeit müssen gemeinsam gesetzt sein`);
+    result.timeRange = `${formatTime(event.start, event.id)}–${formatTime(event.end, event.id)} Uhr`;
   }
   result.dateAndTime = result.dateShort && result.timeRange
     ? `${result.dateShort} // ${result.timeRange}`
@@ -50,13 +59,13 @@ function computedEvent(event) {
   return result;
 }
 
-function get(object, key) {
+function resolveTemplateValue(object, key) {
   return key.split(".").reduce((value, part) => value?.[part], object);
 }
 
 function fillTemplate(template, values, sourceName) {
   return template.replace(/{{\s*([\w.]+)\s*}}/g, (_, key) => {
-    const value = get(values, key);
+    const value = resolveTemplateValue(values, key);
     if (value === undefined || value === null || value === "") {
       fail(`${sourceName}: Wert für {{${key}}} fehlt`);
     }
@@ -103,14 +112,10 @@ function browserPath() {
 
 function requireFile(file) {
   try {
-    return Boolean(file && requireStat(file));
+    return Boolean(file && statSync(file).isFile());
   } catch {
     return false;
   }
-}
-
-function requireStat(file) {
-  return statSync(file).isFile();
 }
 
 async function preparePage(browser, event, output) {
@@ -125,44 +130,75 @@ async function preparePage(browser, event, output) {
     });
     await document.fonts.ready;
     if (!document.fonts.check("16px Poppins")) throw new Error("Poppins wurde nicht geladen");
-    return [...document.querySelectorAll(".page")].map((element) => element.getBoundingClientRect().toJSON());
+    return [...document.querySelectorAll(".page")].map((element) => ({
+      ...element.getBoundingClientRect().toJSON(),
+      backgroundColor: getComputedStyle(element).backgroundColor,
+    }));
   }, output.pages);
   if (geometry.length !== output.pages.length || geometry.some(({ width, height }) => !width || !height)) {
     fail(`${output.layout}: ausgewählte Seiten haben keine gültige Geometrie`);
   }
-  return { page, temporaryDirectory };
+  return { page, temporaryDirectory, backgrounds: geometry.map(({ backgroundColor }) => backgroundColor) };
 }
 
-function run(command, args, errorHint) {
+function runCheckedCommand(command, args, errorHint) {
   const result = spawnSync(command, args, { encoding: "utf8" });
   if (result.status !== 0) fail(`${errorHint}\n${result.stderr || result.stdout}`);
   return result.stdout;
 }
 
-async function checkFullBleed(pdf, scratch, dpi = "150") {
-  run("pdftoppm", ["-f", "1", "-l", "1", "-png", "-r", dpi, "-singlefile", pdf, scratch], "Poppler (pdftoppm) fehlt oder konnte das PDF nicht prüfen");
-  const png = PNG.sync.read(await fs.readFile(`${scratch}.png`));
-  let white = 0;
-  const isWhite = (offset) => png.data[offset] > 245 && png.data[offset + 1] > 245 && png.data[offset + 2] > 245;
-  for (let x = 0; x < png.width; x += 1) if (isWhite(((png.height - 1) * png.width + x) * 4)) white += 1;
-  for (let y = 0; y < png.height; y += 1) if (isWhite((y * png.width + png.width - 1) * 4)) white += 1;
-  await fs.rm(`${scratch}.png`);
-  if (white) fail(`${path.basename(pdf)}: ${white} weiße Pixel am Außenrand`);
+async function checkFullBleed(pdf, scratch, backgrounds, dpi = "150") {
+  runCheckedCommand("pdftoppm", ["-f", "1", "-l", String(backgrounds.length), "-png", "-r", dpi, pdf, scratch], "Poppler (pdftoppm) fehlt oder konnte das PDF nicht prüfen");
+  const files = backgrounds.map((_, index) => `${scratch}-${index + 1}.png`);
+  let issue;
+  try {
+    for (const [index, file] of files.entries()) {
+      if (backgrounds[index] === "rgb(255, 255, 255)") continue;
+      const png = PNG.sync.read(await fs.readFile(file));
+      let white = 0;
+      const isWhite = (offset) => png.data[offset] > 245 && png.data[offset + 1] > 245 && png.data[offset + 2] > 245;
+      for (let x = 0; x < png.width; x += 1) {
+        if (isWhite(x * 4)) white += 1;
+        if (isWhite(((png.height - 1) * png.width + x) * 4)) white += 1;
+      }
+      for (let y = 0; y < png.height; y += 1) {
+        if (isWhite((y * png.width) * 4)) white += 1;
+        if (isWhite((y * png.width + png.width - 1) * 4)) white += 1;
+      }
+      if (white) issue = `${path.basename(pdf)}, Seite ${index + 1}: ${white} weiße Pixel am Außenrand`;
+    }
+  } finally {
+    await Promise.all(files.map((file) => fs.rm(file, { force: true })));
+  }
+  if (issue) fail(issue);
+}
+
+function checkRasterResolution(pdf, minimumPpi) {
+  const rows = runCheckedCommand("pdfimages", ["-list", pdf], "Poppler (pdfimages) fehlt oder konnte das PDF nicht prüfen")
+    .split("\n")
+    .map((line) => line.trim().split(/\s+/))
+    .filter((columns) => columns[2] === "image");
+  const low = rows.filter((columns) => Number(columns[12]) < minimumPpi || Number(columns[13]) < minimumPpi);
+  if (low.length) fail(`${path.basename(pdf)}: Rasterbild unter ${minimumPpi} PPI (${low.map((columns) => `${columns[12]}×${columns[13]}`).join(", ")})`);
 }
 
 async function exportEvent(browser, event) {
   const target = path.join(exportsDir, event.id);
   const scratch = path.join(target, ".qa");
   await fs.mkdir(target, { recursive: true });
+  const expectedFiles = new Set(event.outputs.map(({ file }) => file));
+  for (const entry of await fs.readdir(target, { withFileTypes: true })) {
+    if (entry.isFile() && !expectedFiles.has(entry.name)) await fs.rm(path.join(target, entry.name));
+  }
   for (const output of event.outputs) {
     const destination = path.join(target, output.file);
     if (output.type === "png300") {
       const sourcePdf = path.join(target, output.from);
       const prefix = destination.replace(/\.png$/i, "");
-      run("pdftoppm", ["-png", "-r", "300", "-singlefile", sourcePdf, prefix], "Poppler (pdftoppm) fehlt oder konnte das PNG nicht erzeugen");
+      runCheckedCommand("pdftoppm", ["-png", "-r", "300", "-singlefile", sourcePdf, prefix], "Poppler (pdftoppm) fehlt oder konnte das PNG nicht erzeugen");
       continue;
     }
-    const { page, temporaryDirectory } = await preparePage(browser, event, output);
+    const { page, temporaryDirectory, backgrounds } = await preparePage(browser, event, output);
     if (output.type === "jpeg") {
       const design = page.locator(`[data-layout="${output.pages[0]}"]`);
       await design.screenshot({ path: destination, type: "jpeg", quality: 96 });
@@ -171,9 +207,10 @@ async function exportEvent(browser, event) {
       await page.addStyleTag({ content: `@page { size: ${width} ${height}; margin: 0; }` });
       await page.emulateMedia({ media: "print" });
       await page.pdf({ path: destination, printBackground: true, preferCSSPageSize: true, margin: { top: "0", right: "0", bottom: "0", left: "0" } });
-      const info = run("pdfinfo", [destination], "Poppler (pdfinfo) fehlt oder konnte das PDF nicht prüfen");
+      const info = runCheckedCommand("pdfinfo", [destination], "Poppler (pdfinfo) fehlt oder konnte das PDF nicht prüfen");
       if (!info.includes(`Pages:           ${output.pages.length}`)) fail(`${output.file}: falsche Seitenzahl`);
-      await checkFullBleed(destination, scratch, output.size === "bauzaun" ? "10" : "150");
+      await checkFullBleed(destination, scratch, backgrounds, output.size === "bauzaun" ? "10" : "150");
+      checkRasterResolution(destination, minimumRasterPpi[output.size]);
     } else {
       fail(`${event.id}: unbekannter Ausgabetyp ${output.type}`);
     }
@@ -184,6 +221,7 @@ async function exportEvent(browser, event) {
 
 const events = await readEvents();
 if (process.argv.includes("--check")) {
+  if (computedEvent({ id: "Zeitprüfung", start: "17:30", end: "19:45" }).timeRange !== "17:30–19:45 Uhr") fail("Interne Zeitformatierung ist fehlerhaft");
   for (const event of events) {
     for (const output of event.outputs.filter((item) => item.layout)) {
       await renderSource(event, output);
