@@ -1,0 +1,15 @@
+@font-face{font-family:Poppins;src:url("assets/fonts/Poppins-Regular.ttf") format("truetype");font-weight:400}
+@font-face{font-family:Poppins;src:url("assets/fonts/Poppins-Bold.ttf") format("truetype");font-weight:700}
+@font-face{font-family:Poppins;src:url("assets/fonts/Poppins-Black.ttf") format("truetype");font-weight:900}
+:root{--orange:#FF7700;--dark-orange:#E35F00;--very-dark-orange:#BF5000}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Poppins,system-ui,sans-serif}
+body{background:#e8e6e2}
+.page{position:relative;overflow:hidden;flex:none;background:#fff;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.social-page{width:1080px;height:1080px}
+.a3-page{width:841.92pt;height:1191.12pt}
+.a5-page{width:420pt;height:594.96pt}
+.bauzaun-page{width:3400mm;height:1650mm}
+.page[hidden]{display:none!important}
+@media screen{body{display:flex;flex-direction:column;align-items:flex-start;gap:32px;padding:32px}.page{box-shadow:0 3px 18px #0003}}
+@media print{body{display:block;background:none}.page{break-after:page;transform:scaleY(1.0005);transform-origin:top left;box-shadow:none}.bauzaun-page{transform:none}.page:last-child{break-after:auto}}

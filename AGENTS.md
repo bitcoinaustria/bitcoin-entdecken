@@ -15,13 +15,14 @@ Everything is **German** (DACH audience): content, `.tex` comments, commit messa
 | [README.md](README.md) | Human-facing index — canonical for brand colors (`#FF7700` family), fonts (Poppins), asset locations, release PDF links |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How the community contributes (PR-based, keep it simple) |
 | `brand-assets/` | Logos (orange/black/white × SVG/EPS/PNG), design elements, alternative logo concepts |
-| `templates/` | Print and event templates (PDF/PSD) — binary artifacts, contributed as-is |
+| `templates/` | Print templates plus editable, data-driven event material under `templates/events/` |
 | `slides/` | LaTeX Beamer presentations — has its own scoped [slides/CLAUDE.md](slides/CLAUDE.md) with build/release workflow. Work in there follows that file. |
 | `.github/workflows/` | Ground truth for CI: `build-pdf.yml` builds on `.tex` changes, `release.yml` releases on tags `ersteschritte-*`, `missverstaendnisse-*`, `mythen-*` |
 
 ## Quality gates
 
-- Brand assets and templates: none — they're design artifacts, reviewed by humans in PRs.
+- Existing binary templates: human design review.
+- Editable event templates: `pnpm check` from `templates/events/`; export changes also run the affected event export.
 - Slides: `make format` then `make build` from `slides/` must succeed (needs a local LaTeX toolchain; CI is authoritative). Details in [slides/CLAUDE.md](slides/CLAUDE.md).
 
 ## Rules

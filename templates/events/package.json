@@ -1,0 +1,14 @@
+{
+  "name": "bitcoin-entdecken-eventvorlagen",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node export.mjs --check",
+    "export:event": "node export.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.62.1",
+    "pngjs": "7.0.0",
+    "qrcode": "1.5.4"
+  }
+}

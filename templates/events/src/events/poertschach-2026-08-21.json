@@ -1,0 +1,24 @@
+{
+  "id": "poertschach-2026-08-21",
+  "date": "2026-08-21",
+  "start": "16:00",
+  "end": "18:00",
+  "venue": "Die Labsalerie",
+  "address": "Kreggaber Weg 7",
+  "postalCode": "9210",
+  "city": "Pörtschach am Wörthersee",
+  "region": "Kärnten",
+  "email": "servus@dielabsalerie.at",
+  "registrationUrl": "https://pretix.bitcoin-austria.at/BA/BE/",
+  "summary": "Du verdienst mehr als vor fünf Jahren und kannst dir weniger leisten. Das liegt am Geldsystem, nicht an dir.",
+  "outputs": [
+    { "type": "jpeg", "layout": "social.html", "pages": ["social-front"], "file": "social-front-1080x1080.jpg" },
+    { "type": "jpeg", "layout": "social.html", "pages": ["social-back"], "file": "social-back-1080x1080.jpg" },
+    { "type": "jpeg", "layout": "social.html", "pages": ["social-alternative-black"], "file": "social-alternative-black.jpg" },
+    { "type": "jpeg", "layout": "social.html", "pages": ["social-alternative-orange"], "file": "social-alternative-orange.jpg" },
+    { "type": "pdf", "layout": "poster-a3.html", "pages": ["poster-event"], "file": "poster-a3.pdf", "size": "a3" },
+    { "type": "pdf", "layout": "poster-a3.html", "pages": ["poster-alternative-black", "poster-alternative-orange"], "file": "poster-alternativen-a3.pdf", "size": "a3" },
+    { "type": "pdf", "layout": "flyer-a5.html", "pages": ["flyer-semmel-front", "flyer-semmel-back"], "file": "flyer-semmel-a5.pdf", "size": "a5" },
+    { "type": "pdf", "layout": "bauzaun.html", "pages": ["bauzaun-black"], "file": "bauzaun-340x165cm.pdf", "size": "bauzaun" }
+  ]
+}
